@@ -13,7 +13,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Deploy docs to GitHub Pages
-        uses: crazywhalecc/vitepress-deploy@master
+        uses: pagnkelly/vitepress-deploy@master
         env:
           ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BUILD_SCRIPT: |
