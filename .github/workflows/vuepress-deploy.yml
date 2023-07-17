@@ -1,0 +1,23 @@
+name: Docs and Script Auto Deploy
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'docs/**'
+      - 'ext/**'
+
+jobs:
+  build:
+    name: Deploy docs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout master
+        uses: actions/checkout@v3
+
+      - name: Deploy docs to GitHub Pages
+        uses: crazywhalecc/vitepress-deploy@master
+        env:
+          ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BUILD_SCRIPT: yarn && yarn docs:build
+          BUILD_DIR: docs/.vitepress/dist/
