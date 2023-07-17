@@ -16,5 +16,7 @@ jobs:
         uses: crazywhalecc/vitepress-deploy@master
         env:
           ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BUILD_SCRIPT: yarn && yarn docs:build
+          BUILD_SCRIPT: |
+            yarn
+            yarn docs:build
           BUILD_DIR: docs/.vitepress/dist/
