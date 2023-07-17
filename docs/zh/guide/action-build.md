@@ -19,5 +19,5 @@ Action 构建指的是直接使用 GitHub Action 进行编译。
 
 ## 扩展选择
 
-你可以到 [扩展列表](/zh/guide/extensions) 中查看目前你需要的扩展是否均支持，
-然后到 [在线命令生成](/zh/guide/cli-generator) 中选择你需要编译的扩展，复制扩展字符串到 Action 的 `extensions` 中，编译即可。
+你可以到 [扩展列表](./extensions) 中查看目前你需要的扩展是否均支持，
+然后到 [在线命令生成](./cli-generator) 中选择你需要编译的扩展，复制扩展字符串到 Action 的 `extensions` 中，编译即可。

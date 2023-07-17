@@ -21,5 +21,5 @@ If you enable `debug`, all logs will be output at build time, including compiled
 
 ## Extensions
 
-You can go to [extensions](/zh/guide/extensions) check here to see if all the extensions you need currently support.
-and then go to [command generator](/zh/guide/cli-generator) select the extension you need to compile, copy the extensions string to `extensions` option.
+You can go to [extensions](./extensions) check here to see if all the extensions you need currently support.
+and then go to [command generator](./cli-generator) select the extension you need to compile, copy the extensions string to `extensions` option.
