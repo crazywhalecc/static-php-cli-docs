@@ -1,4 +1,4 @@
-name: Docs and Script Auto Deploy
+name: Docs Auto Deploy
 on:
   push:
     branches:
