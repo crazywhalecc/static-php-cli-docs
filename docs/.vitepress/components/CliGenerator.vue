@@ -2,7 +2,7 @@
   <div>
     <h2>{{ I18N[lang].selectExt }}</h2>
     <div class="box">
-      <div v-for="(item, index) in EXTENSIONS" class="ext-item">
+      <div v-for="(item) in EXTENSIONS" class="ext-item">
         <input type="checkbox" :id="item" :value="item" v-model="checkedNames">
         <label :for="item">{{ item }}</label>
       </div>
@@ -11,7 +11,7 @@
     <div class="my-btn" @click="checkedNames = []">{{ I18N[lang].selectNone }}</div>
     <h2>{{ I18N[lang].buildTarget }}</h2>
     <div class="box">
-      <div v-for="(item, index) in TARGET" class="ext-item">
+      <div v-for="(item) in TARGET" class="ext-item">
         <input type="checkbox" :id="'build_' + item" :value="item" v-model="checkedTargets" @change="onTargetChange">
         <label :for="'build_' + item">{{ item }}</label>
       </div>
@@ -188,9 +188,6 @@ const spcCommand = computed(() => {
 const buildCommand = ref('--build-cli');
 
 const onTargetChange = (event) => {
-  console.log('niubi');
-  console.log(event);
-  console.log(checkedTargets.value);
   let id;
   if (checkedTargets.value.indexOf('all') !== -1 && event.target.value === 'all') {
     checkedTargets.value = ['all'];
