@@ -37,6 +37,10 @@ export default defineConfig({
                 {text: 'Extension Notes', link: '/en/guide/extension-notes'},
                 {text: 'Command Generator', link: '/en/guide/cli-generator'},
               ]
+            },
+            {
+              text: 'Advanced',
+              items: [],
             }
           ]
         }
@@ -63,6 +67,10 @@ export default defineConfig({
                 {text: '扩展注意事项', link: '/zh/guide/extension-notes'},
                 {text: '编译命令生成器', link: '/zh/guide/cli-generator'},
               ]
+            },
+            {
+              text: '进阶',
+              items: [],
             }
           ]
         }
