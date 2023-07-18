@@ -7,6 +7,8 @@
         <label :for="item">{{ item }}</label>
       </div>
     </div>
+    <div class="my-btn" @click="selectCommon">{{ I18N[lang].selectCommon }}</div>
+    <div class="my-btn" @click="checkedNames = []">{{ I18N[lang].selectNone }}</div>
     <h2>{{ I18N[lang].buildTarget }}</h2>
     <div class="box">
       <div v-for="(item, index) in TARGET" class="ext-item">
@@ -63,6 +65,8 @@ const I18N = {
     yes: '是',
     no: '否',
     resultShow: '结果展示',
+    selectCommon: '选择常用扩展',
+    selectNone: '全部取消选择',
   },
   en: {
     selectExt: 'Select Extensions',
@@ -75,6 +79,8 @@ const I18N = {
     yes: 'Yes',
     no: 'No',
     resultShow: 'Result',
+    selectCommon: 'Select common extensions',
+    selectNone: 'Unselect all',
   }
 };
 
@@ -140,6 +146,23 @@ const TARGET = [
   'micro',
   'all',
 ];
+
+const selectCommon = () => {
+  checkedNames.value = [
+      'bcmath', 'calendar', 'ctype',
+      'curl', 'dba', 'dom',
+      'exif', 'filter', 'fileinfo',
+      'gd', 'iconv', 'mbstring',
+      'mbregex', 'mysqli', 'mysqlnd',
+      'openssl', 'pcntl', 'pdo',
+      'pdo_mysql', 'pdo_sqlite', 'phar',
+      'posix', 'readline', 'redis',
+      'session', 'simplexml', 'sockets',
+      'sqlite3', 'tokenizer', 'xml',
+      'xmlreader', 'xmlwriter', 'zip',
+      'zlib',
+  ];
+};
 
 const extList = computed(() => {
   return checkedNames.value.join(',');
@@ -209,5 +232,31 @@ select {
   border: 1px solid var(--vp-c-divider);
   padding: 0 4px;
   width: 300px;
+}
+.my-btn {
+  color: var(--vp-button-alt-text);
+  background-color: var(--vp-button-alt-bg);
+  border-radius: 8px;
+  padding: 0 16px;
+  line-height: 32px;
+  font-size: 14px;
+  display: inline-block;
+  text-align: center;
+  font-weight: 600;
+  margin-right: 8px;
+  white-space: nowrap;
+  transition: color 0.25s, border-color 0.25s, background-color 0.25s;
+  cursor: pointer;
+  border: 1px solid var(--vp-button-alt-border);
+}
+.my-btn:hover {
+  border-color: var(--vp-button-alt-hover-border);
+  color: var(--vp-button-alt-hover-text);
+  background-color: var(--vp-button-alt-hover-bg);
+}
+.my-btn:active {
+  border-color: var(--vp-button-alt-active-border);
+  color: var(--vp-button-alt-active-text);
+  background-color: var(--vp-button-alt-active-bg);
 }
 </style>

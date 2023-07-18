@@ -4,7 +4,7 @@ layout: home
 
 hero:
   name: "static-php-cli"
-  tagline: "构建单个静态PHP二进制文件，将PHP项目放在一起，并包含流行的扩展。"
+  tagline: "构建单个静态 PHP 二进制文件，将 PHP 项目放在一起，并包含流行的扩展。"
   actions:
     - theme: brand
       text: 指南
