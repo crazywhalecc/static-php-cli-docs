@@ -182,3 +182,60 @@ You can try to use the following commands:
 - `--enable-zts`: Make compiled PHP thread-safe version (default is NTS version)
 - `--no-strip`: Do not run `strip` after compiling the PHP library to trim the binary file to reduce its size (the macOS binary file without trim can use dynamically linked third-party extensions)
 - `--with-libs=XXX,YYY`: Compile the specified dependent library before compiling PHP, and activate some extended optional functions (such as libavif of the gd library, etc.)
+
+## Command - micro:combine
+
+Use the `micro:combine` command to build the compiled `micro.sfx` and your code (`.php` or `.phar` file) into an executable binary.
+You can also use this command to directly build a micro binary injected with ini configuration.
+
+::: tip
+Injecting ini configuration refers to adding a special structure after micro.sfx to save ini configuration items before combining micro.sfx with PHP source code.
+
+micro.sfx can identify the INI file header through a special byte, and the micro can be started with INI through the INI file header.
+
+The original wiki of this feature is in [phpmicro - Wiki](https://github.com/easysoft/phpmicro/wiki/INI-settings), and this feature may change in the future.
+:::
+
+The following is the general usage, directly packaging the php source code into a file:
+
+```bash
+# Before doing the packaging process, you should use `build --build-micro` to compile micro.sfx
+echo "<?php echo 'hello';" > a.php
+bin/spc micro:combine a.php
+
+# Just use it
+./my-app
+```
+
+You can use the following options to specify the file name to be output, and you can also specify micro.sfx in other paths for packaging.
+
+```bash
+# specify the output filename
+bin/spc micro:combine a.php --output=custom-bin
+# Use absolute path
+bin/spc micro:combine a.php -O /tmp/my-custom-app
+
+# Specify micro.sfx in other locations for packaging
+bin/spc micro:combine a.app --with-micro=/path/to/your/micro.sfx
+```
+
+If you want to inject ini configuration items, you can use the following parameters to add ini to the executable file from a file or command line option.
+
+```bash
+# Specified using command-line options (-I is shorthand for --with-ini-set)
+bin/spc micro:combine a.php -I "a=b" -I "foo=bar"
+
+# Use ini file specification (-N is shorthand for --with-ini-file)
+bin/spc micro:combine a.php -N /path/to/your/custom.ini
+```
+
+::: warning
+Note, please do not directly use the PHP source code or the `php.ini` file in the system-installed PHP, 
+it is best to manually write an ini configuration file that you need, for example:
+
+```ini
+; custom.ini
+curl.cainfo=/path/to/your/cafile.pem
+memory_limit=1G
+```
+:::
