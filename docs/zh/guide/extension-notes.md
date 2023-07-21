@@ -32,3 +32,21 @@ bin/spc build gd --with-libs=freetype,libjpeg,libavif,libwebp --build-cli
 ## mcrypt
 
 1. 目前未支持，未来也不计划支持此扩展。[#32](https://github.com/crazywhalecc/static-php-cli/issues/32)
+
+## oci8
+
+1. oci8 是 Oracle 数据库的扩展，因为 Oracle 提供的扩展所依赖的库未提供静态编译版本（`.a`）或源代码，无法使用静态链接的方式将此扩展编译到 php 内，故无法支持。
+
+## pgsql
+
+1. pgsql 扩展依赖的 postgresql 项目本身未支持静态编译，完全将 postgresql 静态编译需要花费较多时间来 patch 代码。
+
+## sqlsrv
+
+1. sqlsrv 是 SQL Server 数据库的扩展，因为 SQL Server 提供的扩展所依赖的库未提供静态编译版本（`.a`）或源代码，无法使用静态链接的方式将此扩展编译到 php 内，故无法支持。
+
+## xdebug
+
+1. Xdebug 是一个 Zend 扩展，Xdebug 的功能依赖于 PHP 的 Zend 引擎和底层代码，如果要将其静态编译到 PHP 中，可能需要巨量的 patch 代码，这是不划算的。
+2. macOS 平台可以通过在相同平台编译的 PHP 下编译一个 xdebug 扩展，并提取其中的 `xdebug.so` 文件，再在 static-php-cli 中使用 `--no-strip` 参数保留调试符号表，同时加入 `ffi` 扩展。
+   编译的 `./php` 二进制可以通过指定 INI 配置并运行，例如`./php -d 'zend_extension=xdebug.so' your-code.php`。

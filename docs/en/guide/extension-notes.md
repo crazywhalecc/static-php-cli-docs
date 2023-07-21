@@ -36,3 +36,28 @@ bin/spc build gd --with-libs=freetype,libjpeg,libavif,libwebp --build-cli
 ## mcrypt
 
 1. Currently not supported, and this extension will not be supported in the future. [#32](https://github.com/crazywhalecc/static-php-cli/issues/32)
+
+## oci8
+
+1. oci8 is an extension of the Oracle database, because the library on which the extension provided by Oracle does not provide a statically compiled version (`.a`) or source code, 
+and this extension cannot be compiled into php by static linking, so it cannot be supported.
+
+## pgsql
+
+1. The postgresql project that the pgsql extension depends on does not support static compilation, 
+and it takes a lot of time to patch the code to completely compile postgresql statically. 
+We are currently figuring out how to adapt it.
+
+## sqlsrv
+
+1. sqlsrv is an extension of the SQL Server database. 
+Because the library on which the extension provided by SQL Server does not provide a statically compiled version (`a`) or source code, 
+the extension cannot be compiled into php by static linking, so it cannot be supported.
+
+## xdebug
+
+1. Xdebug is a Zend extension. The functions of Xdebug depend on PHP's Zend engine and underlying code. 
+If you want to statically compile it into PHP, you may need a huge amount of patch code, which is not possible.
+2. The macOS platform can compile an xdebug extension under PHP compiled on the same platform, 
+extract the `xdebug.so` file, and then use the `--no-strip` parameter in static-php-cli to retain the debug symbol table and add the `ffi` extension. 
+The compiled `./php` binary can be configured and run by specifying the INI, eg `./php -d 'zend_extension=/path/to/xdebug.so' your-code.php`.
