@@ -36,11 +36,14 @@ export default defineConfig({
                 {text: 'Extension List', link: '/en/guide/extensions'},
                 {text: 'Extension Notes', link: '/en/guide/extension-notes'},
                 {text: 'Command Generator', link: '/en/guide/cli-generator'},
+
               ]
             },
             {
               text: 'Advanced',
-              items: [],
+              items: [
+                {text: 'Troubleshooting', link: '/en/guide/troubleshooting'},
+              ],
             }
           ]
         }
@@ -70,7 +73,9 @@ export default defineConfig({
             },
             {
               text: '进阶',
-              items: [],
+              items: [
+                {text: '故障排除', link: '/en/guide/troubleshooting'},
+              ],
             }
           ]
         }
