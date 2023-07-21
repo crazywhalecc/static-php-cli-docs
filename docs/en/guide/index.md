@@ -9,6 +9,11 @@ In the guide section, you will learn how to use static php cli to build standalo
 - [Native Build](./manual-build)
 - [Supported Extensions](./extensions)
 
+::: tip
+Part of the English document is written by me, and part is translated by Google, and there may be inaccurate descriptions.
+If you are a native English speaker, some corrections to the documentation are welcome. ([Docs repo](https://github.com/crazywhalecc/static-php-cli-docs))
+:::
+
 ## Compilation Environment
 
 The following is the architecture support situation, where `CI` represents support for GitHub Action build, 
