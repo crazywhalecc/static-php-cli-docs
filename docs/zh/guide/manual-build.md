@@ -154,3 +154,59 @@ bin/spc build mysqlnd,pdo_mysql --build-all --debug
 - `--enable-zts`: 让编译的 PHP 为线程安全版本（默认为 NTS 版本）
 - `--no-strip`: 编译 PHP 库后不运行 `strip` 裁剪二进制文件缩小体积（不裁剪的 macOS 二进制文件可使用动态链接的第三方扩展）
 - `--with-libs=XXX,YYY`: 编译 PHP 前先编译指定的依赖库，激活部分扩展的可选功能（例如 gd 库的 libavif 等）
+
+## 命令 micro:combine - 打包 micro 二进制
+
+使用 `micro:combine` 命令可以将上面编译好的 `micro.sfx` 和你的代码（`.php` 或 `.phar` 文件）构建为一个可执行二进制。
+你也可以使用该命令直接构建一个注入了 ini 配置的 micro 自执行二进制文件。
+
+::: tip
+注入 ini 配置指的是，在将 micro.sfx 和 PHP 源码结合前，在 micro.sfx 后追加一段特殊的结构用于保存 ini 配置项。
+
+micro.sfx 可通过特殊的字节来标识 INI 文件头，通过 INI 文件头可以实现 micro 带 INI 启动。
+
+此特性的原说明地址在 [phpmicro - Wiki](https://github.com/easysoft/phpmicro/wiki/INI-settings)，这个特性也有可能在未来发生变化。
+:::
+
+下面是常规用法，直接打包 php 源码到一个文件中：
+
+```bash
+# 在做打包流程前，你应该先使用 `build --build-micro` 编译好 micro.sfx
+echo "<?php echo 'hello';" > a.php
+bin/spc micro:combine a.php
+
+# 使用
+./my-app
+```
+
+你可以使用以下参数指定要输出的文件名，你也可以指定其他路径的 micro.sfx 进行打包。
+
+```bash
+# 指定输出文件名
+bin/spc micro:combine a.php --output=custom-bin
+# 使用绝对路径，也可以使用简化参数名
+bin/spc micro:combine a.php -O /tmp/my-custom-app
+
+# 指定其他位置的 micro.sfx 进行打包
+bin/spc micro:combine a.app --with-micro=/path/to/your/micro.sfx
+```
+
+如果想注入 ini 配置项，可以使用下面的参数，从文件或命令行选项添加 ini 到可执行文件中。
+
+```bash
+# 使用命令行选项指定（-I 是 --with-ini-set 的简写）
+bin/spc micro:combine a.php -I "a=b" -I "foo=bar"
+
+# 使用 ini 文件指定（-N 是 --with-ini-file 的简写）
+bin/spc micro:combine a.php -N /path/to/your/custom.ini
+```
+
+::: warning
+注意，请不要直接使用 PHP 源码或系统安装的 PHP 中的 `php.ini` 文件，最好手动编写一个自己需要的参数配置文件，例如：
+
+```ini
+; custom.ini
+curl.cainfo=/path/to/your/cafile.pem
+memory_limit=1G
+```
+:::
