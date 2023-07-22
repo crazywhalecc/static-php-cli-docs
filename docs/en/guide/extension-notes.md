@@ -42,12 +42,6 @@ bin/spc build gd --with-libs=freetype,libjpeg,libavif,libwebp --build-cli
 1. oci8 is an extension of the Oracle database, because the library on which the extension provided by Oracle does not provide a statically compiled version (`.a`) or source code, 
 and this extension cannot be compiled into php by static linking, so it cannot be supported.
 
-## pgsql
-
-1. The postgresql project that the pgsql extension depends on does not support static compilation, 
-and it takes a lot of time to patch the code to completely compile postgresql statically. 
-We are currently figuring out how to adapt it.
-
 ## sqlsrv
 
 1. sqlsrv is an extension of the SQL Server database. 
