@@ -36,6 +36,7 @@
 | mongodb                            | yes           | yes           |         |
 | mysqli                             | yes           | yes           |         |
 | mysqlnd                            | yes           | yes           |         |
+| [oci8](./extension-notes#oci8)     | no            | no            |         |
 | opcache                            | yes           | yes           |         |
 | openssl                            | yes           | yes           |         |
 | password-argon2                    |               |               |         |
@@ -48,6 +49,7 @@
 | phar                               | yes           | yes           |         |
 | posix                              | yes           | yes           |         |
 | protobuf                           | yes           | yes           |         |
+| rdkafka                            |               |               |         |
 | readline                           | yes, untested | yes, untested |         |
 | redis                              | yes           | yes           |         |
 | session                            | yes           | yes           |         |
@@ -57,10 +59,12 @@
 | sockets                            | yes           | yes           |         |
 | sodium                             | yes           | yes           |         |
 | sqlite3                            | yes           | yes           |         |
+| [sqlsrv](./extension-notes#sqlsrv) | no            | no            |         |
 | ssh2                               | yes, untested | yes, untested |         |
 | [swow](./extension-notes#swow)     | yes           | yes           |         |
 | [swoole](./extension-notes#swoole) | partial       | yes           |         |
 | tokenizer                          | yes           | yes           |         |
+| [xdebug](./extension-notes#xdebug) |               |               |         |
 | xlswriter                          | yes           | yes           |         |
 | xml                                | yes           | yes           |         |
 | xmlreader                          | yes, untested | yes, untested |         |
