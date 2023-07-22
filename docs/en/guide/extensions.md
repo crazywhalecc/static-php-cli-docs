@@ -43,7 +43,8 @@
 | pdo                                | yes           | yes           |         |
 | pdo_mysql                          | yes           | yes           |         |
 | pdo_sqlite                         | yes           | yes           |         |
-| pdo_pgsql                          |               |               |         |
+| pdo_pgsql                          | yes, untested | yes, untested |         |
+| pgsql                              | yes, untested | yes, untested |         |
 | phar                               | yes           | yes           |         |
 | posix                              | yes           | yes           |         |
 | protobuf                           | yes           | yes           |         |

@@ -115,6 +115,8 @@ const EXTENSIONS = [
   'pdo',
   'pdo_mysql',
   'pdo_sqlite',
+  'pdo_pgsql',
+  'pgsql',
   'phar',
   'posix',
   'protobuf',
