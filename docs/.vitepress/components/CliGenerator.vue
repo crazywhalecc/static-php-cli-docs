@@ -106,6 +106,7 @@ const EXTENSIONS = [
   'intl',
   'mbstring',
   'mbregex',
+  'memcache',
   'mongodb',
   'mysqli',
   'mysqlnd',
