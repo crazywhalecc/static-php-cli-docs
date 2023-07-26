@@ -34,6 +34,7 @@
 | mbregex                            | yes           | yes           |         |
 | [mcrypt](./extension-notes#mcrypt) | no            | no            |         |
 | memcache                           | yes, untested | yes, untested |         |
+| memcached                          | no            | yes, untested |         |
 | mongodb                            | yes           | yes           |         |
 | mysqli                             | yes           | yes           |         |
 | mysqlnd                            | yes           | yes           |         |
