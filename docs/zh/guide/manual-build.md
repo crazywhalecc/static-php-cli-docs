@@ -103,6 +103,17 @@ bin/spc download --clean
 bin/spc download --from-zip=/path/to/your/download.zip
 ```
 
+如果某个 source 始终无法下载，或者你需要下载一些特定版本的包，例如下载测试版 PHP、旧版本库等，可以使用参数 `-U` 或 `--custom-url` 重写下载链接，
+让下载器强制使用你指定的链接下载此 source 的包。使用方法为 `{source-name}:{url}` 即可，可同时重写多个库的下载地址。
+
+```bash
+# 例如：指定下载测试版的 PHP8.3
+bin/spc download --all -U "php-src:https://downloads.php.net/~eric/php-8.3.0beta1.tar.gz"
+
+# 指定下载旧版本的 curl 库
+bin/spc download --all -U "curl:https://curl.se/download/curl-7.88.1.tar.gz"
+```
+
 ## 命令 doctor - 环境检查
 
 如果你可以正常运行 `bin/spc` 但无法正常编译静态的 PHP 或依赖库，可以先运行 `bin/spc doctor` 检查系统自身是否缺少依赖。
@@ -210,3 +221,33 @@ curl.cainfo=/path/to/your/cafile.pem
 memory_limit=1G
 ```
 :::
+
+## 命令 extract - 手动解压某个库
+
+使用命令 `bin/spc extract` 可以解包和拷贝编译需要的源代码，包括 php-src 以及依赖的各种库的源码（需要自己指定要解包的库名）。
+
+例如，我们在下载好资源后，想分布执行构建流程，手动解包和拷贝包到指定位置，可以使用命令。
+
+```bash
+# 解压 php-src 和 libxml2 的下载压缩包，解压的源码存放在 source 目录
+bin/spc extract php-src,libxml2
+```
+
+## 调试命令 dev - 调试命令集合
+
+调试命令指的是你在使用 static-php-cli 构建 PHP 或改造、增强 static-php-cli 项目本身的时候，可以辅助输出一些信息的命令集合。
+
+- `dev:ext-all`: 输出目前所有支持的扩展名称
+- `dev:ext-info`: 输出一个或多个扩展的元信息
+- `dev:php-ver`: 输出当前编译的 PHP 版本（通过读取 `php_version.h` 实现）
+
+```bash
+# 输出所有扩展
+bin/spc dev:ext-all
+
+# 输出多个扩展元信息
+bin/spc dev:ext-info mongodb,pgsql,pcntl
+
+# 输出当前编译的 PHP 版本（需要先将下载好的 PHP 源码解压到 source 目录，你可以使用 `bin/spc extract php-src` 单独解压缩源码）
+bin/spc dev:php-ver
+```

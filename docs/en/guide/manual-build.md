@@ -115,12 +115,26 @@ If the network in your area is not good, or the speed of downloading the depende
 you can download `download.zip` which is packaged regularly every week from GitHub Action, 
 and use the command to directly use the zip archive as a dependency.
 
-
 Dependent packages can be downloaded locally from [Action](https://github.com/crazywhalecc/static-php-cli/actions/workflows/download-cache.yml).
 Enter Action and select a latest Workflow that has been successfully run, and download `download-files-x.y`.
 
 ```bash
 bin/spc download --from-zip=/path/to/your/download.zip
+```
+
+If a source cannot be downloaded all the time, or you need to download some specific version of the package, 
+such as downloading the beta version of PHP, the old version of the library, etc., 
+you can use the parameter `-U` or `--custom-url` to rewrite the download link,
+Make the downloader force the link you specify to download packages from this source. 
+The method of use is `{source-name}:{url}`, which can rewrite the download URLs of multiple libraries at the same time.
+
+
+```bash
+# Specifying to download a beta version of PHP8.3
+bin/spc download --all -U "php-src:https://downloads.php.net/~eric/php-8.3.0beta1.tar.gz"
+
+# Specifying to download an older version of the curl library
+bin/spc download --all -U "curl:https://curl.se/download/curl-7.88.1.tar.gz"
 ```
 
 ## Command - doctor
@@ -239,3 +253,38 @@ curl.cainfo=/path/to/your/cafile.pem
 memory_limit=1G
 ```
 :::
+
+## Command - extract
+
+Use the command `bin/spc extract` to unpack and copy the source code required for compilation, 
+including php-src and the source code of various dependent libraries (you need to specify the name of the library to be unpacked).
+
+For example, after we have downloaded resources, we want to distribute and execute the build process, 
+manually unpack and copy the package to a specified location, and we can use commands.
+
+```bash
+# Unzip the downloaded compressed package of php-src and libxml2, and store the decompressed source code in the source directory
+bin/spc extract php-src,libxml2
+```
+
+## Dev Command - dev
+
+Debug commands refer to a collection of commands that can assist in outputting some information 
+when you use static-php-cli to build PHP or modify and enhance the static-php-cli project itself.
+
+- `dev:ext-all`: output all currently supported extension names
+- `dev:ext-info`: Output meta information for one or more extensions
+- `dev:php-ver`: output the currently compiled PHP version (by reading `php_version.h`)
+
+```bash
+# output all extensions name
+bin/spc dev:ext-all
+
+# Output multiple extended meta information
+bin/spc dev:ext-info mongodb,pgsql,pcntl
+
+# Output the currently compiled PHP version
+# You need to decompress the downloaded PHP source code to the source directory first
+# You can use `bin/spc extract php-src` to decompress the source code separately
+bin/spc dev:php-ver
+```
