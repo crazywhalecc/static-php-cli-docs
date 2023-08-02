@@ -196,6 +196,13 @@ You can try to use the following commands:
 - `--enable-zts`: Make compiled PHP thread-safe version (default is NTS version)
 - `--no-strip`: Do not run `strip` after compiling the PHP library to trim the binary file to reduce its size (the macOS binary file without trim can use dynamically linked third-party extensions)
 - `--with-libs=XXX,YYY`: Compile the specified dependent library before compiling PHP, and activate some extended optional functions (such as libavif of the gd library, etc.)
+- `-I xxx=yyy`: Hard compile INI options into PHP before compiling (support multiple options, alias is `--with-hardcoded-ini`)
+
+For hardcoding INI options, here is a simple example where we preset a larger `memory_limit` and disable the `system` function:
+
+```bash
+bin/spc build bcmath,pcntl,posix --build-all -I "memory_limit=4G" -I "disable_functions=system"
+```
 
 ## Command - micro:combine
 
