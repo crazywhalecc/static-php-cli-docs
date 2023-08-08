@@ -74,7 +74,7 @@ export default defineConfig({
             {
               text: '进阶',
               items: [
-                {text: '故障排除', link: '/en/guide/troubleshooting'},
+                {text: '故障排除', link: '/zh/guide/troubleshooting'},
               ],
             }
           ]
