@@ -45,7 +45,16 @@ export default defineConfig({
                 {text: 'Troubleshooting', link: '/en/guide/troubleshooting'},
               ],
             }
-          ]
+          ],
+          '/en/contributing/': [
+            {
+              text: 'Contributing',
+              items: [
+                {text: 'Contributing', link: '/en/contributing/'},
+                {text: 'Project Structure', link: '/en/contributing/structure'},
+              ],
+            }
+          ],
         }
       },
     },
@@ -77,7 +86,16 @@ export default defineConfig({
                 {text: '故障排除', link: '/zh/guide/troubleshooting'},
               ],
             }
-          ]
+          ],
+          '/zh/contributing/': [
+            {
+              text: '贡献指南',
+              items: [
+                {text: '贡献指南', link: '/zh/contributing/'},
+                {text: '项目结构详解', link: '/zh/contributing/structure'},
+              ],
+            }
+          ],
         }
       },
     }

@@ -2,7 +2,7 @@
 
 Thank you for being here, this project welcomes your contributions!
 
-## Contribution method
+## Contribution Guide
 
 If you have code or documentation to contribute, here's what you need to know first.
 
@@ -28,7 +28,7 @@ Because this project is basically a PHP project running locally, generally speak
 But if you find such a problem, please **DO NOT submit a PR or Issue in the GitHub repository,
 You need to contact the project maintainer (crazywhalecc) via [mail](mailto:admin@zhamao.me).
 
-### Fix bugs
+### Fix Bugs
 
 Fixing bugs generally does not involve modification of the project structure and framework, 
 so if you can locate the wrong code and fix it directly, please submit a PR directly.
@@ -47,7 +47,7 @@ In general, you will need:
 5. Verify that the extension works normally in `cli`, `micro`, `fpm` SAPIs.
 6. Write documentation and add your extension.
 
-### Project framework optimization
+### Project Framework Optimization
 
 If you are already familiar with the working principle of `symfony/console`, 
 and at the same time want to make some modifications or optimizations to the framework of the project, 
@@ -62,5 +62,3 @@ it is recommended to submit an Issue or Draft PR for discussion first.
 After internationalizing your project you can submit a PR to translate these comments into English.
 4. Please do not submit more useless code fragments in the code, 
 such as a large number of unused variables, methods, classes, and code that has been rewritten many times.
-
-(I'm writing, TODO)

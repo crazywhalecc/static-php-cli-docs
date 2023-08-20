@@ -1,0 +1,86 @@
+# 项目结构详解
+
+项目主要分为几个文件夹：
+
+- `bin/`: 用于存放程序入口文件，包含 `bin/spc`、`bin/spc-alpine-docker`、`bin/setup-runtime`。
+- `config/`: 包含了所有项目支持的扩展、依赖库以及这些资源下载的地址、下载方式等，分为三个文件：`lib.json`、`ext.json`、`source.json`。
+- `src/SPC/`: 项目的核心代码，包含了整个框架以及编译各种扩展和库的命令。
+- `src/globals/`: 项目的全局方法和常量、运行时需要的测试文件（例如：扩展的可用性检查代码）。
+- `vendor/`: Composer 依赖的目录，你无需对它做出任何修改。
+
+其中运行原理就是启动一个 `symfony/console` 的 `ConsoleApplication`，然后解析用户在终端输入的命令。
+
+## 命令行入口和命令
+
+`bin/spc` 是一个 PHP 代码入口文件，包含了 Unix 通用的 `#!/usr/bin/env php` 用来让系统自动以系统安装好的 PHP 解释器执行。
+在项目执行了 `new ConsoleApplication()` 后，框架会自动使用反射的方式，解析 `src/SPC/command` 目录下的所有类，并将其注册成为命令。
+
+项目并没有直接使用 Symfony 推荐的 Command 注册方式和命令执行方式，这里做出了一点小变动：
+
+1. 每个命令都使用 `#[AsCommand()]` Attribute 来注册名称和简介。
+2. 将 `execute()` 抽象化，让所有命令基于 `BaseCommand`（它基于 `Symfony\Component\Console\Command\Command`），每个命令本身的执行代码写到了 `handle()` 方法中。
+3. `BaseCommand` 添加了变量 `$no_motd`，用于是否在该命令执行时显示 Figlet 欢迎词。
+4. `BaseCommand` 将 `InputInterface` 和 `OutputInterface` 保存为成员变量，你可以在命令的类内使用 `$this->input` 和 `$this->output`。
+
+## Doctor 模块
+
+Doctor 模块是一个较为独立的用于检查系统环境的模块，可使用命令 `bin/spc doctor` 进入，入口的命令类在 `DoctorCommand.php` 中。
+
+Doctor 模块是一个检查单，里面有一系列的检查项目和自动修复项目。这些项目都存放在 `src/SPC/doctor/item/` 目录中，
+并且使用了两种 Attribute 用作检查项标记和自动修复项目标记：`#[AsCheckItem]` 和 `#[AsFixItem]`。
+
+以现有的检查项 `if necessary tools are installed`，它是用于检查编译必需的包是否安装在 macOS 系统内，下面是它的源码：
+
+```php
+use SPC\doctor\AsCheckItem;
+use SPC\doctor\AsFixItem;
+use SPC\doctor\CheckResult;
+
+#[AsCheckItem('if necessary tools are installed', limit_os: 'Darwin', level: 997)]
+public function checkCliTools(): ?CheckResult
+{
+    $missing = [];
+    foreach (self::REQUIRED_COMMANDS as $cmd) {
+        if ($this->findCommand($cmd) === null) {
+            $missing[] = $cmd;
+        }
+    }
+    if (!empty($missing)) {
+        return CheckResult::fail('missing system commands: ' . implode(', ', $missing), 'build-tools', [$missing]);
+    }
+    return CheckResult::ok();
+}
+```
+
+属性的第一个参数就是检查项目的名称，后面的 `limit_os` 参数是限制了该检查项仅在指定的系统下触发，`level` 是执行该检查项的优先级，数字越大，优先级越高。
+
+里面用到的 `$this->findCommand()` 方法为 `SPC\builder\traits\UnixSystemUtilTrait` 的方法，用途是查找系统命令所在位置，找不到时返回 NULL。
+
+每个检查项的方法都应该返回一个 `SPC\doctor\CheckResult`：
+
+- 在返回 `CheckResult::fail()` 时，第一个参数用于输出终端的错误提示，第二个参数是在这个检查项可自动修复时的修复项目名称。
+- 在返回 `CheckResult::ok()` 时，表明检查通过。你也可以传递一个参数，用于返回检查结果，例如：`CheckResult::ok('OS supported')`。
+- 在返回 `CheckResult::fail()` 时，如果包含了第三个参数，第三个参数的数组将被当作 `AsFixItem` 的参数。
+
+下面是这个检查项对应的自动修复项的方法：
+
+```php
+#[AsFixItem('build-tools')]
+public function fixBuildTools(array $missing): bool
+{
+    foreach ($missing as $cmd) {
+        try {
+            shell(true)->exec('brew install ' . escapeshellarg($cmd));
+        } catch (RuntimeException) {
+            return false;
+        }
+    }
+    return true;
+}
+```
+
+`#[AsFixItem()]` 属性传入的参数即修复项的名称，该方法必须返回 True 或 False。当返回 False 时，表明自动修复失败，需要手动处理。
+
+此处的代码中 `shell()->exec()` 是项目的执行命令的方法，用于替代 `exec()`、`system()`，同时提供了 debug、获取执行状态、进入目录等特性。
+
+（正在编写，TODO）
