@@ -32,8 +32,18 @@
       <input type="radio" id="debug-no" :value="0" v-model="debug" />
       <label for="debug-no">{{ I18N[lang].no }}</label>
     </div>
+    <div class="option-line">
+      <span class="option-title">{{ I18N[lang].useZTS }}</span>
+      <input type="radio" id="zts-yes" :value="1" v-model="zts" />
+      <label for="debug-yes">{{ I18N[lang].yes }}</label>
+
+      <input type="radio" id="zts-no" :value="0" v-model="zts" />
+      <label for="debug-no">{{ I18N[lang].no }}</label>
+    </div>
+    <h2>{{ I18N[lang].hardcodedINI }}</h2>
+    <textarea class="textarea" :placeholder="I18N[lang].hardcodedINIPlacehoder" v-model="hardcodedINIData" rows="5" />
     <h2>{{ I18N[lang].resultShow }}</h2>
-    <div class="command-preview">bin/{{ spcCommand }} build {{ buildCommand }} "{{ extList }}"{{ debug ? ' --debug' : '' }}</div>
+    <div class="command-preview">bin/{{ spcCommand }} build {{ buildCommand }} "{{ extList }}"{{ debug ? ' --debug' : '' }}{{ zts ? ' --enable-zts' : '' }}{{ displayINI }}</div>
   </div>
 </template>
 
@@ -67,6 +77,9 @@ const I18N = {
     resultShow: '结果展示',
     selectCommon: '选择常用扩展',
     selectNone: '全部取消选择',
+    useZTS: '是否编译线程安全版',
+    hardcodedINI: '硬编码 INI 选项',
+    hardcodedINIPlacehoder: '如需要硬编码 ini，每行写一个，例如：memory_limit=2G',
   },
   en: {
     selectExt: 'Select Extensions',
@@ -81,6 +94,9 @@ const I18N = {
     resultShow: 'Result',
     selectCommon: 'Select common extensions',
     selectNone: 'Unselect all',
+    useZTS: 'Enable ZTS',
+    hardcodedINI: 'Hardcoded INI options',
+    hardcodedINIPlacehoder: 'If you need to hardcode ini, write one per line, for example: memory_limit=2G',
   }
 };
 
@@ -184,12 +200,28 @@ const selectedEnv = ref('native');
 // chosen debug
 const debug = ref(0);
 
+// chosen zts
+const zts = ref(0);
+
+const hardcodedINIData = ref('');
+
 // spc command string, alt: spc-alpine-docker, spc
 const spcCommand = computed(() => {
   return selectedEnv.value === 'native' ? 'spc' : 'spc-alpine-docker';
 });
 // build target string
 const buildCommand = ref('--build-cli');
+
+const displayINI = computed(() => {
+  const split = hardcodedINIData.value.split('\n');
+  let str = [];
+  split.forEach((x) => {
+    if (x.indexOf('=') >= 1) {
+      str.push(x);
+    }
+  });
+  return ' ' + str.map((x) => '-I "' + x + '"').join(' ');
+});
 
 const onTargetChange = (event) => {
   let id;
@@ -200,6 +232,7 @@ const onTargetChange = (event) => {
   }
   buildCommand.value = checkedTargets.value.map((x) => '--build-' + x).join(' ');
 };
+
 
 </script>
 
@@ -259,5 +292,10 @@ select {
   border-color: var(--vp-button-alt-active-border);
   color: var(--vp-button-alt-active-text);
   background-color: var(--vp-button-alt-active-bg);
+}
+.textarea {
+  border: 1px solid var(--vp-button-alt-border);
+  padding: 0 4px;
+  min-width: 300px;
 }
 </style>
