@@ -46,3 +46,8 @@ bin/spc build gd --with-libs=freetype,libjpeg,libavif,libwebp --build-cli
 1. Xdebug 是一个 Zend 扩展，Xdebug 的功能依赖于 PHP 的 Zend 引擎和底层代码，如果要将其静态编译到 PHP 中，可能需要巨量的 patch 代码，这是不划算的。
 2. macOS 平台可以通过在相同平台编译的 PHP 下编译一个 xdebug 扩展，并提取其中的 `xdebug.so` 文件，再在 static-php-cli 中使用 `--no-strip` 参数保留调试符号表，同时加入 `ffi` 扩展。
    编译的 `./php` 二进制可以通过指定 INI 配置并运行，例如`./php -d 'zend_extension=xdebug.so' your-code.php`。
+
+## glfw
+
+1. glfw 扩展依赖 OpenGL，在 Linux 平台还依赖 X11 等环境，这些库都无法被轻易地动态链接。
+2. 在 macOS 系统下，我们可以动态链接系统的 OpenGL 和一些相关的库。

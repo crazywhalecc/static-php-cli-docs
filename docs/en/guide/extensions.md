@@ -25,6 +25,7 @@
 | ftp                                | yes           | yes           |         |
 | [gd](./extension-notes#gd)         | yes           | yes           |         |
 | gettext                            |               |               |         |
+| [glfw](./extension-notes#glfw)     | no            | yes           |         |
 | gmp                                | yes           | yes           |         |
 | iconv                              | yes           | yes           |         |
 | imagick                            | yes           | yes           |         |

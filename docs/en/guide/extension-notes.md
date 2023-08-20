@@ -55,3 +55,8 @@ If you want to statically compile it into PHP, you may need a huge amount of pat
 2. The macOS platform can compile an xdebug extension under PHP compiled on the same platform, 
 extract the `xdebug.so` file, and then use the `--no-strip` parameter in static-php-cli to retain the debug symbol table and add the `ffi` extension. 
 The compiled `./php` binary can be configured and run by specifying the INI, eg `./php -d 'zend_extension=/path/to/xdebug.so' your-code.php`.
+
+## glfw
+
+1. glfw depends on OpenGL, and linux environment also needs X11, which cannot be linked statically.
+2. macOS platform, we can compile and link system builtin OpenGL and related libraries dynamically.

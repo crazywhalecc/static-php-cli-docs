@@ -99,6 +99,7 @@ const EXTENSIONS = [
   'filter',
   'fileinfo',
   'gd',
+  'glfw',
   'gmp',
   'iconv',
   'imagick',
