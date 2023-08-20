@@ -197,6 +197,7 @@ You can try to use the following commands:
 - `--no-strip`: Do not run `strip` after compiling the PHP library to trim the binary file to reduce its size (the macOS binary file without trim can use dynamically linked third-party extensions)
 - `--with-libs=XXX,YYY`: Compile the specified dependent library before compiling PHP, and activate some extended optional functions (such as libavif of the gd library, etc.)
 - `-I xxx=yyy`: Hard compile INI options into PHP before compiling (support multiple options, alias is `--with-hardcoded-ini`)
+- `--with-micro-fake-cli`: When compiling micro, let micro's `PHP_SAPI` pretend to be `cli` (for compatibility with some programs that check `PHP_SAPI`)
 
 For hardcoding INI options, here is a simple example where we preset a larger `memory_limit` and disable the `system` function:
 
@@ -282,6 +283,7 @@ when you use static-php-cli to build PHP or modify and enhance the static-php-cl
 - `dev:ext-all`: output all currently supported extension names
 - `dev:ext-info`: Output meta information for one or more extensions
 - `dev:php-ver`: output the currently compiled PHP version (by reading `php_version.h`)
+- 
 
 ```bash
 # output all extensions name

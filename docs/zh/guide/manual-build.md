@@ -166,6 +166,7 @@ bin/spc build mysqlnd,pdo_mysql --build-all --debug
 - `--no-strip`: 编译 PHP 库后不运行 `strip` 裁剪二进制文件缩小体积（不裁剪的 macOS 二进制文件可使用动态链接的第三方扩展）
 - `--with-libs=XXX,YYY`: 编译 PHP 前先编译指定的依赖库，激活部分扩展的可选功能（例如 gd 库的 libavif 等）
 - `-I xxx=yyy`: 编译前将 INI 选项硬编译到 PHP 内（支持多个选项，别名是 `--with-hardcoded-ini`）
+- `--with-micro-fake-cli`: 在编译 micro 时，让 micro 的 SAPI 伪装为 `cli`（用于兼容一些检查 `PHP_SAPI` 的程序）
 
 有关硬编码 INI 选项，下面是一个简单的例子，我们预设一个更大的 `memory_limit`，并且禁用 `system` 函数：
 
@@ -247,6 +248,7 @@ bin/spc extract php-src,libxml2
 - `dev:ext-all`: 输出目前所有支持的扩展名称
 - `dev:ext-info`: 输出一个或多个扩展的元信息
 - `dev:php-ver`: 输出当前编译的 PHP 版本（通过读取 `php_version.h` 实现）
+- `dev:sort-config`: 
 
 ```bash
 # 输出所有扩展
