@@ -33,7 +33,7 @@ which will not be elaborated here.
 brew install php wget
 wget https://getcomposer.org/download/latest-stable/composer.phar -O /path/to/your/bin/composer && chmod +x /path/to/your/bin/composer
 
-# [Debian], you need to make sure your php version >= 8.0 and composer >= 2.0
+# [Debian], you need to make sure your php version >= 8.1 and composer >= 2.0
 sudo apt install php-cli composer php-tokenizer
 
 # [Alpine]
@@ -101,7 +101,7 @@ including php-src and the source code of various dependent libraries.
 # Download all dependencies
 bin/spc download --all
 
-# Download all dependent packages, and specify the main version of PHP to download, optional: 8.0, 8.1, 8.2
+# Download all dependent packages, and specify the main version of PHP to download, optional: 7.3, 7.4, 8.0, 8.1, 8.2
 bin/spc download --all --with-php=8.2
 
 # Show download progress bar while downloading (curl)
