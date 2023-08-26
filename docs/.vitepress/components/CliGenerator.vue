@@ -155,6 +155,7 @@ const EXTENSIONS = [
   'xml',
   'xmlreader',
   'xmlwriter',
+  'xsl',
   'zip',
   'zlib',
   'zstd',

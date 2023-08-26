@@ -72,6 +72,7 @@
 | xml                                | yes           | yes           |         |
 | xmlreader                          | yes, untested | yes, untested |         |
 | xmlwriter                          | yes, untested | yes, untested |         |
+| xsl                                | yes, untested | yes, untested |         |
 | zip                                | yes, untested | yes, untested |         |
 | zlib                               | yes           | yes           |         |
 | zstd                               | yes           | yes           |         |
