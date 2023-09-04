@@ -58,6 +58,7 @@
 | session                            | yes           | yes           |         |
 | shmop                              | yes           | yes           |         |
 | simplexml                          | yes           | yes           |         |
+| [snappy](./extension-notes#snappy) | yes, untested | yes, untested |         |
 | soap                               | yes           | yes           |         |
 | sockets                            | yes           | yes           |         |
 | sodium                             | yes           | yes           |         |

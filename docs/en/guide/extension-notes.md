@@ -60,3 +60,7 @@ The compiled `./php` binary can be configured and run by specifying the INI, eg 
 
 1. glfw depends on OpenGL, and linux environment also needs X11, which cannot be linked statically.
 2. macOS platform, we can compile and link system builtin OpenGL and related libraries dynamically.
+
+## snappy
+
+1. The snappy library is written in C++, so you can only compile purely statically linked PHP binaries under Alpine Linux.

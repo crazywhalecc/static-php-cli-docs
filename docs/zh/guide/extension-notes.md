@@ -51,3 +51,7 @@ bin/spc build gd --with-libs=freetype,libjpeg,libavif,libwebp --build-cli
 
 1. glfw 扩展依赖 OpenGL，在 Linux 平台还依赖 X11 等环境，这些库都无法被轻易地动态链接。
 2. 在 macOS 系统下，我们可以动态链接系统的 OpenGL 和一些相关的库。
+
+## snappy
+
+1. snappy 的库采用 C++ 编写，所以你只能在 Alpine Linux 下编译纯静态链接的 PHP 二进制。

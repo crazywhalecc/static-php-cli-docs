@@ -143,6 +143,7 @@ const EXTENSIONS = [
   'session',
   'shmop',
   'simplexml',
+  'snappy',
   'soap',
   'sockets',
   'sodium',
