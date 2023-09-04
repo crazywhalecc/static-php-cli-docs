@@ -35,10 +35,10 @@
     <div class="option-line">
       <span class="option-title">{{ I18N[lang].useZTS }}</span>
       <input type="radio" id="zts-yes" :value="1" v-model="zts" />
-      <label for="debug-yes">{{ I18N[lang].yes }}</label>
+      <label for="zts-yes">{{ I18N[lang].yes }}</label>
 
       <input type="radio" id="zts-no" :value="0" v-model="zts" />
-      <label for="debug-no">{{ I18N[lang].no }}</label>
+      <label for="zts-no">{{ I18N[lang].no }}</label>
     </div>
     <h2>{{ I18N[lang].hardcodedINI }}</h2>
     <textarea class="textarea" :placeholder="I18N[lang].hardcodedINIPlacehoder" v-model="hardcodedINIData" rows="5" />
