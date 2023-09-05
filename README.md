@@ -1,5 +1,5 @@
 # static-php-cli-docs
-[static-php-cli](https://github.com/crazywhalecc/static-php-cli) Documentation.
+[static-php-cli](https://github.com/crazywhalecc/static-php-cli) Documentation, use VitePress.
 
 ```bash
 # Install dependencies
