@@ -245,18 +245,20 @@ bin/spc extract php-src,libxml2
 
 调试命令指的是你在使用 static-php-cli 构建 PHP 或改造、增强 static-php-cli 项目本身的时候，可以辅助输出一些信息的命令集合。
 
-- `dev:ext-all`: 输出目前所有支持的扩展名称
-- `dev:ext-info`: 输出一个或多个扩展的元信息
+- `dev:extensions`: 输出目前所有支持的扩展信息，或者输出指定的扩展信息
 - `dev:php-ver`: 输出当前编译的 PHP 版本（通过读取 `php_version.h` 实现）
-- `dev:sort-config`: 
+- `dev:sort-config`: 对 `config/` 目录下的配置文件的列表按照字母表排序
 
 ```bash
 # 输出所有扩展
-bin/spc dev:ext-all
+bin/spc dev:extensions
 
-# 输出多个扩展元信息
-bin/spc dev:ext-info mongodb,pgsql,pcntl
+# 输出指定扩展的信息
+bin/spc dev:extensions mongodb curl openssl
 
 # 输出当前编译的 PHP 版本（需要先将下载好的 PHP 源码解压到 source 目录，你可以使用 `bin/spc extract php-src` 单独解压缩源码）
 bin/spc dev:php-ver
+
+# 排序配置文件 ext.json（也可以排序 lib、source）
+bin/spc dev:sort-config ext
 ```

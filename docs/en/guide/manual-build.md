@@ -280,20 +280,22 @@ bin/spc extract php-src,libxml2
 Debug commands refer to a collection of commands that can assist in outputting some information 
 when you use static-php-cli to build PHP or modify and enhance the static-php-cli project itself.
 
-- `dev:ext-all`: output all currently supported extension names
-- `dev:ext-info`: Output meta information for one or more extensions
+- `dev:extensions`: output all currently supported extension names, or output the specified extension information
 - `dev:php-ver`: output the currently compiled PHP version (by reading `php_version.h`)
-- 
+- `dev:sort-config`: Sort the list of configuration files in the `config/` directory in alphabetical order
 
 ```bash
-# output all extensions name
-bin/spc dev:ext-all
+# output all extensions information
+bin/spc dev:extensions
 
-# Output multiple extended meta information
-bin/spc dev:ext-info mongodb,pgsql,pcntl
+# Output the meta information of the specified extension
+bin/spc dev:extensions mongodb curl openssl
 
 # Output the currently compiled PHP version
 # You need to decompress the downloaded PHP source code to the source directory first
 # You can use `bin/spc extract php-src` to decompress the source code separately
 bin/spc dev:php-ver
+
+# Sort the configuration files in the config/ directory in alphabetical order (e.g. ext.json)
+bin/spc dev:sort-config ext
 ```
