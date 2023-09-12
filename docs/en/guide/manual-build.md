@@ -289,7 +289,7 @@ when you use static-php-cli to build PHP or modify and enhance the static-php-cl
 bin/spc dev:extensions
 
 # Output the meta information of the specified extension
-bin/spc dev:extensions mongodb curl openssl
+bin/spc dev:extensions mongodb,curl,openssl
 
 # Output the currently compiled PHP version
 # You need to decompress the downloaded PHP source code to the source directory first
