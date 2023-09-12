@@ -59,7 +59,7 @@ import{_ as s,c as a,o as e,U as o}from"./chunks/framework.a73c7ff7.js";const m=
 <span class="line"><span style="color:#FFCB6B;">bin/spc</span><span style="color:#A6ACCD;"> </span><span style="color:#C3E88D;">dev:extensions</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#676E95;font-style:italic;"># Output the meta information of the specified extension</span></span>
-<span class="line"><span style="color:#FFCB6B;">bin/spc</span><span style="color:#A6ACCD;"> </span><span style="color:#C3E88D;">dev:extensions</span><span style="color:#A6ACCD;"> </span><span style="color:#C3E88D;">mongodb</span><span style="color:#A6ACCD;"> </span><span style="color:#C3E88D;">curl</span><span style="color:#A6ACCD;"> </span><span style="color:#C3E88D;">openssl</span></span>
+<span class="line"><span style="color:#FFCB6B;">bin/spc</span><span style="color:#A6ACCD;"> </span><span style="color:#C3E88D;">dev:extensions</span><span style="color:#A6ACCD;"> </span><span style="color:#C3E88D;">mongodb,curl,openssl</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#676E95;font-style:italic;"># Output the currently compiled PHP version</span></span>
 <span class="line"><span style="color:#676E95;font-style:italic;"># You need to decompress the downloaded PHP source code to the source directory first</span></span>

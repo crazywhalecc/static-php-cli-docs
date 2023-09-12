@@ -59,10 +59,10 @@ import{_ as s,c as a,o as n,U as l}from"./chunks/framework.a73c7ff7.js";const D=
 <span class="line"><span style="color:#FFCB6B;">bin/spc</span><span style="color:#A6ACCD;"> </span><span style="color:#C3E88D;">dev:extensions</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#676E95;font-style:italic;"># 输出指定扩展的信息</span></span>
-<span class="line"><span style="color:#FFCB6B;">bin/spc</span><span style="color:#A6ACCD;"> </span><span style="color:#C3E88D;">dev:extensions</span><span style="color:#A6ACCD;"> </span><span style="color:#C3E88D;">mongodb</span><span style="color:#A6ACCD;"> </span><span style="color:#C3E88D;">curl</span><span style="color:#A6ACCD;"> </span><span style="color:#C3E88D;">openssl</span></span>
+<span class="line"><span style="color:#FFCB6B;">bin/spc</span><span style="color:#A6ACCD;"> </span><span style="color:#C3E88D;">dev:extensions</span><span style="color:#A6ACCD;"> </span><span style="color:#C3E88D;">mongodb,curl,openssl</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#676E95;font-style:italic;"># 输出当前编译的 PHP 版本（需要先将下载好的 PHP 源码解压到 source 目录，你可以使用 \`bin/spc extract php-src\` 单独解压缩源码）</span></span>
 <span class="line"><span style="color:#FFCB6B;">bin/spc</span><span style="color:#A6ACCD;"> </span><span style="color:#C3E88D;">dev:php-ver</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#676E95;font-style:italic;"># 排序配置文件 ext.json（也可以排序 lib、source）</span></span>
-<span class="line"><span style="color:#FFCB6B;">bin/spc</span><span style="color:#A6ACCD;"> </span><span style="color:#C3E88D;">dev:sort-config</span><span style="color:#A6ACCD;"> </span><span style="color:#C3E88D;">ext</span></span></code></pre></div>`,65),e=[p];function c(t,r,i,C,y,d){return n(),a("div",null,e)}const A=s(o,[["render",c]]);export{D as __pageData,A as default};
+<span class="line"><span style="color:#FFCB6B;">bin/spc</span><span style="color:#A6ACCD;"> </span><span style="color:#C3E88D;">dev:sort-config</span><span style="color:#A6ACCD;"> </span><span style="color:#C3E88D;">ext</span></span></code></pre></div>`,65),e=[p];function c(t,i,r,C,y,d){return n(),a("div",null,e)}const A=s(o,[["render",c]]);export{D as __pageData,A as default};
