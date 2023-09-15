@@ -281,7 +281,7 @@ Debug commands refer to a collection of commands that can assist in outputting s
 when you use static-php-cli to build PHP or modify and enhance the static-php-cli project itself.
 
 - `dev:extensions`: output all currently supported extension names, or output the specified extension information
-- `dev:php-ver`: output the currently compiled PHP version (by reading `php_version.h`)
+- `dev:php-version`: output the currently compiled PHP version (by reading `php_version.h`)
 - `dev:sort-config`: Sort the list of configuration files in the `config/` directory in alphabetical order
 
 ```bash
@@ -294,7 +294,7 @@ bin/spc dev:extensions mongodb,curl,openssl
 # Output the currently compiled PHP version
 # You need to decompress the downloaded PHP source code to the source directory first
 # You can use `bin/spc extract php-src` to decompress the source code separately
-bin/spc dev:php-ver
+bin/spc dev:php-version
 
 # Sort the configuration files in the config/ directory in alphabetical order (e.g. ext.json)
 bin/spc dev:sort-config ext
