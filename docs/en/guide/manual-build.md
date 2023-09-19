@@ -165,6 +165,7 @@ You need to specify a compilation target, choose from the following parameters:
 - `--build-cli`: Build a cli sapi (command line interface, which can execute PHP code on the command line)
 - `--build-fpm`: Build a fpm sapi (php-fpm, used in conjunction with other traditional fpm architecture software such as nginx)
 - `--build-micro`: Build a micro sapi (used to build a standalone executable binary containing PHP code)
+- `--build-embed`: Build an embed sapi (used to embed into other C language programs)
 - `--build-all`: build all above sapi
 
 ```bash
@@ -199,7 +200,7 @@ You can try to use the following commands:
 - `-I xxx=yyy`: Hard compile INI options into PHP before compiling (support multiple options, alias is `--with-hardcoded-ini`)
 - `--with-micro-fake-cli`: When compiling micro, let micro's `PHP_SAPI` pretend to be `cli` (for compatibility with some programs that check `PHP_SAPI`)
 
-For hardcoding INI options, here is a simple example where we preset a larger `memory_limit` and disable the `system` function:
+For hardcoding INI options, it works for cli, micro, embed sapi. Here is a simple example where we preset a larger `memory_limit` and disable the `system` function:
 
 ```bash
 bin/spc build bcmath,pcntl,posix --build-all -I "memory_limit=4G" -I "disable_functions=system"
@@ -260,6 +261,9 @@ it is best to manually write an ini configuration file that you need, for exampl
 curl.cainfo=/path/to/your/cafile.pem
 memory_limit=1G
 ```
+
+The ini injection of this command is achieved by appending a special structure after micro.sfx, 
+which is different from the function of inserting hard-coded INI during compilation.
 :::
 
 ## Command - extract

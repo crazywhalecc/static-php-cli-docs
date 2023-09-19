@@ -25,6 +25,7 @@ The following is the architecture support situation, where `CI` represents suppo
 | macOS   | CI, Local | Local     |
 | Linux   | CI, Local | CI, Local |
 | Windows |           |           |
+| FreeBSD |           |           |
 
 Among them, Linux is currently only tested on Ubuntu, Debian, and Alpine distributions, 
 and other distributions have not been tested, which cannot guarantee successful compilation.
