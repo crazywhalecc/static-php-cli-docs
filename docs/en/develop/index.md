@@ -4,7 +4,7 @@ Developing this project requires the installation and deployment of a PHP enviro
 as well as some extensions and Composer commonly used in PHP projects.
 
 The development environment and running environment of the project are almost exactly the same. 
-You can refer to the **Guide-Local Construction** section to install system PHP or use the pre-built static PHP of this project as the environment. 
+You can refer to the **Manual Build** section to install system PHP or use the pre-built static PHP of this project as the environment. 
 I will not go into details here.
 
 Regardless of its purpose, this project itself is actually a `php-cli` program. You can edit and develop it as a normal PHP project. 
