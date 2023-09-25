@@ -1,4 +1,7 @@
 import {defineConfig} from 'vitepress'
+import sidebarEn from "./sidebar.en";
+import sidebarZh from "./sidebar.zh";
+
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -22,40 +25,11 @@ export default defineConfig({
       themeConfig: {
         nav: [
           {text: 'Guide', link: '/en/guide/',},
+          {text: 'Developing', link: '/en/develop/'},
           {text: 'contributing', link: '/en/contributing/'},
           {text: 'FAQ', link: '/en/faq/'},
         ],
-        sidebar: {
-          '/en/guide/': [
-            {
-              text: 'Guide',
-              items: [
-                {text: 'Guide', link: '/en/guide/'},
-                {text: 'Action Build', link: '/en/guide/action-build'},
-                {text: 'Native Build', link: '/en/guide/manual-build'},
-                {text: 'Extension List', link: '/en/guide/extensions'},
-                {text: 'Extension Notes', link: '/en/guide/extension-notes'},
-                {text: 'Command Generator', link: '/en/guide/cli-generator'},
-
-              ]
-            },
-            {
-              text: 'Advanced',
-              items: [
-                {text: 'Troubleshooting', link: '/en/guide/troubleshooting'},
-              ],
-            }
-          ],
-          '/en/contributing/': [
-            {
-              text: 'Contributing',
-              items: [
-                {text: 'Contributing', link: '/en/contributing/'},
-                {text: 'Project Structure', link: '/en/contributing/structure'},
-              ],
-            }
-          ],
-        }
+        sidebar: sidebarEn,
       },
     },
     zh: {
@@ -63,40 +37,12 @@ export default defineConfig({
       lang: 'zh', // optional, will be added  as `lang` attribute on `html` tag
       themeConfig: {
         nav: [
-          {text: '指南', link: '/zh/guide/',},
-          {text: '贡献指南', link: '/zh/contributing/'},
+          {text: '构建指南', link: '/zh/guide/'},
+          {text: '开发指南', link: '/zh/develop/'},
+          {text: '贡献', link: '/zh/contributing/'},
           {text: 'FAQ', link: '/zh/faq/'},
         ],
-        sidebar: {
-          '/zh/guide/': [
-            {
-              text: '指南',
-              items: [
-                {text: '指南', link: '/zh/guide/'},
-                {text: 'Action 构建', link: '/zh/guide/action-build'},
-                {text: '本地构建', link: '/zh/guide/manual-build'},
-                {text: '扩展列表', link: '/zh/guide/extensions'},
-                {text: '扩展注意事项', link: '/zh/guide/extension-notes'},
-                {text: '编译命令生成器', link: '/zh/guide/cli-generator'},
-              ]
-            },
-            {
-              text: '进阶',
-              items: [
-                {text: '故障排除', link: '/zh/guide/troubleshooting'},
-              ],
-            }
-          ],
-          '/zh/contributing/': [
-            {
-              text: '贡献指南',
-              items: [
-                {text: '贡献指南', link: '/zh/contributing/'},
-                {text: '项目结构详解', link: '/zh/contributing/structure'},
-              ],
-            }
-          ],
-        }
+        sidebar: sidebarZh,
       },
     }
   },
