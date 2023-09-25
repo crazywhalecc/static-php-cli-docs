@@ -1,4 +1,4 @@
-# Introduction to development
+# Start Developing
 
 Developing this project requires the installation and deployment of a PHP environment, 
 as well as some extensions and Composer commonly used in PHP projects.
