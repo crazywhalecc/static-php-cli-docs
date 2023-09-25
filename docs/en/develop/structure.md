@@ -6,8 +6,8 @@ These three components also correspond to three configuration files: `source.jso
 A complete process for building standalone static PHP is:
 
 1. Use the source download module `Downloader` to download specified or all source codes. 
-    These resources include PHP source code, dependent library source code, and extension source code.
-2. Use the resource decompression module `SourceExtractor` to decompress the downloaded resources to the compilation directory.
+    These sources include PHP source code, dependent library source code, and extension source code.
+2. Use the source decompression module `SourceExtractor` to decompress the downloaded sources to the compilation directory.
 3. Use the dependency tool to calculate the dependent extensions and dependent libraries of the currently added extension, 
     and then compile each library that needs to be compiled in the order of dependencies.
 4. After building each dependent library using `Builder` under the corresponding operating system, install it to the `buildroot` directory.
@@ -50,7 +50,7 @@ supports automatic loading of the PSR-4 standard, and contains the following sub
 - `src/SPC/doctor/`: Doctor module, which is a relatively independent module used to check the system environment. 
     It can be entered using the command `bin/spc doctor`.
 - `src/SPC/exception/`: exception class.
-- `src/SPC/store/`: Classes related to storage, files and resources are all here.
+- `src/SPC/store/`: Classes related to storage, files and sources are all here.
 - `src/SPC/util/`: Some reusable tool methods are here.
 - `src/SPC/ConsoleApplication.php`: command line program entry file.
 

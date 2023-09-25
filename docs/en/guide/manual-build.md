@@ -153,7 +153,7 @@ bin/spc doctor --auto-fix
 ## Command - build
 
 Use the build command to start building the static php binary. 
-Before executing the `bin/spc build` command, be sure to use the `download` command to download resources. 
+Before executing the `bin/spc build` command, be sure to use the `download` command to download sources. 
 It is recommended to use `doctor` to check the environment.
 
 ### Basic build
@@ -271,7 +271,7 @@ which is different from the function of inserting hard-coded INI during compilat
 Use the command `bin/spc extract` to unpack and copy the source code required for compilation, 
 including php-src and the source code of various dependent libraries (you need to specify the name of the library to be unpacked).
 
-For example, after we have downloaded resources, we want to distribute and execute the build process, 
+For example, after we have downloaded sources, we want to distribute and execute the build process, 
 manually unpack and copy the package to a specified location, and we can use commands.
 
 ```bash
