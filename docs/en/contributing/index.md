@@ -8,10 +8,9 @@ If you have code or documentation to contribute, here's what you need to know fi
 
 1. What type of code are you contributing? (new extensions, bug fixes, security issues, project framework optimizations, documentation)
 2. If you contribute new files or new snippets, is your code checked by `php-cs-fixer` and `phpstan`?
-3. Is there a good reason for your code contribution?
-4. Is your contributed code too complex? If yes, does it need to be split?
+3. Have you fully read the [Developer Guide](../develop/) before contributing code?
 
-If you can answer the above four questions and have made changes to the code, 
+If you can answer the above questions and have made changes to the code, 
 you can initiate a Pull Request in the project GitHub repository in time. 
 After the code review is completed, the code can be modified according to the suggestion, or directly merged into the main branch.
 
