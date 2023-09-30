@@ -62,6 +62,12 @@ If you want to statically compile it into PHP, you may need a huge amount of pat
 extract the `xdebug.so` file, and then use the `--no-strip` parameter in static-php-cli to retain the debug symbol table and add the `ffi` extension. 
 The compiled `./php` binary can be configured and run by specifying the INI, eg `./php -d 'zend_extension=/path/to/xdebug.so' your-code.php`.
 
+## xml
+
+1. xml includes xml, xmlreader, xmlwriter, xsl, dom, simplexml, etc. 
+    When adding xml extensions, it is best to enable these extensions at the same time.
+2. libxml is included in xml extension. Enabling xml is equivalent to enabling libxml.
+
 ## glfw
 
 1. glfw depends on OpenGL, and linux environment also needs X11, which cannot be linked statically.

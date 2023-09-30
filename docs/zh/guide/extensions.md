@@ -72,8 +72,7 @@
 | tokenizer                          | yes           | yes           |         |
 | [xdebug](./extension-notes#xdebug) |               |               |         |
 | xlswriter                          | yes           | yes           |         |
-| xml                                | yes           | yes           |         |
-| libxml (included in xml)           | yes           | yes           |         |
+| [xml](./extension-notes#xml)       | yes           | yes           |         |
 | xmlreader                          | yes, untested | yes, untested |         |
 | xmlwriter                          | yes, untested | yes, untested |         |
 | xsl                                | yes, untested | yes, untested |         |

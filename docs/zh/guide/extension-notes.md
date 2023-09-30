@@ -16,6 +16,12 @@
 
 1. swow 仅支持 PHP >= 8.0 版本。
 
+## imap
+
+1. 该扩展目前不支持 Kerberos。
+2. 由于底层的 c-client、ext-imap 不是线程安全的。 无法在 `--enable-zts` 构建中使用它。
+3. 由于该扩展可能会从未来的 PHP 中删除，因此我们建议您寻找替代实现，例如 [Webklex/php-imap](https://github.com/Webklex/php-imap)。
+
 ## intl
 
 1. intl 扩展由于依赖 icu 扩展（icu 使用了部分 C++ 的库），在 Linux 环境中仅支持在 Alpine Linux 下编译，同 Swoole。
@@ -43,9 +49,14 @@ bin/spc build gd --with-libs=freetype,libjpeg,libavif,libwebp --build-cli
 
 ## xdebug
 
-1. Xdebug 是一个 Zend 扩展，Xdebug 的功能依赖于 PHP 的 Zend 引擎和底层代码，如果要将其静态编译到 PHP 中，可能需要巨量的 patch 代码，这是不划算的。
+1. Xdebug 是一个 Zend 扩展，Xdebug 的功能依赖于 PHP 的 Zend 引擎和底层代码，如果要将其静态编译到 PHP 中，可能需要巨量的 patch 代码，这是不可行的。
 2. macOS 平台可以通过在相同平台编译的 PHP 下编译一个 xdebug 扩展，并提取其中的 `xdebug.so` 文件，再在 static-php-cli 中使用 `--no-strip` 参数保留调试符号表，同时加入 `ffi` 扩展。
    编译的 `./php` 二进制可以通过指定 INI 配置并运行，例如`./php -d 'zend_extension=xdebug.so' your-code.php`。
+
+## xml
+
+1. xml包括 xmlreader、xmlwriter、dom、simplexml 等，添加 xml 扩展时最好同时启用这些扩展。
+2. libxml 包含在 xml 扩展中。 启用 xml 相当于启用 libxml。
 
 ## glfw
 
