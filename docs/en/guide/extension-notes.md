@@ -18,10 +18,17 @@ which will be listed one by one here.
 
 1. Only PHP version >= 8.0 is supported.
 
+## imap
+
+1. Kerberos is not supported
+2. ext-imap is not thread safe due to the underlying c-client. It's not possible to use it in --enable-zts builds.
+3. Because the extension may be dropped from php, we recommend you look for an alternative implementation, such as [Webklex/php-imap](https://github.com/Webklex/php-imap)
+
 ## intl
 
 1. intl Due to its dependency: ICU extensions (ICU uses some C++libraries), compilation is only supported in Alpine Linux in Linux environments, similar to Swoole.
 
+2. 
 ## gd
 
 1. gd Extension relies on more additional Graphics library. By default, 
@@ -51,7 +58,7 @@ the extension cannot be compiled into php by static linking, so it cannot be sup
 ## xdebug
 
 1. Xdebug is a Zend extension. The functions of Xdebug depend on PHP's Zend engine and underlying code. 
-If you want to statically compile it into PHP, you may need a huge amount of patch code, which is not possible.
+If you want to statically compile it into PHP, you may need a huge amount of patch code, which is not feasible.
 2. The macOS platform can compile an xdebug extension under PHP compiled on the same platform, 
 extract the `xdebug.so` file, and then use the `--no-strip` parameter in static-php-cli to retain the debug symbol table and add the `ffi` extension. 
 The compiled `./php` binary can be configured and run by specifying the INI, eg `./php -d 'zend_extension=/path/to/xdebug.so' your-code.php`.
