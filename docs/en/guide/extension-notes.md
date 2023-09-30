@@ -28,7 +28,6 @@ which will be listed one by one here.
 
 1. intl Due to its dependency: ICU extensions (ICU uses some C++libraries), compilation is only supported in Alpine Linux in Linux environments, similar to Swoole.
 
-2. 
 ## gd
 
 1. gd Extension relies on more additional Graphics library. By default, 
