@@ -29,8 +29,10 @@
 | gmp                                | yes           | yes           |         |
 | iconv                              | yes           | yes           |         |
 | imagick                            | yes           | yes           |         |
+| [imap](./extension-notes#imap)     | yes           | yes           |         |
 | inotify                            | yes           | yes           |         |
 | [intl](./extension-notes#intl)     | partial       | yes           |         |
+| ldap                               | yes           | yes           |         |
 | mbstring                           | yes           | yes           |         |
 | mbregex                            | yes           | yes           |         |
 | [mcrypt](./extension-notes#mcrypt) | no            | no            |         |
@@ -71,6 +73,7 @@
 | [xdebug](./extension-notes#xdebug) |               |               |         |
 | xlswriter                          | yes           | yes           |         |
 | xml                                | yes           | yes           |         |
+| libxml (included in xml)           | yes           | yes           |         |
 | xmlreader                          | yes, untested | yes, untested |         |
 | xmlwriter                          | yes, untested | yes, untested |         |
 | xsl                                | yes, untested | yes, untested |         |
@@ -79,5 +82,5 @@
 | zstd                               | yes           | yes           |         |
 
 ::: tip
-If there is no extension you need here, you can submit an [Issue](https://github.com/crazywhalecc/static-php-cli/issues).
+If an extension you need is missing, you can create a [Feature Request](https://github.com/crazywhalecc/static-php-cli/issues).
 :::
