@@ -31,7 +31,7 @@
 | imagick                            | yes           | yes           |         |
 | [imap](./extension-notes#imap)     | yes           | yes           |         |
 | inotify                            | yes           | yes           |         |
-| [intl](./extension-notes#intl)     | partial       | yes           |         |
+| intl                               | partial       | yes           |         |
 | ldap                               | yes           | yes           |         |
 | mbstring                           | yes           | yes           |         |
 | mbregex                            | yes           | yes           |         |
