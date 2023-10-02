@@ -11,7 +11,6 @@ which will be listed one by one here.
 ## swoole
 
 1. swoole >= 5.0 Only PHP >= 8.0 is supported.
-2. swoole Compilation is only supported in Alpine Linux in Linux environments. [#51](https://github.com/crazywhalecc/static-php-cli/issues/51)
 3. swoole Currently, curl hooks are not supported (which may be fixed in the future).
 
 ## swow
@@ -23,10 +22,6 @@ which will be listed one by one here.
 1. Kerberos is not supported
 2. ext-imap is not thread safe due to the underlying c-client. It's not possible to use it in --enable-zts builds.
 3. Because the extension may be dropped from php, we recommend you look for an alternative implementation, such as [Webklex/php-imap](https://github.com/Webklex/php-imap)
-
-## intl
-
-1. intl Due to its dependency: ICU extensions (ICU uses some C++libraries), compilation is only supported in Alpine Linux in Linux environments, similar to Swoole.
 
 ## gd
 
@@ -72,7 +67,3 @@ The compiled `./php` binary can be configured and run by specifying the INI, eg 
 
 1. glfw depends on OpenGL, and linux environment also needs X11, which cannot be linked statically.
 2. macOS platform, we can compile and link system builtin OpenGL and related libraries dynamically.
-
-## snappy
-
-1. The snappy library is written in C++, so you can only compile purely statically linked PHP binaries under Alpine Linux.
