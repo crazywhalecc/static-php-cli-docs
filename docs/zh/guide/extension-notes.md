@@ -9,8 +9,7 @@
 ## swoole
 
 1. swoole >= 5.0 版本仅支持 PHP >= 8.0 版本。
-2. swoole 在 Linux 环境中仅支持在 Alpine Linux 下编译。[#51](https://github.com/crazywhalecc/static-php-cli/issues/51)
-3. swoole 目前不支持 curl 的 hook（后续有可能会修复）。
+2. swoole 目前不支持 curl 的 hook（后续有可能会修复）。
 
 ## swow
 
@@ -21,10 +20,6 @@
 1. 该扩展目前不支持 Kerberos。
 2. 由于底层的 c-client、ext-imap 不是线程安全的。 无法在 `--enable-zts` 构建中使用它。
 3. 由于该扩展可能会从未来的 PHP 中删除，因此我们建议您寻找替代实现，例如 [Webklex/php-imap](https://github.com/Webklex/php-imap)。
-
-## intl
-
-1. intl 扩展由于依赖 icu 扩展（icu 使用了部分 C++ 的库），在 Linux 环境中仅支持在 Alpine Linux 下编译，同 Swoole。
 
 ## gd
 
@@ -62,7 +57,3 @@ bin/spc build gd --with-libs=freetype,libjpeg,libavif,libwebp --build-cli
 
 1. glfw 扩展依赖 OpenGL，在 Linux 平台还依赖 X11 等环境，这些库都无法被轻易地动态链接。
 2. 在 macOS 系统下，我们可以动态链接系统的 OpenGL 和一些相关的库。
-
-## snappy
-
-1. snappy 的库采用 C++ 编写，所以你只能在 Alpine Linux 下编译纯静态链接的 PHP 二进制。
