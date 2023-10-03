@@ -4,8 +4,8 @@ export default {
       text: 'Guide',
       items: [
         {text: 'Guide', link: '/en/guide/'},
-        {text: 'Action Build', link: '/en/guide/action-build'},
-        {text: 'Native Build', link: '/en/guide/manual-build'},
+        {text: 'Actions Build', link: '/en/guide/action-build'},
+        {text: 'Manual Build', link: '/en/guide/manual-build'},
         {text: 'Extension List', link: '/en/guide/extensions'},
         {text: 'Extension Notes', link: '/en/guide/extension-notes'},
         {text: 'Command Generator', link: '/en/guide/cli-generator'},
