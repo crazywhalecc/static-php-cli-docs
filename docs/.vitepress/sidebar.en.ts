@@ -22,15 +22,15 @@ export default {
     {
       text: 'Development',
       items: [
-        { text: 'Get Started', link: '/en/develop/' },
-        { text: 'Project Structure', link: '/en/develop/structure' },
+        {text: 'Get Started', link: '/en/develop/'},
+        {text: 'Project Structure', link: '/en/develop/structure'},
       ],
     },
     {
       text: 'Module',
       items: [
-        { text: 'Doctor ', link: '/en/develop/doctor-module' },
-        { text: 'Source', link: '/en/develop/source-module' },
+        {text: 'Doctor ', link: '/en/develop/doctor-module'},
+        {text: 'Source', link: '/en/develop/source-module'},
       ]
     }
   ],
