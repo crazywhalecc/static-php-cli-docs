@@ -119,7 +119,6 @@ const EXTENSIONS = [
   'gmp',
   'iconv',
   'imagick',
-  'imap',
   'inotify',
   'intl',
   'ldap',
