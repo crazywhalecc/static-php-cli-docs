@@ -29,7 +29,7 @@
 | gmp                                | yes           | yes           |         |
 | iconv                              | yes           | yes           |         |
 | imagick                            | yes           | yes           |         |
-| [imap](./extension-notes#imap)     | yes           | yes           |         |
+| [imap](./extension-notes#imap)     |               |               |         |
 | inotify                            | yes           | yes           |         |
 | intl                               | partial       | yes           |         |
 | ldap                               | yes           | yes           |         |
