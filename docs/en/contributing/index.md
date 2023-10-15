@@ -43,7 +43,7 @@ In general, you will need:
 2. Evaluate whether the extension's dependent libraries (if any) can be compiled statically.
 3. Write library compile commands on different platforms.
 4. Verify that the extension and its dependencies are compatible with existing extensions and dependencies.
-5. Verify that the extension works normally in `cli`, `micro`, `fpm` SAPIs.
+5. Verify that the extension works normally in `cli`, `micro`, `fpm`, `embed` SAPIs.
 6. Write documentation and add your extension.
 
 ### Project Framework Optimization

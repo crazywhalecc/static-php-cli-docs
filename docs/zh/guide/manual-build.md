@@ -1,6 +1,8 @@
 # 本地构建
 
-## 环境准备
+## 使用 spc 静态二进制
+
+## 从源码 - 环境准备
 
 目前支持在 macOS、Linux 上构建，macOS 支持最新版操作系统和两种架构，Linux 支持 Debian 及衍生发行版、Alpine Linux。
 
@@ -64,6 +66,10 @@ export SPC_USE_SUDO=yes
 
 使用命令部署环境，此脚本会从 [自托管的服务器](https://dl.zhamao.xin/static-php-cli/) 下载一个当前操作系统的 php-cli 包，
 并从 [getcomposer](https://getcomposer.org/download/latest-stable/composer.phar) 或 [Aliyun（镜像）](https://mirrors.aliyun.com/composer/composer.phar) 下载 Composer。
+
+::: tip 
+使用预编译静态 PHP 二进制目前仅支持 Linux 和 macOS。FreeBSD 环境因为缺少自动化构建环境，所以暂不支持。
+:::
 
 ```bash
 bin/setup-runtime

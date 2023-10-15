@@ -79,6 +79,11 @@ you can directly download the php binary cli program compiled by this project it
 Deploy the environment using the command, the command will download a static php-cli binary from [self-hosted server](https://dl.zhamao.xin/static-php-cli/).
 Next, it will automatically download Composer from [getcomposer](https://getcomposer.org/download/latest-stable/composer.phar) or [Aliyun mirror](https://mirrors.aliyun.com/composer/composer.phar).
 
+::: tip
+Using precompiled static PHP binaries is currently only supported on Linux and macOS.
+The FreeBSD environment is currently not supported due to the lack of an automated build environment.
+:::
+
 ```bash
 bin/setup-runtime
 
