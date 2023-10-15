@@ -25,7 +25,7 @@ The following is the architecture support situation, where `CI` represents suppo
 | macOS   | CI, Local | Local     |
 | Linux   | CI, Local | CI, Local |
 | Windows |           |           |
-| FreeBSD |           |           |
+| FreeBSD | Local     | Local     |
 
 Among them, Linux is currently only tested on Ubuntu, Debian, and Alpine distributions, 
 and other distributions have not been tested, which cannot guarantee successful compilation.
@@ -40,3 +40,4 @@ Currently, static php cli supports PHP versions 8.0 to 8.2, and theoretically su
 Simply select the earlier version when downloading.
 However, due to some extensions and special components that have stopped supporting earlier versions of PHP, 
 static-php-cli will not explicitly support earlier versions.
+We recommend that you compile the latest PHP version possible for a better experience.
