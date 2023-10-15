@@ -10,10 +10,10 @@
 |------------------------------------|---------------|---------------|---------------|---------|
 | apcu                               | yes, untested | yes, untested | yes, untested |         |
 | bcmath                             | yes           | yes           | yes           |         |
-| bz2                                | yes           | yes           |               |         |
+| bz2                                | yes           | yes           | yes           |         |
 | calendar                           | yes           | yes           | yes           |         |
 | ctype                              | yes           | yes           | yes           |         |
-| curl                               | yes           | yes           |               |         |
+| curl                               | yes           | yes           | yes           |         |
 | dba                                | yes           | yes           | yes           |         | 
 | dom                                | yes           | yes           |               |         |
 | enchant                            |               |               |               |         |
@@ -43,7 +43,7 @@
 | mysqlnd                            | yes           | yes           | yes           |         |
 | [oci8](./extension-notes#oci8)     | no            | no            |               |         |
 | opcache                            | yes           | yes           | yes           |         |
-| openssl                            | yes           | yes           |               |         |
+| openssl                            | yes           | yes           | yes           |         |
 | password-argon2                    |               |               |               |         |
 | pcntl                              | yes           | yes           | yes           |         |
 | pdo                                | yes           | yes           | yes           |         |
