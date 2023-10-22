@@ -99,6 +99,15 @@ bin/spc download --all --debug
 
 # 删除旧的下载数据
 bin/spc download --clean
+
+# 仅下载指定的资源（使用资源名）
+bin/spc download php-src,micro,zstd,ext-zstd
+
+# 仅下载要编译的扩展及依赖库（使用扩展名，包含可选库）
+bin/spc download --by-extensions=openssl,swoole,zip,pcntl,zstd
+
+# 仅下载要编译的扩展及依赖库（使用扩展名，不包含可选库）
+bin/spc download --by-extensions=openssl,swoole,zip,pcntl --without-suggests
 ```
 
 如果你所在地区的网络不好，或者下载依赖包速度过于缓慢，可以从 GitHub Action 下载每周定时打包的 `download.zip`，并使用命令直接使用 zip 压缩包作为依赖。
@@ -110,7 +119,7 @@ bin/spc download --from-zip=/path/to/your/download.zip
 ```
 
 如果某个 source 始终无法下载，或者你需要下载一些特定版本的包，例如下载测试版 PHP、旧版本库等，可以使用参数 `-U` 或 `--custom-url` 重写下载链接，
-让下载器强制使用你指定的链接下载此 source 的包。使用方法为 `{source-name}:{url}` 即可，可同时重写多个库的下载地址。
+让下载器强制使用你指定的链接下载此 source 的包。使用方法为 `{source-name}:{url}` 即可，可同时重写多个库的下载地址。在使用 `--by-extensions` 选项下载时同样可用。
 
 ```bash
 # 例如：指定下载测试版的 PHP8.3
