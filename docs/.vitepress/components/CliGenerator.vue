@@ -224,13 +224,13 @@ const selectCommon = () => {
       'exif', 'filter', 'fileinfo',
       'gd', 'iconv', 'mbstring',
       'mbregex', 'mysqli', 'mysqlnd',
-      'openssl', 'pcntl', 'pdo',
-      'pdo_mysql', 'pdo_sqlite', 'phar',
+      'openssl', 'pcntl', 'pdo', 'intl',
+      'pdo_mysql', 'pdo_sqlite', 'pgsql', 'pdo_pgsql', 'phar',
       'posix', 'readline', 'redis',
       'session', 'simplexml', 'sockets',
       'sodium',
       'sqlite3', 'tokenizer', 'xml',
-      'xmlreader', 'xmlwriter', 'zip',
+      'xmlreader', 'xmlwriter', 'xsl', 'zip',
       'zlib',
   ];
 };

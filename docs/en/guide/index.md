@@ -17,15 +17,15 @@ If you are a native English speaker, some corrections to the documentation are w
 
 ## Compilation Environment
 
-The following is the architecture support situation, where `CI` represents support for GitHub Action build, 
-`Local` represents support for native build, and empty represents temporarily not supported.
+The following is the architecture support situation, where :gear: represents support for GitHub Action build, 
+:computer: represents support for local manual build, and empty represents temporarily not supported.
 
-|         | x86_64    | aarch64   |
-|---------|-----------|-----------|
-| macOS   | CI, Local | Local     |
-| Linux   | CI, Local | CI, Local |
-| Windows |           |           |
-| FreeBSD | Local     | Local     |
+|         | x86_64            | aarch64           |
+|---------|-------------------|-------------------|
+| macOS   | :gear: :computer: | :computer:        |
+| Linux   | :gear: :computer: | :gear: :computer: |
+| Windows |                   |                   |
+| FreeBSD | :computer:        | :computer:        |
 
 Among them, Linux is currently only tested on Ubuntu, Debian, and Alpine distributions, 
 and other distributions have not been tested, which cannot guarantee successful compilation.
