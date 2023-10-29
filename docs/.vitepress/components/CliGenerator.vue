@@ -60,7 +60,7 @@
     <h2>{{ I18N[lang].resultShow }}</h2>
     <div v-if="downloadByExt" class="command-container">
       <b>{{ I18N[lang].downloadExtOnlyCommand }}</b>
-      <div class="command-preview">{{ spcCommand }} download --with-php={{ selectedPhpVersion }} --by-extensions "{{ extList }}"{{ debug ? ' --debug' : '' }}</div>
+      <div class="command-preview">{{ spcCommand }} download --with-php={{ selectedPhpVersion }} --for-extensions "{{ extList }}"{{ debug ? ' --debug' : '' }}</div>
     </div>
     <div v-else class="command-container">
       <b>{{ I18N[lang].downloadAllCommand }}</b>

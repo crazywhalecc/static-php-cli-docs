@@ -119,10 +119,10 @@ bin/spc download --clean
 bin/spc download php-src,micro,zstd,ext-zstd
 
 # Download only extensions and libraries to be compiled (use extensions, including suggested libraries)
-bin/spc download --by-extensions=openssl,swoole,zip,pcntl,zstd
+bin/spc download --for-extensions=openssl,swoole,zip,pcntl,zstd
 
 # Download only the extensions and dependent libraries to be compiled (use extensions, excluding suggested libraries)
-bin/spc download --by-extensions=openssl,swoole,zip,pcntl --without-suggests
+bin/spc download --for-extensions=openssl,swoole,zip,pcntl --without-suggests
 ```
 
 If the network in your area is not good, or the speed of downloading the dependency package is too slow, 
@@ -141,7 +141,7 @@ such as downloading the beta version of PHP, the old version of the library, etc
 you can use the parameter `-U` or `--custom-url` to rewrite the download link,
 Make the downloader force the link you specify to download packages from this source. 
 The method of use is `{source-name}:{url}`, which can rewrite the download URLs of multiple libraries at the same time.
-Also, it is available when downloading with the `--by-extensions` option.
+Also, it is available when downloading with the `--for-extensions` option.
 
 
 ```bash
