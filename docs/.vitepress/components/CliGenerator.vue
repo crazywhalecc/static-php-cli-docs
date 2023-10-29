@@ -219,19 +219,21 @@ const TARGET = [
 
 const selectCommon = () => {
   checkedNames.value = [
-      'bcmath', 'calendar', 'ctype',
-      'curl', 'dba', 'dom',
-      'exif', 'filter', 'fileinfo',
-      'gd', 'iconv', 'mbstring',
-      'mbregex', 'mysqli', 'mysqlnd',
-      'openssl', 'pcntl', 'pdo', 'intl',
-      'pdo_mysql', 'pdo_sqlite', 'pgsql', 'pdo_pgsql', 'phar',
-      'posix', 'readline', 'redis',
+      'apcu', 'bcmath',
+      'calendar', 'ctype', 'curl',
+      'dba', 'dom', 'exif',
+      'filter', 'fileinfo',
+      'gd', 'iconv', 'intl',
+      'mbstring', 'mbregex', 'mysqli', 'mysqlnd',
+      'openssl', 'opcache',
+      'pcntl', 'pdo',
+      'pdo_mysql', 'pdo_sqlite', 'pdo_pgsql',
+      'pgsql', 'phar', 'posix',
+      'readline', 'redis',
       'session', 'simplexml', 'sockets',
-      'sodium',
-      'sqlite3', 'tokenizer', 'xml',
-      'xmlreader', 'xmlwriter', 'xsl', 'zip',
-      'zlib',
+      'sodium', 'sqlite3', 'tokenizer',
+      'xml', 'xmlreader', 'xmlwriter',
+      'xsl', 'zip', 'zlib',
   ];
 };
 
