@@ -107,7 +107,7 @@ bin/spc download php-src,micro,zstd,ext-zstd
 bin/spc download --for-extensions=openssl,swoole,zip,pcntl,zstd
 
 # 仅下载要编译的扩展及依赖库（使用扩展名，不包含可选库）
-bin/spc download --for-extensions=openssl,swoole,zip,pcntl --without-suggests
+bin/spc download --for-extensions=openssl,swoole,zip,pcntl --without-suggestions
 ```
 
 如果你所在地区的网络不好，或者下载依赖包速度过于缓慢，可以从 GitHub Action 下载每周定时打包的 `download.zip`，并使用命令直接使用 zip 压缩包作为依赖。

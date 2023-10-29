@@ -122,7 +122,7 @@ bin/spc download php-src,micro,zstd,ext-zstd
 bin/spc download --for-extensions=openssl,swoole,zip,pcntl,zstd
 
 # Download only the extensions and dependent libraries to be compiled (use extensions, excluding suggested libraries)
-bin/spc download --for-extensions=openssl,swoole,zip,pcntl --without-suggests
+bin/spc download --for-extensions=openssl,swoole,zip,pcntl --without-suggestions
 ```
 
 If the network in your area is not good, or the speed of downloading the dependency package is too slow, 
