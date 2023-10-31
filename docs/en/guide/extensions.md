@@ -19,7 +19,7 @@
 | enchant                            |               |               |               |         |
 | event                              | yes           | yes           |               |         |
 | exif                               | yes           | yes           | yes           |         |
-| ffi                                |               | yes           |               |         |
+| ffi                                | yes           | yes           |               |         |
 | filter                             | yes           | yes           | yes           |         |
 | fileinfo                           | yes           | yes           | yes           |         |
 | ftp                                | yes           | yes           | yes           |         |

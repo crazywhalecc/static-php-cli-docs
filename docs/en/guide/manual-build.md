@@ -214,6 +214,7 @@ You can try to use the following commands:
 - `--with-libs=XXX,YYY`: Compile the specified dependent library before compiling PHP, and activate some extended optional functions (such as libavif of the gd library, etc.)
 - `-I xxx=yyy`: Hard compile INI options into PHP before compiling (support multiple options, alias is `--with-hardcoded-ini`)
 - `--with-micro-fake-cli`: When compiling micro, let micro's `PHP_SAPI` pretend to be `cli` (for compatibility with some programs that check `PHP_SAPI`)
+- `--disable-opcache-jit`: Disable opcache jit (enabled by default)
 
 For hardcoding INI options, it works for cli, micro, embed sapi. Here is a simple example where we preset a larger `memory_limit` and disable the `system` function:
 
