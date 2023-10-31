@@ -25,23 +25,23 @@
 | ftp                                | yes           | yes           | yes           |         |
 | [gd](./extension-notes#gd)         | yes           | yes           |               |         |
 | gettext                            |               |               |               |         |
-| [glfw](./extension-notes#glfw)     | no            | yes           |               |         |
+| [glfw](./extension-notes#glfw)     | no            | yes           | no            |         |
 | gmp                                | yes           | yes           |               |         |
 | iconv                              | yes           | yes           |               |         |
 | imagick                            | yes           | yes           |               |         |
 | [imap](./extension-notes#imap)     | no            | no            |               |         |
 | inotify                            | yes           | yes           |               |         |
-| intl                               | partial       | yes           |               |         |
+| intl                               | yes           | yes           |               |         |
 | ldap                               | yes           | yes           |               |         |
 | mbstring                           | yes           | yes           | yes           |         |
 | mbregex                            | yes           | yes           | yes           |         |
-| [mcrypt](./extension-notes#mcrypt) | no            | no            |               |         |
+| [mcrypt](./extension-notes#mcrypt) | no            | no            | no            |         |
 | memcache                           | yes, untested | yes, untested |               |         |
 | memcached                          | no            | yes, untested |               |         |
 | mongodb                            | yes           | yes           |               |         |
 | mysqli                             | yes           | yes           | yes           |         |
 | mysqlnd                            | yes           | yes           | yes           |         |
-| [oci8](./extension-notes#oci8)     | no            | no            |               |         |
+| [oci8](./extension-notes#oci8)     | no            | no            | no            |         |
 | opcache                            | yes           | yes           | yes           |         |
 | openssl                            | yes           | yes           | yes           |         |
 | password-argon2                    |               |               |               |         |
@@ -49,8 +49,8 @@
 | pdo                                | yes           | yes           | yes           |         |
 | pdo_mysql                          | yes           | yes           | yes           |         |
 | pdo_sqlite                         | yes           | yes           |               |         |
-| pdo_pgsql                          | yes, untested | yes, untested |               |         |
-| pgsql                              | yes, untested | yes, untested |               |         |
+| pdo_pgsql                          | yes           | yes           |               |         |
+| pgsql                              | yes           | yes           |               |         |
 | phar                               | yes           | yes           | yes           |         |
 | posix                              | yes           | yes           | yes           |         |
 | protobuf                           | yes           | yes           |               |         |
@@ -65,8 +65,8 @@
 | sockets                            | yes           | yes           | yes           |         |
 | sodium                             | yes           | yes           |               |         |
 | sqlite3                            | yes           | yes           |               |         |
-| [sqlsrv](./extension-notes#sqlsrv) | no            | no            |               |         |
-| ssh2                               | yes, untested | yes, untested |               |         |
+| [sqlsrv](./extension-notes#sqlsrv) | no            | no            | no            |         |
+| ssh2                               | yes           | yes           |               |         |
 | [swow](./extension-notes#swow)     | yes           | yes           |               |         |
 | [swoole](./extension-notes#swoole) | partial       | yes           |               |         |
 | tokenizer                          | yes           | yes           | yes           |         |
@@ -77,7 +77,7 @@
 | xmlwriter                          | yes, untested | yes, untested |               |         |
 | xsl                                | yes, untested | yes, untested |               |         |
 | yaml                               | yes           | yes           |               |         |
-| zip                                | yes, untested | yes, untested |               |         |
+| zip                                | yes           | yes           |               |         |
 | zlib                               | yes           | yes           | yes           |         |
 | zstd                               | yes           | yes           |               |         |
 
