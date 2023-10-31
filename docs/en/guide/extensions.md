@@ -54,6 +54,7 @@
 | phar                               | yes           | yes           | yes           |         |
 | posix                              | yes           | yes           | yes           |         |
 | protobuf                           | yes           | yes           |               |         |
+| pspell                             |               |               |               |         |
 | rdkafka                            |               |               |               |         |
 | readline                           | yes, untested | yes, untested |               |         |
 | redis                              | yes           | yes           |               |         |
@@ -69,6 +70,10 @@
 | ssh2                               | yes           | yes           |               |         |
 | [swow](./extension-notes#swow)     | yes           | yes           |               |         |
 | [swoole](./extension-notes#swoole) | partial       | yes           |               |         |
+| sysvmsg                            | yes           | yes           |               |         |
+| sysvsem                            | yes           | yes           |               |         |
+| sysvshm                            | yes           | yes           |               |         |
+| tidy                               |               |               |               |         |
 | tokenizer                          | yes           | yes           | yes           |         |
 | [xdebug](./extension-notes#xdebug) | no            | no            | no            |         |
 | xlswriter                          | yes           | yes           |               |         |
