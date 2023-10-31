@@ -30,7 +30,7 @@
 | iconv                              | yes           | yes           |               |         |
 | imagick                            | yes           | yes           |               |         |
 | [imap](./extension-notes#imap)     | no            | no            |               |         |
-| inotify                            | yes           | yes           |               |         |
+| inotify                            | yes           | no            |               |         |
 | intl                               | yes           | yes           |               |         |
 | ldap                               | yes           | yes           |               |         |
 | mbstring                           | yes           | yes           | yes           |         |
