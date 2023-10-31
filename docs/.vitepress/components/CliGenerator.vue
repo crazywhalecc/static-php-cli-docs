@@ -25,6 +25,15 @@
         <option value="docker">{{ I18N[lang].buildEnvDocker }}</option>
       </select>
     </div>
+    <div v-if="selectedEnv === 'spc'" class="option-line">
+      <span class="option-title">{{ I18N[lang].selectedOS }}</span>
+      <select v-model="selectedOS">
+        <option value="linux-x86_64">Linux x86_64 (amd64)</option>
+        <option value="linux-aarch64">Linux aarch64 (arm64)</option>
+        <option value="macos-x86_64">macOS x86_64 (Intel)</option>
+        <option value="macos-aarch64">macOS arm64 (Apple)</option>
+      </select>
+    </div>
     <div class="option-line">
       <span class="option-title">{{ I18N[lang].downloadPhpVersion }}</span>
       <select v-model="selectedPhpVersion">
@@ -58,6 +67,12 @@
     <h2>{{ I18N[lang].hardcodedINI }}</h2>
     <textarea class="textarea" :placeholder="I18N[lang].hardcodedINIPlacehoder" v-model="hardcodedINIData" rows="5" />
     <h2>{{ I18N[lang].resultShow }}</h2>
+    <div v-if="selectedEnv === 'spc'" class="command-container">
+      <b>{{ I18N[lang].downloadSPCBinaryCommand }}</b>
+      <div class="command-preview">
+        curl -o spc.tgz https://dl.static-php.dev/static-php-cli/spc-bin/nightly/spc-{{ selectedOS }}.tar.gz && tar -zxvf spc.tgz && rm spc.tgz<br>
+      </div>
+    </div>
     <div v-if="downloadByExt" class="command-container">
       <b>{{ I18N[lang].downloadExtOnlyCommand }}</b>
       <div class="command-preview">{{ spcCommand }} download --with-php={{ selectedPhpVersion }} --for-extensions "{{ extList }}"{{ debug ? ' --debug' : '' }}</div>
@@ -120,6 +135,8 @@ const I18N = {
     downloadAllCommand: '下载所有依赖包命令',
     compileCommand: '编译命令',
     downloadPhpVersion: '下载 PHP 版本',
+    downloadSPCBinaryCommand: '下载 spc 二进制命令',
+    selectedOS: '选择操作系统',
   },
   en: {
     selectExt: 'Select Extensions',
@@ -143,6 +160,8 @@ const I18N = {
     downloadAllCommand: 'Download all sources command',
     compileCommand: 'Compile command',
     downloadPhpVersion: 'Download PHP version',
+    downloadSPCBinaryCommand: 'Download spc binary command',
+    selectedOS: 'Select Build OS',
   }
 };
 
@@ -263,6 +282,8 @@ const zts = ref(0);
 const downloadByExt = ref(0);
 
 const hardcodedINIData = ref('');
+
+const selectedOS = ref('linux-x86_64');
 
 // spc command string, alt: spc-alpine-docker, spc
 const spcCommand = computed(() => {
