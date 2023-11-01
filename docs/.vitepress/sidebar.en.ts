@@ -32,6 +32,12 @@ export default {
         {text: 'Doctor ', link: '/en/develop/doctor-module'},
         {text: 'Source', link: '/en/develop/source-module'},
       ]
+    },
+    {
+      text: 'Extra',
+      items: [
+        {text: 'Compilation Tools', link: '/en/develop/system-build-tools'},
+      ]
     }
   ],
   '/en/contributing/': [

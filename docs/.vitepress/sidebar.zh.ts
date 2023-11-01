@@ -32,6 +32,12 @@ export default {
         { text: 'Doctor 环境检查工具', link: '/zh/develop/doctor-module' },
         { text: '资源模块', link: '/zh/develop/source-module' },
       ]
+    },
+    {
+      text: '其他',
+      items: [
+        {text: '系统编译工具', link: '/zh/develop/system-build-tools'},
+      ]
     }
   ],
   '/zh/contributing/': [
