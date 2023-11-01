@@ -1,10 +1,22 @@
 # 本地构建
 
-## 使用 spc 静态二进制
+## 手动构建（使用 SPC 二进制）
 
-## 从源码 - 环境准备
+本项目提供了一个 static-php-cli 的二进制文件，你可以直接下载对应平台的二进制文件，然后使用它来构建静态的 PHP。目前 `spc` 二进制支持的平台有 Linux 和 macOS。
 
-目前支持在 macOS、Linux 上构建，macOS 支持最新版操作系统和两种架构，Linux 支持 Debian 及衍生发行版、Alpine Linux。
+下面是从 GitHub Action 下载的方法：
+
+1. 进入 [GitHub Action](https://github.com/crazywhalecc/static-php-cli/actions/workflows/release-build.yml)。
+2. 选择一个最新的构建任务，进入后选择 `Artifacts`，下载对应平台的二进制文件。
+3. 解压 `.zip` 文件。解压后，为其添加执行权限：`chmod +x ./spc`。
+
+你也可以从自托管的服务器下载二进制文件：[进入](https://dl.static-php.dev/static-php-cli/spc-bin/nightly/)。
+
+> 如果你使用的是打包好的 `spc` 二进制，你需要将下面所有命令中 `bin/spc` 开头替换为 `./spc`。
+
+## 手动构建（使用源码）
+
+目前支持在 macOS、Linux 上构建，macOS 支持最新版操作系统和两种架构，Linux 支持 Debian、RHEL 及衍生发行版、Alpine Linux。
 
 因为本项目本身采用 PHP 开发，所以在编译时也需要系统安装 PHP。本项目本身也提供了适用于本项目的静态二进制 php，可以根据实际情况自行选择使用。
 

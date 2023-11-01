@@ -1,6 +1,20 @@
 # Manual Build
 
-## Environment Preparation
+### Manual build (using SPC binary)
+
+This project provides a binary file of static-php-cli.
+You can directly download the binary file of the corresponding platform and then use it to build static PHP.
+Currently, the platforms supported by `spc` binary are Linux and macOS.
+
+Here's how to download from GitHub Actions:
+
+1. Enter [GitHub Actions](https://github.com/crazywhalecc/static-php-cli/actions/workflows/release-build.yml).
+2. Select the latest build task, select `Artifacts`, and download the binary file of the corresponding platform.
+3. Unzip the `.zip` file. After decompressing, add execution permissions to it: `chmod +x ./spc`.
+
+You can also download binaries from a self-hosted server: [enter](https://dl.static-php.dev/static-php-cli/spc-bin/nightly/).
+
+### Manual build (using source code)
 
 Currently, it supports building on macOS and Linux. 
 macOS supports the latest version of the operating system and two architectures, 
@@ -11,9 +25,8 @@ it is also necessary to install PHP on the system during compilation.
 This project also provides static binary PHP suitable for this project, 
 which can be selected and used according to actual situations.
 
-### Download
-
 ```bash
+# clone repo
 git clone https://github.com/crazywhalecc/static-php-cli.git --depth=1
 cd static-php-cli
 
