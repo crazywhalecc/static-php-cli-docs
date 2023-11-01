@@ -5,7 +5,7 @@ Action Build refers to compiling directly using GitHub Action.
 If you don't want to compile it yourself, you can download the artifact from the existing Action in this project, 
 or you can download it from a self-hosted server：[Enter](https://dl.static-php.dev/static-php-cli/common/).
 
-> Self-hosted binaries are also built from Actions: [repo](https://github.com/crazywhalecc/static-php-cli-hosted).
+> Self-hosted binaries are also built from Actions: [repo](https://github.com/static-php/static-php-cli-hosted).
 > The extensions included are: bcmath,bz2,calendar,ctype,curl,dom,exif,fileinfo,filter,ftp,gd,gmp,iconv,xml,mbstring,mbregex,mysqlnd,openssl,
 > pcntl,pdo,pdo_mysql,pdo_sqlite,phar,posix,redis,session,simplexml,soap,sockets,sqlite3,tokenizer,xmlwriter,xmlreader,zlib,zip
 
