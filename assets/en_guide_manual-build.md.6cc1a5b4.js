@@ -71,10 +71,14 @@ import{_ as s,c as a,o as e,U as n}from"./chunks/framework.a73c7ff7.js";const m=
 <span class="line"><span style="color:#676E95;font-style:italic;"># Output the meta information of the specified extension</span></span>
 <span class="line"><span style="color:#FFCB6B;">bin/spc</span><span style="color:#A6ACCD;"> </span><span style="color:#C3E88D;">dev:extensions</span><span style="color:#A6ACCD;"> </span><span style="color:#C3E88D;">mongodb,curl,openssl</span></span>
 <span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic;"># Output the specified columns</span></span>
+<span class="line"><span style="color:#676E95;font-style:italic;"># Available column name: lib-depends, lib-suggests, ext-depends, ext-suggests, unix-only, type</span></span>
+<span class="line"><span style="color:#FFCB6B;">bin/spc</span><span style="color:#A6ACCD;"> </span><span style="color:#C3E88D;">dev:extensions</span><span style="color:#A6ACCD;"> </span><span style="color:#C3E88D;">--columns=lib-depends,type,ext-depends</span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#676E95;font-style:italic;"># Output the currently compiled PHP version</span></span>
 <span class="line"><span style="color:#676E95;font-style:italic;"># You need to decompress the downloaded PHP source code to the source directory first</span></span>
 <span class="line"><span style="color:#676E95;font-style:italic;"># You can use \`bin/spc extract php-src\` to decompress the source code separately</span></span>
 <span class="line"><span style="color:#FFCB6B;">bin/spc</span><span style="color:#A6ACCD;"> </span><span style="color:#C3E88D;">dev:php-version</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#676E95;font-style:italic;"># Sort the configuration files in the config/ directory in alphabetical order (e.g. ext.json)</span></span>
-<span class="line"><span style="color:#FFCB6B;">bin/spc</span><span style="color:#A6ACCD;"> </span><span style="color:#C3E88D;">dev:sort-config</span><span style="color:#A6ACCD;"> </span><span style="color:#C3E88D;">ext</span></span></code></pre></div>`,71),t=[l];function p(c,i,r,d,y,h){return e(),a("div",null,t)}const C=s(o,[["render",p]]);export{m as __pageData,C as default};
+<span class="line"><span style="color:#FFCB6B;">bin/spc</span><span style="color:#A6ACCD;"> </span><span style="color:#C3E88D;">dev:sort-config</span><span style="color:#A6ACCD;"> </span><span style="color:#C3E88D;">ext</span></span></code></pre></div>`,71),t=[l];function p(c,i,r,d,y,u){return e(),a("div",null,t)}const C=s(o,[["render",p]]);export{m as __pageData,C as default};
