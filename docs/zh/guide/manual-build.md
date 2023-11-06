@@ -287,6 +287,9 @@ bin/spc dev:extensions
 # 输出指定扩展的信息
 bin/spc dev:extensions mongodb,curl,openssl
 
+# 输出指定列，可选：lib-depends, lib-suggests, ext-depends, ext-suggests, unix-only, type
+bin/spc dev:extensions --columns=lib-depends,type,ext-depends
+
 # 输出当前编译的 PHP 版本（需要先将下载好的 PHP 源码解压到 source 目录，你可以使用 `bin/spc extract php-src` 单独解压缩源码）
 bin/spc dev:php-version
 

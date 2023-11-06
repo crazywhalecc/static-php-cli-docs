@@ -324,6 +324,10 @@ bin/spc dev:extensions
 # Output the meta information of the specified extension
 bin/spc dev:extensions mongodb,curl,openssl
 
+# Output the specified columns
+# Available column name: lib-depends, lib-suggests, ext-depends, ext-suggests, unix-only, type
+bin/spc dev:extensions --columns=lib-depends,type,ext-depends
+
 # Output the currently compiled PHP version
 # You need to decompress the downloaded PHP source code to the source directory first
 # You can use `bin/spc extract php-src` to decompress the source code separately
