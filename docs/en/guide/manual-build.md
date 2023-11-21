@@ -119,7 +119,7 @@ including php-src and the source code of various dependent libraries.
 # Download all dependencies
 bin/spc download --all
 
-# Download all dependent packages, and specify the main version of PHP to download, optional: 7.3, 7.4, 8.0, 8.1, 8.2
+# Download all dependent packages, and specify the main version of PHP to download, optional: 7.3, 7.4, 8.0, 8.1, 8.2, 8.3
 bin/spc download --all --with-php=8.2
 
 # Show download progress bar while downloading (curl)
