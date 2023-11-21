@@ -103,7 +103,7 @@ bin/setup-runtime --mirror china
 # 下载所有依赖包
 bin/spc download --all
 
-# 下载所有依赖包，并指定下载的 PHP 主版本，可选：7.3，7.4，8.0，8.1，8.2。（8.3 还没有正式发布，无法通过此方法下载，需要手动替换或指定下载 PHP 8.3）
+# 下载所有依赖包，并指定下载的 PHP 主版本，可选：7.3，7.4，8.0，8.1，8.2，8.3。
 bin/spc download --all --with-php=8.2
 
 # 下载时显示下载进度条（curl）
