@@ -205,6 +205,7 @@ const EXTENSIONS = [
   'phar',
   'posix',
   'protobuf',
+  'rar',
   'readline',
   'redis',
   'session',

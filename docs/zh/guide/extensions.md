@@ -55,6 +55,7 @@
 | posix                              | yes           | yes           | yes           |         |
 | protobuf                           | yes           | yes           |               |         |
 | pspell                             |               |               |               |         |
+| [rar](./extension-notes#rar)       | yes           | partial       |               |         |
 | rdkafka                            |               |               |               |         |
 | readline                           | yes, untested | yes, untested |               |         |
 | redis                              | yes           | yes           |               |         |

@@ -67,3 +67,7 @@ The compiled `./php` binary can be configured and run by specifying the INI, eg 
 
 1. glfw depends on OpenGL, and linux environment also needs X11, which cannot be linked statically.
 2. macOS platform, we can compile and link system builtin OpenGL and related libraries dynamically.
+
+## rar
+
+1. The rar extension currently has a problem when compiling phpmicro with the `common` extension collection in the macOS x86_64 environment.
