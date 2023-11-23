@@ -223,6 +223,7 @@ const EXTENSIONS = [
   'sysvmsg',
   'sysvsem',
   'sysvshm',
+  'tidy',
   'tokenizer',
   'xlswriter',
   'xml',
