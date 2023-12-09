@@ -6,7 +6,7 @@ currently supporting Linux and macOS systems.
 In the guide section, you will learn how to use static php cli to build standalone PHP programs.
 
 - [GitHub Action Build](./action-build)
-- [Native Build](./manual-build)
+- [Manual Build](./manual-build)
 - [Supported Extensions](./extensions)
 
 ::: tip
@@ -36,7 +36,7 @@ Rosetta 2 cannot guarantee that programs compiled with `Arm` architecture can fu
 
 ## Supported PHP Version
 
-Currently, static php cli supports PHP versions 8.0 to 8.2, and theoretically supports PHP 7.4 and earlier versions. 
+Currently, static php cli supports PHP versions 8.0 to 8.3, and theoretically supports PHP 7.4 and earlier versions. 
 Simply select the earlier version when downloading.
 However, due to some extensions and special components that have stopped supporting earlier versions of PHP, 
 static-php-cli will not explicitly support earlier versions.
