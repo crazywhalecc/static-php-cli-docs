@@ -11,7 +11,7 @@ which will be listed one by one here.
 ## swoole
 
 1. swoole >= 5.0 Only PHP >= 8.0 is supported.
-3. swoole Currently, curl hooks are not supported (which may be fixed in the future).
+3. swoole Currently, curl hooks are not supported for PHP 8.0.x (which may be fixed in the future).
 
 ## swow
 
