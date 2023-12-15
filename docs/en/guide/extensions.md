@@ -74,7 +74,7 @@
 | sysvmsg                            | yes           | yes           |               |         |
 | sysvsem                            | yes           | yes           |               |         |
 | sysvshm                            | yes           | yes           |               |         |
-| tidy                               |               |               |               |         |
+| tidy                               | yes           | yes           |               |         |
 | tokenizer                          | yes           | yes           | yes           |         |
 | [xdebug](./extension-notes#xdebug) | no            | no            | no            |         |
 | xlswriter                          | yes           | yes           |               |         |
