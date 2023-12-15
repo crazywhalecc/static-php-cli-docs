@@ -7,17 +7,6 @@ import sidebarZh from "./sidebar.zh";
 export default defineConfig({
   title: "static-php-cli",
   description: "Build single static PHP binary, with PHP project together, with popular extensions included.",
-  head: [
-    ['script', {}, `
-          var _hmt = _hmt || [];
-  (function () {
-      var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?757c7c9ca14aba4044681f509e90cd65";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-  })();
-      `]
-  ],
   locales: {
     en: {
       label: 'English',
