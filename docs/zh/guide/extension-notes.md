@@ -61,3 +61,22 @@ bin/spc build gd --with-libs=freetype,libjpeg,libavif,libwebp --build-cli
 ## rar
 
 1. rar 扩展目前在 macOS x86_64 环境下与 `common` 扩展集合编译 phpmicro 存在问题。
+
+## mongodb
+
+1. mongodb暂时不支持macOS因为驱动存在一些问题。在 [此处](https://github.com/crazywhalecc/static-php-cli/issues/281) 跟踪进度。
+
+## pgsql
+
+pgsql ssl 连接与 openssl 3.2.0 不兼容。相关链接：
+
+- https://github.com/Homebrew/homebrew-core/issues/155651
+- https://github.com/Homebrew/homebrew-core/pull/155699
+- https://github.com/postgres/postgres/commit/c82207a548db47623a2bfa2447babdaa630302b9
+
+## snappy
+
+Snappy 配置可能会破坏其他扩展的功能，请谨慎使用。相关链接：
+
+- https://github.com/kjdev/php-ext-snappy/issues/24
+- https://github.com/crazywhalecc/static-php-cli/issues/285

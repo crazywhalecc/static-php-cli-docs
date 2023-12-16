@@ -71,3 +71,22 @@ The compiled `./php` binary can be configured and run by specifying the INI, eg 
 ## rar
 
 1. The rar extension currently has a problem when compiling phpmicro with the `common` extension collection in the macOS x86_64 environment.
+
+## mongodb
+
+1. mongodb does not support macOS for the time being because there are some issues with the driver. Track issue [here](https://github.com/crazywhalecc/static-php-cli/issues/281).
+
+## pgsql
+
+pgsql ssl connection is not compatible with openssl 3.2.0. See:
+
+- https://github.com/Homebrew/homebrew-core/issues/155651
+- https://github.com/Homebrew/homebrew-core/pull/155699
+- https://github.com/postgres/postgres/commit/c82207a548db47623a2bfa2447babdaa630302b9
+
+## snappy
+
+Snappy configuration may break features of other extensions. Use with caution. See:
+
+- https://github.com/kjdev/php-ext-snappy/issues/24
+- https://github.com/crazywhalecc/static-php-cli/issues/285
