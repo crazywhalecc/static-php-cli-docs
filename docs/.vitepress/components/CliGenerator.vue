@@ -197,6 +197,7 @@ const EXTENSIONS = [
   'mysqlnd',
   'opcache',
   'openssl',
+  'password-argon2',
   'pcntl',
   'pdo',
   'pdo_mysql',

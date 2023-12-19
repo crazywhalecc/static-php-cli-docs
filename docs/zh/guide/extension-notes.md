@@ -80,3 +80,7 @@ Snappy 配置可能会破坏其他扩展的功能，请谨慎使用。相关链�
 
 - https://github.com/kjdev/php-ext-snappy/issues/24
 - https://github.com/crazywhalecc/static-php-cli/issues/285
+
+## password-argon2
+
+password-argon2不是一个标准的扩展，它是 `password_hash` 函数的额外算法。
