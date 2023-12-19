@@ -83,4 +83,5 @@ Snappy 配置可能会破坏其他扩展的功能，请谨慎使用。相关链�
 
 ## password-argon2
 
-password-argon2不是一个标准的扩展，它是 `password_hash` 函数的额外算法。
+1. password-argon2不是一个标准的扩展，它是 `password_hash` 函数的额外算法。
+2. 在Linux系统，password-argon2 的依赖库 `libargon2` 与 `libsodium` 库冲突。
