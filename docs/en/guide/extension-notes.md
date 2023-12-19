@@ -95,3 +95,8 @@ Snappy configuration may break features of other extensions. Use with caution. S
 
 1. password-argon2 is not a standard extension, it is an additional algorithm for the `password_hash` function.
 2. On Linux systems, `password-argon2` dependency `libargon2` conflicts with the `libsodium` library.
+
+## ffi
+
+1. Due to limitations of the Linux system, although the ffi extension can be compiled successfully, it cannot be used to load other `so` extensions.
+2. The prerequisite for supporting loading of so extension is non-static compilation, but dynamic linking conflicts with the purpose of this project.

@@ -85,3 +85,8 @@ Snappy 配置可能会破坏其他扩展的功能，请谨慎使用。相关链�
 
 1. password-argon2不是一个标准的扩展，它是 `password_hash` 函数的额外算法。
 2. 在Linux系统，password-argon2 的依赖库 `libargon2` 与 `libsodium` 库冲突。
+
+## ffi
+
+1. 因为 Linux 系统的限制，虽然可以成功编译 ffi 扩展，但无法使用它加载其他 `so` 扩展。
+2. 支持加载 so 扩展的前提是非静态编译，但动态编译和本项目的目的冲突。
