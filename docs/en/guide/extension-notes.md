@@ -90,3 +90,7 @@ Snappy configuration may break features of other extensions. Use with caution. S
 
 - https://github.com/kjdev/php-ext-snappy/issues/24
 - https://github.com/crazywhalecc/static-php-cli/issues/285
+
+## password-argon2
+
+password-argon2 is not a standard extension, it is an additional algorithm for the `password_hash` function.
