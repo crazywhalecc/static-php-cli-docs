@@ -93,4 +93,5 @@ Snappy configuration may break features of other extensions. Use with caution. S
 
 ## password-argon2
 
-password-argon2 is not a standard extension, it is an additional algorithm for the `password_hash` function.
+1. password-argon2 is not a standard extension, it is an additional algorithm for the `password_hash` function.
+2. On Linux systems, `password-argon2` dependency `libargon2` conflicts with the `libsodium` library.
