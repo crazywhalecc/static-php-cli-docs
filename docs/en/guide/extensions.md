@@ -67,7 +67,7 @@
 | sockets                                              | yes           | yes           | yes           |         |
 | sodium                                               | yes           | yes           |               |         |
 | sqlite3                                              | yes           | yes           |               |         |
-| [sqlsrv](./extension-notes#sqlsrv)                   | yes, untested | yes, untested | no            |         |
+| sqlsrv                                               | yes, untested | yes, untested | no            |         |
 | ssh2                                                 | yes           | yes           |               |         |
 | [swow](./extension-notes#swow)                       | yes           | yes           |               |         |
 | [swoole](./extension-notes#swoole)                   | partial       | yes           |               |         |

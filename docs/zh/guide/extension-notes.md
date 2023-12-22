@@ -38,10 +38,6 @@ bin/spc build gd --with-libs=freetype,libjpeg,libavif,libwebp --build-cli
 
 1. oci8 是 Oracle 数据库的扩展，因为 Oracle 提供的扩展所依赖的库未提供静态编译版本（`.a`）或源代码，无法使用静态链接的方式将此扩展编译到 php 内，故无法支持。
 
-## sqlsrv
-
-1. sqlsrv 是 SQL Server 数据库的扩展，因为 SQL Server 提供的扩展所依赖的库未提供静态编译版本（`.a`）或源代码，无法使用静态链接的方式将此扩展编译到 php 内，故无法支持。
-
 ## xdebug
 
 1. Xdebug 是一个 Zend 扩展，Xdebug 的功能依赖于 PHP 的 Zend 引擎和底层代码，如果要将其静态编译到 PHP 中，可能需要巨量的 patch 代码，这是不可行的。

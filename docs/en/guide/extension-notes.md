@@ -43,12 +43,6 @@ bin/spc build gd --with-libs=freetype,libjpeg,libavif,libwebp --build-cli
 1. oci8 is an extension of the Oracle database, because the library on which the extension provided by Oracle does not provide a statically compiled version (`.a`) or source code, 
 and this extension cannot be compiled into php by static linking, so it cannot be supported.
 
-## sqlsrv
-
-1. sqlsrv is an extension of the SQL Server database. 
-Because the library on which the extension provided by SQL Server does not provide a statically compiled version (`a`) or source code, 
-the extension cannot be compiled into php by static linking, so it cannot be supported.
-
 ## xdebug
 
 1. Xdebug is a Zend extension. The functions of Xdebug depend on PHP's Zend engine and underlying code. 
