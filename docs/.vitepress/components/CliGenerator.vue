@@ -1,20 +1,45 @@
 <template>
   <div>
-    <h2>{{ I18N[lang].selectExt }}</h2>
+    <h2>{{ I18N[lang].selectedSystem }}</h2>
+    <div class="option-line">
+      <span v-for="(item, index) in osList" :key="index" style="margin-right: 4px">
+        <input type="radio" :id="'os-' + item.os" :value="item.os" v-model="selectedSystem" />
+        <label :for="'os-' + item.os">{{ item.label }}</label>
+      </span>
+    </div>
+    <h2>{{ I18N[lang].selectExt }}{{ checkedExts.length > 0 ? (' (' + checkedExts.length + ')') : '' }}</h2>
     <div class="box">
-      <div v-for="(item) in EXTENSIONS" class="ext-item">
-        <input type="checkbox" :id="item" :value="item" v-model="checkedNames">
-        <label :for="item">{{ item }}</label>
+      <div v-for="(item, index) in ext" class="ext-item">
+        <input type="checkbox" :id="index" :value="index" v-model="checkedExts" :disabled="extDisableList.indexOf(index) !== -1">
+        <label :for="index">{{ index }}</label>
       </div>
     </div>
     <div class="my-btn" @click="selectCommon">{{ I18N[lang].selectCommon }}</div>
-    <div class="my-btn" @click="checkedNames = []">{{ I18N[lang].selectNone }}</div>
+    <div class="my-btn" @click="checkedExts = []">{{ I18N[lang].selectNone }}</div>
+
+    <details class="details custom-block">
+      <summary>{{ I18N[lang].buildLibs }}{{ checkedLibs.length > 0 ? (' (' + checkedLibs.length + ')') : '' }}</summary>
+      <div class="box">
+        <div v-for="(item, index) in libContain" class="ext-item">
+          <input type="checkbox" :id="index" :value="item" v-model="checkedLibs" :disabled="libDisableList.indexOf(item) !== -1">
+          <label :for="index">{{ item }}</label>
+        </div>
+      </div>
+    </details>
+    <div class="tip custom-block">
+      <p class="custom-block-title">TIP</p>
+      <p>{{ I18N[lang].depTips }}</p>
+    </div>
     <h2>{{ I18N[lang].buildTarget }}</h2>
     <div class="box">
       <div v-for="(item) in TARGET" class="ext-item">
         <input type="checkbox" :id="'build_' + item" :value="item" v-model="checkedTargets" @change="onTargetChange">
         <label :for="'build_' + item">{{ item }}</label>
       </div>
+    </div>
+    <div v-if="selectedPhpVersion === '7.4' && (checkedTargets.indexOf('micro') !== -1 || checkedTargets.indexOf('all') !== -1)" class="warning custom-block">
+      <p class="custom-block-title">WARNING</p>
+      <p>{{ I18N[lang].microUnavailable }}</p>
     </div>
     <h2>{{ I18N[lang].buildOptions }}</h2>
     <div class="option-line">
@@ -26,12 +51,10 @@
       </select>
     </div>
     <div v-if="selectedEnv === 'spc'" class="option-line">
-      <span class="option-title">{{ I18N[lang].selectedOS }}</span>
-      <select v-model="selectedOS">
-        <option value="linux-x86_64">Linux x86_64 (amd64)</option>
-        <option value="linux-aarch64">Linux aarch64 (arm64)</option>
-        <option value="macos-x86_64">macOS x86_64 (Intel)</option>
-        <option value="macos-aarch64">macOS arm64 (Apple)</option>
+      <span class="option-title">{{ I18N[lang].selectedArch }}</span>
+      <select v-model="selectedArch">
+        <option value="x86_64">x86_64 (amd64)</option>
+        <option value="aarch64">aarch64 (arm64)</option>
       </select>
     </div>
     <div class="option-line">
@@ -70,7 +93,7 @@
     <div v-if="selectedEnv === 'spc'" class="command-container">
       <b>{{ I18N[lang].downloadSPCBinaryCommand }}</b>
       <div class="command-preview">
-        curl -o spc.tgz https://dl.static-php.dev/static-php-cli/spc-bin/nightly/spc-{{ selectedOS }}.tar.gz && tar -zxvf spc.tgz && rm spc.tgz<br>
+        curl -o spc.tgz https://dl.static-php.dev/static-php-cli/spc-bin/nightly/spc-{{ selectedSystem }}-{{ selectedArch }}.tar.gz && tar -zxvf spc.tgz && rm spc.tgz<br>
       </div>
     </div>
     <div v-if="downloadByExt" class="command-container">
@@ -83,9 +106,8 @@
     </div>
     <div class="command-container">
       <b>{{ I18N[lang].compileCommand }}</b>
-      <div class="command-preview">{{ spcCommand }} build {{ buildCommand }} "{{ extList }}"{{ debug ? ' --debug' : '' }}{{ zts ? ' --enable-zts' : '' }}{{ displayINI }}</div>
+      <div class="command-preview">{{ spcCommand }} build {{ buildCommand }} "{{ extList }}"{{ additionalLibs }}{{ debug ? ' --debug' : '' }}{{ zts ? ' --enable-zts' : '' }}{{ displayINI }}</div>
     </div>
-
   </div>
 </template>
 
@@ -96,7 +118,14 @@ export default {
 </script>
 
 <script setup lang="ts">
-import {computed, ref} from "vue";
+import {computed, ref, watch} from "vue";
+import extData from '../config/ext.json';
+import libData from '../config/lib.json';
+import { getAllExtLibsByDeps } from './DependencyUtil.js';
+
+const ext = ref(extData);
+const lib = ref(libData);
+const libContain = ref([]);
 
 defineProps({
   lang: {
@@ -104,6 +133,11 @@ defineProps({
     default: 'zh',
   }
 });
+
+const osList = [
+  { os: 'linux', label: 'Linux' },
+  { os: 'macos', label: 'macOS' },
+];
 
 const availablePhpVersions = [
   '7.4',
@@ -137,7 +171,11 @@ const I18N = {
     compileCommand: '编译命令',
     downloadPhpVersion: '下载 PHP 版本',
     downloadSPCBinaryCommand: '下载 spc 二进制命令',
-    selectedOS: '选择操作系统',
+    selectedArch: '选择系统架构',
+    selectedSystem: '选择操作系统',
+    buildLibs: '要构建的库',
+    depTips: '选择扩展后，不可选中的项目为必需的依赖，编译的依赖库列表中可选的为现有扩展和依赖库的可选依赖。选择可选依赖后，将生成 --with-libs 参数。',
+    microUnavailable: 'micro 不支持 PHP 7.4 及更早版本！',
   },
   en: {
     selectExt: 'Select Extensions',
@@ -162,79 +200,13 @@ const I18N = {
     compileCommand: 'Compile command',
     downloadPhpVersion: 'Download PHP version',
     downloadSPCBinaryCommand: 'Download spc binary command',
-    selectedOS: 'Select Build OS',
+    selectedArch: 'Select build architecture',
+    selectedSystem: 'Select Build OS',
+    buildLibs: 'Select Dependencies',
+    depTips: 'After selecting the extensions, the unselectable items are essential dependencies. In the compiled dependencies list, optional dependencies consist of existing extensions and optional dependencies of libraries. Optional dependencies will be added in --with-libs parameter.',
+    microUnavailable: 'Micro does not support PHP 7.4 and earlier versions!'
   }
 };
-
-const EXTENSIONS = [
-  'apcu',
-  'bcmath',
-  'bz2',
-  'calendar',
-  'ctype',
-  'curl',
-  'dba',
-  'dom',
-  'event',
-  'exif',
-  'ffi',
-  'filter',
-  'fileinfo',
-  'gd',
-  'glfw',
-  'gmp',
-  'iconv',
-  'imagick',
-  'imap',
-  'inotify',
-  'intl',
-  'ldap',
-  'mbstring',
-  'mbregex',
-  'memcache',
-  'mongodb',
-  'mysqli',
-  'mysqlnd',
-  'opcache',
-  'openssl',
-  'password-argon2',
-  'pcntl',
-  'pdo',
-  'pdo_mysql',
-  'pdo_sqlite',
-  'pdo_pgsql',
-  'pgsql',
-  'phar',
-  'posix',
-  'protobuf',
-  'rar',
-  'readline',
-  'redis',
-  'session',
-  'shmop',
-  'simplexml',
-  'snappy',
-  'soap',
-  'sockets',
-  'sodium',
-  'sqlite3',
-  'ssh2',
-  'swow',
-  'swoole',
-  'sysvmsg',
-  'sysvsem',
-  'sysvshm',
-  'tidy',
-  'tokenizer',
-  'xlswriter',
-  'xml',
-  'xmlreader',
-  'xmlwriter',
-  'xsl',
-  'zip',
-  'zlib',
-  'zstd',
-];
 
 const TARGET = [
   'cli',
@@ -245,7 +217,7 @@ const TARGET = [
 ];
 
 const selectCommon = () => {
-  checkedNames.value = [
+  checkedExts.value = [
       'apcu', 'bcmath',
       'calendar', 'ctype', 'curl',
       'dba', 'dom', 'exif',
@@ -265,11 +237,24 @@ const selectCommon = () => {
 };
 
 const extList = computed(() => {
-  return checkedNames.value.join(',');
+  return checkedExts.value.join(',');
+});
+
+const additionalLibs = computed(() => {
+  const ls = checkedLibs.value.filter(item => libDisableList.value.indexOf(item) === -1);
+  if (ls.length > 0) {
+    return ' --with-libs="' + ls.join(',') + '"';
+  }
+  return '';
 });
 
 // chosen extensions
-const checkedNames = ref([]);
+const checkedExts = ref([]);
+
+const checkedLibs = ref([]);
+
+const extDisableList = ref([]);
+const libDisableList = ref([]);
 
 // chose targets
 const checkedTargets = ref(['cli']);
@@ -291,7 +276,8 @@ const downloadByExt = ref(0);
 
 const hardcodedINIData = ref('');
 
-const selectedOS = ref('linux-x86_64');
+const selectedSystem = ref('linux');
+const selectedArch = ref('x86_64');
 
 // spc command string, alt: spc-alpine-docker, spc
 const spcCommand = computed(() => {
@@ -306,6 +292,7 @@ const spcCommand = computed(() => {
       return '';
   }
 });
+
 // build target string
 const buildCommand = ref('--build-cli');
 
@@ -330,7 +317,119 @@ const onTargetChange = (event) => {
   buildCommand.value = checkedTargets.value.map((x) => '--build-' + x).join(' ');
 };
 
+const calculateExtDepends = (input) => {
+  const result = new Set();
 
+  const dfs = (node) => {
+    let depends = [];
+    // 计算深度前，先要确认fallback的 ext-depends
+    if (selectedSystem.value === 'linux') {
+      depends = ext.value[node]['ext-depends-linux'] ?? ext.value[node]['ext-depends-unix'] ?? ext.value[node]['ext-depends'] ?? [];
+      if (depends.length === 0) {
+        return;
+      }
+    } else if (selectedSystem.value === 'macos') {
+      depends = ext.value[node]['ext-depends-macos'] ?? ext.value[node]['ext-depends-unix'] ?? ext.value[node]['ext-depends'] ?? [];
+      if (depends.length === 0) {
+        return;
+      }
+    }
+
+    depends.forEach((dep) => {
+      result.add(dep);
+      dfs(dep);
+    });
+  };
+
+  input.forEach((item) => {
+    dfs(item);
+  });
+
+  return Array.from(result);
+};
+
+const calculateExtLibDepends = (input) => {
+  const result = new Set();
+
+  const dfsLib = (node) => {
+    let depends = [];
+    if (selectedSystem.value === 'linux') {
+      depends = lib.value[node]['lib-depends-linux'] ?? lib.value[node]['lib-depends-unix'] ??lib.value[node]['lib-depends'] ?? [];
+      if (depends.length === 0) {
+        return;
+      }
+    } else if (selectedSystem.value === 'macos') {
+      depends = lib.value[node]['lib-depends-macos'] ?? lib.value[node]['lib-depends-unix'] ??lib.value[node]['lib-depends'] ?? [];
+      if (depends.length === 0) {
+        return;
+      }
+    }
+
+    depends.forEach((dep) => {
+      result.add(dep);
+      dfsLib(dep);
+    });
+  };
+
+  const dfsExt = (node) => {
+    let depends = [];
+    // 计算深度前，先要确认fallback的 lib-depends
+    if (selectedSystem.value === 'linux') {
+      depends = ext.value[node]['lib-depends-linux'] ?? ext.value[node]['lib-depends-unix'] ?? ext.value[node]['lib-depends'] ?? [];
+      if (depends.length === 0) {
+        return;
+      }
+    } else if (selectedSystem.value === 'macos') {
+      depends = ext.value[node]['lib-depends-macos'] ?? ext.value[node]['lib-depends-unix'] ?? ext.value[node]['lib-depends'] ?? [];
+      if (depends.length === 0) {
+        return;
+      }
+    }
+
+    depends.forEach((dep) => {
+      result.add(dep);
+      dfsLib(dep);
+    });
+  };
+
+  input.forEach((item) => {
+    dfsExt(item);
+  });
+
+  return Array.from(result);
+};
+
+// change os, clear ext
+watch(selectedSystem, () => checkedExts.value = []);
+
+// selected ext change, calculate deps
+watch(
+    checkedExts,
+    (newValue) => {
+      // apply ext-depends
+      extDisableList.value = calculateExtDepends(newValue);
+      extDisableList.value.forEach((x) => {
+        if (checkedExts.value.indexOf(x) === -1) {
+          checkedExts.value.push(x);
+        }
+      });
+
+      checkedExts.value.sort();
+      console.log('检测到变化！');
+      console.log(newValue);
+
+      const calculated = getAllExtLibsByDeps({ ext: ext.value, lib: lib.value, os: selectedSystem.value }, checkedExts.value);
+      libContain.value = calculated.libs.sort();
+      // apply lib-depends
+      checkedLibs.value = [];
+      libDisableList.value = calculateExtLibDepends(calculated.exts);
+      libDisableList.value.forEach((x) => {
+        if (checkedLibs.value.indexOf(x) === -1) {
+          checkedLibs.value.push(x);
+        }
+      });
+    },
+);
 </script>
 
 <style scoped>

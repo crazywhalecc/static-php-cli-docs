@@ -15,7 +15,7 @@ export default defineConfig({
         nav: [
           {text: 'Guide', link: '/en/guide/',},
           {text: 'Developing', link: '/en/develop/'},
-          {text: 'contributing', link: '/en/contributing/'},
+          {text: 'Contributing', link: '/en/contributing/'},
           {text: 'FAQ', link: '/en/faq/'},
         ],
         sidebar: sidebarEn,
