@@ -272,7 +272,7 @@ const debug = ref(0);
 const zts = ref(0);
 
 // chosen download by extensions
-const downloadByExt = ref(0);
+const downloadByExt = ref(1);
 
 const hardcodedINIData = ref('');
 
