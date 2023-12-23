@@ -28,6 +28,7 @@
 | [glfw](./extension-notes#glfw)                       | no            | yes           | no            |         |
 | gmp                                                  | yes           | yes           |               |         |
 | iconv                                                | yes           | yes           |               |         |
+| igbinary                                             | yes           | yes           |               |         |
 | imagick                                              | yes           | yes           |               |         |
 | [imap](./extension-notes#imap)                       | yes           | yes           |               |         |
 | inotify                                              | yes           | no            |               |         |
