@@ -77,6 +77,7 @@
 | sysvshm                                              | yes           | yes           |               |         |
 | tidy                                                 | yes           | yes           |               |         |
 | tokenizer                                            | yes           | yes           | yes           |         |
+| uv                                                   | yes, untested | yes, untested |               |         |
 | [xdebug](./extension-notes#xdebug)                   | no            | no            | no            |         |
 | xlswriter                                            | yes           | yes           |               |         |
 | [xml](./extension-notes#xml)                         | yes           | yes           |               |         |
