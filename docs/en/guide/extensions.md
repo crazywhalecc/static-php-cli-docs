@@ -63,12 +63,12 @@
 | session                                              | yes           | yes           | yes           |         |
 | shmop                                                | yes           | yes           | yes           |         |
 | simplexml                                            | yes           | yes           |               |         |
-| [snappy](./extension-notes#snappy)                   | partial       | partial       |               |         |
+| snappy                                               | yes, untested | yes, untested |               |         |
 | soap                                                 | yes           | yes           |               |         |
 | sockets                                              | yes           | yes           | yes           |         |
 | sodium                                               | yes           | yes           |               |         |
 | sqlite3                                              | yes           | yes           |               |         |
-| sqlsrv                                               | yes, untested | yes, untested | no            |         |
+| sqlsrv                                               | yes, untested | yes, untested |               |         |
 | ssh2                                                 | yes           | yes           |               |         |
 | [swow](./extension-notes#swow)                       | yes           | yes           |               |         |
 | [swoole](./extension-notes#swoole)                   | partial       | yes           |               |         |

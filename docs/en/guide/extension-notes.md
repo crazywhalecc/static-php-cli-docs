@@ -78,13 +78,6 @@ pgsql ssl connection is not compatible with openssl 3.2.0. See:
 - https://github.com/Homebrew/homebrew-core/pull/155699
 - https://github.com/postgres/postgres/commit/c82207a548db47623a2bfa2447babdaa630302b9
 
-## snappy
-
-Snappy configuration may break features of other extensions. Use with caution. See:
-
-- https://github.com/kjdev/php-ext-snappy/issues/24
-- https://github.com/crazywhalecc/static-php-cli/issues/285
-
 ## password-argon2
 
 1. password-argon2 is not a standard extension, it is an additional algorithm for the `password_hash` function.
