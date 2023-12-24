@@ -79,6 +79,7 @@
 | tokenizer                                            | yes           | yes           | yes           |         |
 | uv                                                   | yes, untested | yes, untested |               |         |
 | [xdebug](./extension-notes#xdebug)                   | no            | no            | no            |         |
+| [xhprof](./extension-notes#xhprof)                   | yes           | yes           |               |         |
 | xlswriter                                            | yes           | yes           |               |         |
 | [xml](./extension-notes#xml)                         | yes           | yes           |               |         |
 | xmlreader                                            | yes, untested | yes, untested |               |         |

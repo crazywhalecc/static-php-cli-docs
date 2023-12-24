@@ -94,3 +94,10 @@ Snappy configuration may break features of other extensions. Use with caution. S
 
 1. Due to limitations of the Linux system, although the ffi extension can be compiled successfully, it cannot be used to load other `so` extensions.
 2. The prerequisite for supporting loading of so extension is non-static compilation, but dynamic linking conflicts with the purpose of this project.
+
+## xhprof
+
+The xhprof extension consists of three parts: `xhprof_extension`, `xhprof_html`, `xhprof_libs`. 
+Only `xhprof_extension` is included in the compiled binary.
+If you need to use xhprof,
+please download the source code from [pecl.php.net/package/xhprof](http://pecl.php.net/package/xhprof) and specify the `xhprof_libs` and `xhprof_html` paths for use.

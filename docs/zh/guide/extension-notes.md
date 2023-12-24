@@ -86,3 +86,8 @@ Snappy 配置可能会破坏其他扩展的功能，请谨慎使用。相关链�
 
 1. 因为 Linux 系统的限制，虽然可以成功编译 ffi 扩展，但无法使用它加载其他 `so` 扩展。
 2. 支持加载 so 扩展的前提是非静态编译，但动态编译和本项目的目的冲突。
+
+## xhprof
+
+xhprof 扩展包含三部分：`xhprof_extension`、`xhprof_html`、`xhprof_libs`。编译的二进制中只包含 `xhprof_extension`。
+如果需要使用 xhprof，请到 [pecl.php.net/package/xhprof](http://pecl.php.net/package/xhprof) 下载源码，指定 `xhprof_libs` 和 `xhprof_html` 路径来使用。
