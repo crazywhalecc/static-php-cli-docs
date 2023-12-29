@@ -14,7 +14,7 @@ export default {
     {
       items: [
         {text: 'Troubleshooting', link: '/en/guide/troubleshooting'},
-        {text: 'Setup Windows Environment', link: '/en/guide/windows-setup'},
+        {text: 'Build on Windows', link: '/en/guide/build-on-windows'},
       ],
     }
   ],

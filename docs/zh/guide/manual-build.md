@@ -1,4 +1,6 @@
-# 本地构建
+# 本地构建（Linux、macOS、FreeBSD）
+
+本章节为 Linux、macOS、FreeBSD 的构建过程，如果你要在 Windows 上构建，请到 [在 Windows 上构建](./build-on-windows)。
 
 ## 手动构建（使用 SPC 二进制）
 
@@ -100,6 +102,12 @@ bin/setup-runtime --mirror china
 使用命令 `bin/spc download` 可以下载编译需要的源代码，包括 php-src 以及依赖的各种库的源码。
 
 ```bash
+# 仅下载要编译的扩展及依赖库（使用扩展名，包含可选库）
+bin/spc download --for-extensions=openssl,swoole,zip,pcntl,zstd
+
+# 仅下载要编译的扩展及依赖库（使用扩展名，不包含可选库）
+bin/spc download --for-extensions=openssl,swoole,zip,pcntl --without-suggestions
+
 # 下载所有依赖包
 bin/spc download --all
 
@@ -114,12 +122,6 @@ bin/spc download --clean
 
 # 仅下载指定的资源（使用资源名）
 bin/spc download php-src,micro,zstd,ext-zstd
-
-# 仅下载要编译的扩展及依赖库（使用扩展名，包含可选库）
-bin/spc download --for-extensions=openssl,swoole,zip,pcntl,zstd
-
-# 仅下载要编译的扩展及依赖库（使用扩展名，不包含可选库）
-bin/spc download --for-extensions=openssl,swoole,zip,pcntl --without-suggestions
 ```
 
 如果你所在地区的网络不好，或者下载依赖包速度过于缓慢，可以从 GitHub Action 下载每周定时打包的 `download.zip`，并使用命令直接使用 zip 压缩包作为依赖。

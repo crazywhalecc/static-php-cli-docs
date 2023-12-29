@@ -1,4 +1,7 @@
-# Manual Build
+# Manual Build (Linux, macOS, FreeBSD)
+
+This chapter covers the build process for Linux, macOS, and FreeBSD. If you want to build on Windows, 
+please go to [Build on Windows](./build-on-windows).
 
 ### Manual build (using SPC binary)
 

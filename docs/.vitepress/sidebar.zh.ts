@@ -14,7 +14,7 @@ export default {
     {
       items: [
         {text: '故障排除', link: '/zh/guide/troubleshooting'},
-        {text: 'Windows 编译环境配置', link: '/zh/guide/windows-setup'},
+        {text: '在 Windows 上构建', link: '/zh/guide/build-on-windows'},
       ],
     }
   ],

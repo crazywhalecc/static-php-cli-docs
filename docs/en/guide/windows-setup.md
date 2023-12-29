@@ -1,1 +1,0 @@
-# Setup Windows Compilation Environment
