@@ -12,9 +12,9 @@ export default {
       ]
     },
     {
-      text: '进阶',
       items: [
         {text: '故障排除', link: '/zh/guide/troubleshooting'},
+        {text: 'Windows 编译环境配置', link: '/zh/guide/windows-setup'},
       ],
     }
   ],

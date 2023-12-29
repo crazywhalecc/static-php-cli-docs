@@ -12,9 +12,9 @@ export default {
       ]
     },
     {
-      text: 'Advanced',
       items: [
         {text: 'Troubleshooting', link: '/en/guide/troubleshooting'},
+        {text: 'Setup Windows Environment', link: '/en/guide/windows-setup'},
       ],
     }
   ],
