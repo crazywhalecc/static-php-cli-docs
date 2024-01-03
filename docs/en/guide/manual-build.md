@@ -228,6 +228,7 @@ You can try to use the following commands:
 - `-I xxx=yyy`: Hard compile INI options into PHP before compiling (support multiple options, alias is `--with-hardcoded-ini`)
 - `--with-micro-fake-cli`: When compiling micro, let micro's `PHP_SAPI` pretend to be `cli` (for compatibility with some programs that check `PHP_SAPI`)
 - `--disable-opcache-jit`: Disable opcache jit (enabled by default)
+- `-P xxx.php`: Inject external scripts during static-php-cli compilation (see **Inject external scripts** below for details)
 
 For hardcoding INI options, it works for cli, micro, embed sapi. Here is a simple example where we preset a larger `memory_limit` and disable the `system` function:
 
@@ -335,4 +336,46 @@ bin/spc dev:php-version
 
 # Sort the configuration files in the config/ directory in alphabetical order (e.g. ext.json)
 bin/spc dev:sort-config ext
+```
+
+## Inject External Script
+
+Injecting external scripts refers to inserting one or more scripts during the static-php-cli compilation process
+to more flexibly support parameter modifications and source code patches in different environments.
+
+Under normal circumstances, this function mainly solves the problem that the patch cannot be modified
+by modifying the static-php-cli code when compiling with `spc` binary.
+
+There is another situation: your project directly depends on the `crazywhalecc/static-php-cli` repository and is synchronized with main branch, 
+but some proprietary modifications are required, and these feature are not suitable for merging into the main branch.
+
+In view of the above situation, in the official version 2.0.0, static-php-cli has added multiple event trigger points. 
+You can write an external `xx.php` script and pass it in through the command line parameter `-P` and execute.
+
+The following is a simple example of temporarily modifying the PHP source code. 
+Enable the CLI function to search for the `php.ini` configuration in the current working directory:
+
+```php
+// a.php
+<?php
+if (patch_point() === 'before-php-buildconf') {
+    \SPC\store\FileSystem::replaceFileStr(
+        SOURCE_PATH . '/php-src/sapi/cli/php_cli.c',
+        'sapi_module->php_ini_ignore_cwd = 1;',
+        'sapi_module->php_ini_ignore_cwd = 0;'
+    );
+}
+```
+
+```bash
+bin/spc build mbstring --build-cli -P a.php
+echo 'memory_limit=8G' > ./php.ini
+```
+
+```
+$ buildroot/bin/php -i | grep Loaded
+Loaded Configuration File => /Users/jerry/project/git-project/static-php-cli/php.ini
+
+$ buildroot/bin/php -i | grep memory
+memory_limit => 8G => 8G
 ```

@@ -196,6 +196,7 @@ bin/spc build mysqlnd,pdo_mysql --build-all --debug
 - `-I xxx=yyy`: 编译前将 INI 选项硬编译到 PHP 内（支持多个选项，别名是 `--with-hardcoded-ini`）
 - `--with-micro-fake-cli`: 在编译 micro 时，让 micro 的 SAPI 伪装为 `cli`（用于兼容一些检查 `PHP_SAPI` 的程序）
 - `--disable-opcache-jit`: 禁用 opcache jit（默认启用）
+- `-P xxx.php`: 在 static-php-cli 编译过程中注入外部脚本（详见下方 **注入外部脚本**）
 
 硬编码 INI 选项适用于 cli、micro、embed。有关硬编码 INI 选项，下面是一个简单的例子，我们预设一个更大的 `memory_limit`，并且禁用 `system` 函数：
 
@@ -295,4 +296,40 @@ bin/spc dev:php-version
 
 # 排序配置文件 ext.json（也可以排序 lib、source）
 bin/spc dev:sort-config ext
+```
+
+## 注入外部脚本
+
+注入外部脚本指的是在 static-php-cli 编译过程中插入一个或多个脚本，用于更灵活地支持不同环境下的参数修改、源代码补丁。
+
+一般情况下，该功能主要解决使用 `spc` 二进制进行编译时无法通过修改 static-php-cli 代码来实现修改补丁的功能。
+还有一种情况：你的项目直接依赖了 `crazywhalecc/static-php-cli` 仓库并同步，但因为项目特性需要做出一些专有的修改，而这些特性并不适合合并到主分支。
+
+鉴于以上情况，在 2.0.0 正式版本中，static-php-cli 加入了多个事件的触发点，你可以通过编写外部的 `xx.php` 脚本，并通过命令行参数 `-P` 传入并执行。
+
+下面是一个简单的临时修改 PHP 源码的例子，开启 CLI 下在当前工作目录查找 `php.ini` 配置的功能：
+
+```php
+// a.php
+<?php
+if (patch_point() === 'before-php-buildconf') {
+    \SPC\store\FileSystem::replaceFileStr(
+        SOURCE_PATH . '/php-src/sapi/cli/php_cli.c',
+        'sapi_module->php_ini_ignore_cwd = 1;',
+        'sapi_module->php_ini_ignore_cwd = 0;'
+    );
+}
+```
+
+```bash
+bin/spc build mbstring --build-cli -P a.php
+echo 'memory_limit=8G' > ./php.ini
+```
+
+```
+$ buildroot/bin/php -i | grep Loaded
+Loaded Configuration File => /Users/jerry/project/git-project/static-php-cli/php.ini
+
+$ buildroot/bin/php -i | grep memory
+memory_limit => 8G => 8G
 ```
