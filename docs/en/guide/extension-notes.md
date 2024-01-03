@@ -11,7 +11,32 @@ which will be listed one by one here.
 ## swoole
 
 1. swoole >= 5.0 Only PHP >= 8.0 is supported.
-3. swoole Currently, curl hooks are not supported for PHP 8.0.x (which may be fixed in the future).
+2. swoole Currently, curl hooks are not supported for PHP 8.0.x (which may be fixed in the future).
+3. When compiling, if only `swoole` extension is included, the supported Swoole database coroutine hook will not be fully enabled. 
+   If you need to use it, please add the corresponding `swoole-hook-xxx` extension.
+
+## swoole-hook-pgsql
+
+swoole-hook-pgsql is not an extension, it's a Hook feature of Swoole.
+If you use `swoole,swoole-hook-pgsql`, you will enable Swoole's PostgreSQL client and the coroutine mode of the `pdo_pgsql` extension.
+
+swoole-hook-pgsql conflicts with the `pdo_pgsql` extension. If you want to use Swoole and `pdo_pgsql`, please delete the pdo_pgsql extension and enable `swoole` and `swoole-hook-pgsql`.
+This extension contains an implementation of the coroutine environment for `pdo_pgsql`.
+
+On macOS systems, `pdo_pgsql` may not be able to connect to the postgresql server normally, please use it with caution.
+
+## swoole-hook-mysql
+
+swoole-hook-mysql is not an extension, it's a Hook feature of Swoole.
+If you use `swoole,swoole-hook-mysql`, you will enable the coroutine mode of Swoole's `mysqlnd` and `pdo_mysql`.
+
+## swoole-hook-sqlite
+
+swoole-hook-sqlite is not an extension, it's a Hook feature of Swoole.
+If you use `swoole,swoole-hook-sqlite`, you will enable the coroutine mode of Swoole's `pdo_sqlite` (Swoole must be 5.1 or above).
+
+swoole-hook-sqlite conflicts with the `pdo_sqlite` extension. If you want to use Swoole and `pdo_sqlite`, please delete the pdo_sqlite extension and enable `swoole` and `swoole-hook-sqlite`.
+This extension contains an implementation of the coroutine environment for `pdo_sqlite`.
 
 ## swow
 

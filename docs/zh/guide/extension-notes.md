@@ -9,7 +9,31 @@
 ## swoole
 
 1. swoole >= 5.0 版本仅支持 PHP >= 8.0 版本。
-2. swoole 目前不支持 curl 的 hook（后续有可能会修复）。
+2. swoole 目前不支持 PHP 8.0 版本 curl 的 hook（后续有可能会修复）。
+3. 编译时只包含 `swoole` 扩展时不会完整开启支持的 Swoole 数据库协程 hook，如需使用请加入对应的 `swoole-hook-xxx` 扩展。
+
+## swoole-hook-pgsql
+
+swoole-hook-pgsql 不是一个扩展，而是 Swoole 的 Hook 特性。
+如果你在编译时添加了 `swoole,swoole-hook-pgsql`，你将启用 Swoole 的 PostgreSQL 客户端和 `pdo_pgsql` 扩展的协程模式。
+
+swoole-hook-pgsql 与 `pdo_pgsql` 扩展冲突。如需使用 Swoole 和 `pdo_pgsql`，请删除 pdo_pgsql 扩展，启用 `swoole` 和 `swoole-hook-pgsql` 即可。
+该扩展包含了 `pdo_pgsql` 的协程环境的实现。
+
+在 macOS 系统，`pdo_pgsql` 可能无法正常连接到 postgresql 服务器，请谨慎使用。
+
+## swoole-hook-mysql
+
+swoole-hook-mysql 不是一个扩展，而是 Swoole 的 Hook 特性。
+如果你在编译时添加了 `swoole,swoole-hook-mysql`，你将启用 Swoole 的 `mysqlnd` 和 `pdo_mysql` 的协程模式。
+
+## swoole-hook-sqlite
+
+swoole-hook-sqlite 不是一个扩展，而是 Swoole 的 Hook 特性。
+如果你在编译时添加了 `swoole,swoole-hook-sqlite`，你将启用 Swoole 的 `pdo_sqlite` 的协程模式（Swoole 必须为 5.1 以上）。
+
+swoole-hook-sqlite 与 `pdo_sqlite` 扩展冲突。如需使用 Swoole 和 `pdo_sqlite`，请删除 pdo_sqlite 扩展，启用 `swoole` 和 `swoole-hook-sqlite` 即可。
+该扩展包含了 `pdo_sqlite` 的协程环境的实现。
 
 ## swow
 
