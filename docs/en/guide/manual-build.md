@@ -142,8 +142,8 @@ If the network in your area is not good, or the speed of downloading the depende
 you can download `download.zip` which is packaged regularly every week from GitHub Action, 
 and use the command to directly use the zip archive as a dependency.
 
-Dependent packages can be downloaded locally from [Action](https://github.com/crazywhalecc/static-php-cli/actions/workflows/download-cache.yml).
-Enter Action and select a latest Workflow that has been successfully run, and download `download-files-x.y`.
+Dependent packages can be downloaded locally from [Action](https://github.com/static-php/static-php-cli-hosted/actions/workflows/download-cache.yml).
+Enter Action and select the latest Workflow that has been successfully run, and download `download-files-x.y`.
 
 ```bash
 bin/spc download --from-zip=/path/to/your/download.zip
