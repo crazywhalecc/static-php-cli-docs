@@ -364,7 +364,7 @@ memory_limit => 8G => 8G
 
 - `SPC\store\FileSystem`: 文件管理类
   - `::replaceFileStr(string $filename, string $search, $replace)`: 替换文件字符串内容
-  - `::replaceFileRegex(string $filename, string $pattern, $replace)`: 正则表达式替换文件内容
+  - `::replaceFileStr(string $filename, string $pattern, $replace)`: 正则替换文件内容
   - `::replaceFileUser(string $filename, $callback)`: 用户自定义函数替换文件内容
   - `::copyDir(string $from, string $to)`: 递归拷贝某个目录到另一个位置
   - `::convertPath(string $path)`: 转换路径的分隔符为当前系统分隔符

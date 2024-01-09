@@ -413,14 +413,14 @@ For the objects, methods and interfaces supported by static-php-cli, you can rea
 Commonly used objects and functions using the `-P` function are:
 
 - `SPC\store\FileSystem`: file management class
-    - `::replaceFileStr(string $filename, string $search, $replace)`: Replace file content (string search)
-    - `::replaceFileRegex(string $filename, string $pattern, $replace)`: Replace file content (regex search)
+    - `::replaceFileStr(string $filename, string $search, $replace)`: Replace file string content
+    - `::replaceFileStr(string $filename, string $pattern, $replace)`: Regularly replace file content
     - `::replaceFileUser(string $filename, $callback)`: User-defined function replaces file content
     - `::copyDir(string $from, string $to)`: Recursively copy a directory to another location
     - `::convertPath(string $path)`: Convert the path delimiter to the current system delimiter
-    - `::scanDirFiles(string $dir, bool $recursive = true, bool|string $relative = false, bool $include_dir = false)`: Get directory files
+    - `::scanDirFiles(string $dir, bool $recursive = true, bool|string $relative = false, bool $include_dir = false)`: Traverse directory files
 - `SPC\builder\BuilderBase`: Build object
-    - `->getPatchPoint()`: Get the current patch point name
+    - `->getPatchPoint()`: Get the current injection point name
     - `->getOption(string $key, $default = null)`: Get command line and compile-time options
     - `->getPHPVersionID()`: Get the currently compiled PHP version ID
     - `->getPHPVersion()`: Get the currently compiled PHP version number
