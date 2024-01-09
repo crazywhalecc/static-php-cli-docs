@@ -352,12 +352,39 @@ but some proprietary modifications are required, and these feature are not suita
 In view of the above situation, in the official version 2.0.0, static-php-cli has added multiple event trigger points. 
 You can write an external `xx.php` script and pass it in through the command line parameter `-P` and execute.
 
+When writing to inject external scripts, the methods you will use are `builder()` and `patch_point()`. 
+Among them, `patch_point()` obtains the name of the current event, and `builder()` obtains the BuilderBase object.
+
+Because the incoming patch point does not distinguish between events, 
+you must write the code you want to execute in `if(patch_point() === 'your_event_name')`, 
+otherwise it will be executed repeatedly in other events.
+
+The following are the supported `patch_point` event names and corresponding locations:
+
+| Event name                   | Event description                                                                                  |
+|------------------------------|----------------------------------------------------------------------------------------------------|
+| before-libs-extract          | Triggered before the dependent libraries extracted                                                 |
+| after-libs-extract           | Triggered after the compiled dependent libraries extracted                                         |
+| before-php-extract           | Triggered before PHP source code extracted                                                         |
+| after-php-extract            | Triggered after PHP source code extracted                                                          |
+| before-micro-extract         | Triggered before phpmicro extract                                                                  |
+| after-micro-extract          | Triggered after phpmicro extracted                                                                 |
+| before-exts-extract          | Triggered before the extension (to be compiled) extracted to the PHP source directory              |
+| after-exts-extract           | Triggered after the extension extracted to the PHP source directory                                |
+| before-library[*name*]-build | Triggered before the library named `name` is compiled (such as `before-library[postgresql]-build`) |
+| after-library[*name*]-build  | Triggered after the library named `name` is compiled                                               |
+| before-php-buildconf         | Triggered before compiling PHP command `./buildconf`                                               |
+| before-php-configure         | Triggered before compiling PHP command `./configure`                                               |
+| before-php-make              | Triggered before compiling PHP command `make`                                                      |
+| before-sanity-check          | Triggered after compiling PHP but before running extended checks                                   |
+
 The following is a simple example of temporarily modifying the PHP source code. 
 Enable the CLI function to search for the `php.ini` configuration in the current working directory:
 
 ```php
 // a.php
 <?php
+// patch it before `./buildconf` executed
 if (patch_point() === 'before-php-buildconf') {
     \SPC\store\FileSystem::replaceFileStr(
         SOURCE_PATH . '/php-src/sapi/cli/php_cli.c',
@@ -369,6 +396,7 @@ if (patch_point() === 'before-php-buildconf') {
 
 ```bash
 bin/spc build mbstring --build-cli -P a.php
+# Write in ./
 echo 'memory_limit=8G' > ./php.ini
 ```
 
@@ -379,3 +407,27 @@ Loaded Configuration File => /Users/jerry/project/git-project/static-php-cli/php
 $ buildroot/bin/php -i | grep memory
 memory_limit => 8G => 8G
 ```
+
+For the objects, methods and interfaces supported by static-php-cli, you can read the source code. Most methods and objects have corresponding comments.
+
+Commonly used objects and functions using the `-P` function are:
+
+- `SPC\store\FileSystem`: file management class
+    - `::replaceFileStr(string $filename, string $search, $replace)`: Replace file string content
+    - `::replaceFileStr(string $filename, string $pattern, $replace)`: Regularly replace file content
+    - `::replaceFileUser(string $filename, $callback)`: User-defined function replaces file content
+    - `::copyDir(string $from, string $to)`: Recursively copy a directory to another location
+    - `::convertPath(string $path)`: Convert the path delimiter to the current system delimiter
+    - `::scanDirFiles(string $dir, bool $recursive = true, bool|string $relative = false, bool $include_dir = false)`: Traverse directory files
+- `SPC\builder\BuilderBase`: Build object
+    - `->getPatchPoint()`: Get the current injection point name
+    - `->getOption(string $key, $default = null)`: Get command line and compile-time options
+    - `->getPHPVersionID()`: Get the currently compiled PHP version ID
+    - `->getPHPVersion()`: Get the currently compiled PHP version number
+    - `->setOption(string $key, $value)`: Set options
+    - `->setOptionIfNotExists(string $key, $value)`: Set option if option does not exist
+
+::: tip
+static-php-cli has many open methods, which cannot be listed in the docs, 
+but as long as it is a `public function` and is not marked as `@internal`, it theoretically can be called.
+:::
