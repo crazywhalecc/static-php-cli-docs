@@ -21,5 +21,5 @@ When the dependent libraries of this compilation include them, gd will automatic
 
 If you don't know whether an extension has optional features, 
 you can check the [spc configuration file](https://github.com/crazywhalecc/static-php-cli/tree/main/config) 
-or use the command `bin/ spc dev:extensions` (library dependency is `lib-suggests`, extension dependency is `ext-suggests`).
+or use the command `bin/spc dev:extensions` (library dependency is `lib-suggests`, extension dependency is `ext-suggests`).
 :::

@@ -123,7 +123,7 @@ bin/spc download --for-extensions=openssl,swoole,zip,pcntl --without-suggestions
 ```
 
 如果你所在地区的网络不好，或者下载依赖包速度过于缓慢，可以从 GitHub Action 下载每周定时打包的 `download.zip`，并使用命令直接使用 zip 压缩包作为依赖。
-依赖包可以从 [Action](https://github.com/crazywhalecc/static-php-cli/actions/workflows/download-cache.yml) 下载到本地。
+依赖包可以从 [Action](https://github.com/static-php/static-php-cli-hosted/actions/workflows/download-cache.yml) 下载到本地。
 进入 Action 并选择一个最新成功运行的 Workflow，下载 `download-files-x.y` 即可。
 
 ```bash
