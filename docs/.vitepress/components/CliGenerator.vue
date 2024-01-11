@@ -135,8 +135,8 @@ defineProps({
 });
 
 const osList = [
-  { os: 'linux', label: 'Linux' },
-  { os: 'macos', label: 'macOS' },
+  { os: 'linux', label: 'Linux', disabled: false },
+  { os: 'macos', label: 'macOS', disabled: false },
   { os: 'windows', label: 'Windows', disabled: true },
 ];
 
