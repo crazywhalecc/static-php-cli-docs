@@ -99,7 +99,7 @@ git clone https://github.com/php/php-sdk-binary-tools.git
 
 ## 下载源码
 
-见 [本地构建 - download](./manual-build.html#command-download)
+见 [本地构建 - download](./manual-build.html#命令-download-下载依赖包)
 
 ## 编译 PHP
 
