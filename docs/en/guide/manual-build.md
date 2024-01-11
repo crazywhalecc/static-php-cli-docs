@@ -1,9 +1,9 @@
-# Manual Build (Linux, macOS, FreeBSD)
+# Build (Linux, macOS, FreeBSD)
 
-This chapter covers the build process for Linux, macOS, and FreeBSD. If you want to build on Windows, 
+This section covers the build process for Linux, macOS, and FreeBSD. If you want to build on Windows, 
 please go to [Build on Windows](./build-on-windows).
 
-### Manual build (using SPC binary)
+### Build locally (using SPC binary)
 
 This project provides a binary file of static-php-cli.
 You can directly download the binary file of the corresponding platform and then use it to build static PHP.
@@ -17,7 +17,7 @@ Here's how to download from GitHub Actions:
 
 You can also download binaries from a self-hosted server: [enter](https://dl.static-php.dev/static-php-cli/spc-bin/nightly/).
 
-### Manual build (using source code)
+### Build locally (using source code)
 
 Currently, it supports building on macOS and Linux. 
 macOS supports the latest version of the operating system and two architectures, 
