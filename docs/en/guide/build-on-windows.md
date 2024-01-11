@@ -104,7 +104,7 @@ git clone https://github.com/php/php-sdk-binary-tools.git
 
 ## Download required sources
 
-<!--@include: ./manual-build.md{118,170}-->
+Same as [Manual build - Download](./manual-build.html#command-download)
 
 ## Build PHP
 
