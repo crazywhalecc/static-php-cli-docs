@@ -114,18 +114,22 @@ git clone https://github.com/php/php-sdk-binary-tools.git
 
 ```shell
 # 编译 PHP，附带 bcmath,openssl,zlib 扩展，编译目标为 cli
-bin/spc build bcmath,openssl,zlib --build-cli
+bin/spc build "bcmath,openssl,zlib" --build-cli
 
 # 编译 PHP，附带 bcmath,openssl,zlib 扩展，编译目标为 micro 和 cli
-bin/spc build bcmath,openssl,zlib --build-micro --build-cli
+bin/spc build "bcmath,openssl,zlib" --build-micro --build-cli
 ```
+
+::: warning
+在Windows中，最好使用双引号包裹包含逗号的参数，例如 `"bcmath,openssl,mbstring"`
+:::
 
 ### 调试
 
 如果你在编译过程中遇到了问题，或者想查看每个执行的 shell 命令，可以使用 `--debug` 开启 debug 模式，查看所有终端日志：
 
 ```shell
-bin/spc build openssl --build-cli --debug
+bin/spc build "openssl" --build-cli --debug
 ```
 
 ### 编译运行选项
@@ -143,7 +147,7 @@ bin/spc build openssl --build-cli --debug
 有关硬编码 INI 选项，下面是一个简单的例子，我们预设一个更大的 `memory_limit`，并且禁用 `system` 函数：
 
 ```shell
-bin/spc build bcmath,openssl --build-cli -I "memory_limit=4G" -I "disable_functions=system"
+bin/spc build "bcmath,openssl" --build-cli -I "memory_limit=4G" -I "disable_functions=system"
 ```
 
 ## 使用 php.exe

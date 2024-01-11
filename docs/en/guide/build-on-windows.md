@@ -123,11 +123,15 @@ You need to specify targets, choose from the following parameters (at least one)
 
 ```shell
 # Compile PHP with bcmath,openssl,zlib extensions, the compilation target is cli
-bin/spc build bcmath,openssl,zlib --build-cli
+bin/spc build "bcmath,openssl,zlib" --build-cli
 
 # Compile PHP with phar,curl,posix,pcntl,tokenizer extensions, compile target is micro and cli
-bin/spc build bcmath,openssl,zlib --build-micro --build-cli
+bin/spc build "bcmath,openssl,zlib" --build-micro --build-cli
 ```
+
+::: warning
+In Windows, it is best to use double quotes to wrap parameters containing commas, such as `"bcmath,openssl,mbstring"`.
+:::
 
 ### Debug
 
@@ -135,7 +139,7 @@ If you encounter problems during the compilation process, or want to view each e
 you can use `--debug` to enable debug mode and view all terminal logs:
 
 ```shell
-bin/spc build openssl --build-cli --debug
+bin/spc build "openssl" --build-cli --debug
 ```
 
 ### Build Options
@@ -155,7 +159,7 @@ You can try to use the following commands:
 Here is a simple example where we preset a larger `memory_limit` and disable the `system` function:
 
 ```shell
-bin/spc build bcmath,openssl --build-cli -I "memory_limit=4G" -I "disable_functions=system"
+bin/spc build "bcmath,openssl" --build-cli -I "memory_limit=4G" -I "disable_functions=system"
 ```
 
 ## Use php.exe
