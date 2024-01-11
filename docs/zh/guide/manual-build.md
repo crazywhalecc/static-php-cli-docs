@@ -125,7 +125,7 @@ bin/spc download php-src,micro,zstd,ext-zstd
 ```
 
 如果你所在地区的网络不好，或者下载依赖包速度过于缓慢，可以从 GitHub Action 下载每周定时打包的 `download.zip`，并使用命令直接使用 zip 压缩包作为依赖。
-依赖包可以从 [Action](https://github.com/crazywhalecc/static-php-cli/actions/workflows/download-cache.yml) 下载到本地。
+依赖包可以从 [Action](https://github.com/static-php/static-php-cli-hosted/actions/workflows/download-cache.yml) 下载到本地。
 进入 Action 并选择一个最新成功运行的 Workflow，下载 `download-files-x.y` 即可。
 
 ```bash
@@ -198,6 +198,7 @@ bin/spc build mysqlnd,pdo_mysql --build-all --debug
 - `-I xxx=yyy`: 编译前将 INI 选项硬编译到 PHP 内（支持多个选项，别名是 `--with-hardcoded-ini`）
 - `--with-micro-fake-cli`: 在编译 micro 时，让 micro 的 SAPI 伪装为 `cli`（用于兼容一些检查 `PHP_SAPI` 的程序）
 - `--disable-opcache-jit`: 禁用 opcache jit（默认启用）
+- `-P xxx.php`: 在 static-php-cli 编译过程中注入外部脚本（详见下方 **注入外部脚本**）
 
 硬编码 INI 选项适用于 cli、micro、embed。有关硬编码 INI 选项，下面是一个简单的例子，我们预设一个更大的 `memory_limit`，并且禁用 `system` 函数：
 
@@ -298,3 +299,86 @@ bin/spc dev:php-version
 # 排序配置文件 ext.json（也可以排序 lib、source）
 bin/spc dev:sort-config ext
 ```
+
+## 注入外部脚本
+
+注入外部脚本指的是在 static-php-cli 编译过程中插入一个或多个脚本，用于更灵活地支持不同环境下的参数修改、源代码补丁。
+
+一般情况下，该功能主要解决使用 `spc` 二进制进行编译时无法通过修改 static-php-cli 代码来实现修改补丁的功能。
+还有一种情况：你的项目直接依赖了 `crazywhalecc/static-php-cli` 仓库并同步，但因为项目特性需要做出一些专有的修改，而这些特性并不适合合并到主分支。
+
+鉴于以上情况，在 2.0.1 正式版本中，static-php-cli 加入了多个事件的触发点，你可以通过编写外部的 `xx.php` 脚本，并通过命令行参数 `-P` 传入并执行。
+
+在编写注入外部脚本时，你一定会用到的方法是 `builder()` 和 `patch_point()`。其中，`patch_point()` 获取的是当前正在执行的事件名称，`builder()` 获取的是 BuilderBase 对象。
+
+因为传入的注入点不区分事件，所以你必须将你要执行的代码写在 `if(patch_point() === 'your_event_name')` 中，否则会重复在其他事件中执行。
+
+下面是支持的 patch_point 事件名称及对应位置：
+
+| 事件名称                         | 事件描述                                                      |
+|------------------------------|-----------------------------------------------------------|
+| before-libs-extract          | 在编译的依赖库解压前触发                                              |
+| after-libs-extract           | 在编译的依赖库解压后触发                                              |
+| before-php-extract           | 在 PHP 源码解压前触发                                             |
+| after-php-extract            | 在 PHP 源码解压后触发                                             |
+| before-micro-extract         | 在 phpmicro 解压前触发                                          |
+| after-micro-extract          | 在 phpmicro 解压后触发                                          |
+| before-exts-extract          | 在要编译的扩展解压到 PHP 源码目录前触发                                    |
+| after-exts-extract           | 在要编译的扩展解压到 PHP 源码目录后触发                                    |
+| before-library[*name*]-build | 在名称为 `name` 的库编译前触发（如 `before-library[postgresql]-build`） |
+| after-library[*name*]-build  | 在名称为 `name` 的库编译后触发                                       |
+| before-php-buildconf         | 在编译 PHP 命令 `./buildconf` 前触发                              |
+| before-php-configure         | 在编译 PHP 命令 `./configure` 前触发                              |
+| before-php-make              | 在编译 PHP 命令 `make` 前触发                                     |
+| before-sanity-check          | 在编译 PHP 后，运行扩展检查前触发                                       |
+
+下面是一个简单的临时修改 PHP 源码的例子，开启 CLI 下在当前工作目录查找 `php.ini` 配置的功能：
+
+```php
+// a.php
+<?php
+if (patch_point() === 'before-php-buildconf') {
+    // replace php source code
+    \SPC\store\FileSystem::replaceFileStr(
+        SOURCE_PATH . '/php-src/sapi/cli/php_cli.c',
+        'sapi_module->php_ini_ignore_cwd = 1;',
+        'sapi_module->php_ini_ignore_cwd = 0;'
+    );
+}
+```
+
+```bash
+bin/spc build mbstring --build-cli -P a.php
+echo 'memory_limit=8G' > ./php.ini
+```
+
+```
+$ buildroot/bin/php -i | grep Loaded
+Loaded Configuration File => /Users/jerry/project/git-project/static-php-cli/php.ini
+
+$ buildroot/bin/php -i | grep memory
+memory_limit => 8G => 8G
+```
+
+对于 static-php-cli 支持的对象、方法及接口，可以阅读源码，大部分的方法和对象都有相应的注释。
+
+一般使用 `-P` 功能常用的对象及函数有：
+
+- `SPC\store\FileSystem`: 文件管理类
+  - `::replaceFileStr(string $filename, string $search, $replace)`: 替换文件字符串内容
+  - `::replaceFileStr(string $filename, string $pattern, $replace)`: 正则替换文件内容
+  - `::replaceFileUser(string $filename, $callback)`: 用户自定义函数替换文件内容
+  - `::copyDir(string $from, string $to)`: 递归拷贝某个目录到另一个位置
+  - `::convertPath(string $path)`: 转换路径的分隔符为当前系统分隔符
+  - `::scanDirFiles(string $dir, bool $recursive = true, bool|string $relative = false, bool $include_dir = false)`: 遍历目录文件
+- `SPC\builder\BuilderBase`: 构建对象
+  - `->getPatchPoint()`: 获取当前的注入点名称
+  - `->getOption(string $key, $default = null)`: 获取命令行和编译时的选项
+  - `->getPHPVersionID()`: 获取当前编译的 PHP 版本 ID
+  - `->getPHPVersion()`: 获取当前编译的 PHP 版本号
+  - `->setOption(string $key, $value)`: 设定选项
+  - `->setOptionIfNotExists(string $key, $value)`: 如果选项不存在则设定选项
+
+::: tip
+static-php-cli 开放的方法非常多，文档中无法一一列举，但只要是 `public function` 并且不被标注为 `@internal`，均可调用。
+:::

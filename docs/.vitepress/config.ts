@@ -1,10 +1,9 @@
-import {defineConfig} from 'vitepress'
 import sidebarEn from "./sidebar.en";
 import sidebarZh from "./sidebar.zh";
 
 
 // https://vitepress.dev/reference/site-config
-export default defineConfig({
+export default {
   title: "static-php-cli",
   description: "Build single static PHP binary, with PHP project together, with popular extensions included.",
   locales: {
@@ -42,4 +41,4 @@ export default defineConfig({
       {icon: 'github', link: 'https://github.com/crazywhalecc/static-php-cli'}
     ]
   }
-})
+}

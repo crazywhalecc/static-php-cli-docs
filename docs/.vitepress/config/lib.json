@@ -2,14 +2,14 @@
     "brotli": {
         "source": "brotli",
         "static-libs-unix": [
-            "libbrotlidec-static.a",
-            "libbrotlienc-static.a",
-            "libbrotlicommon-static.a"
+            "libbrotlidec.a",
+            "libbrotlienc.a",
+            "libbrotlicommon.a"
         ],
         "static-libs-windows": [
-            "brotlicommon-static.lib",
-            "brotlienc-static.lib",
-            "brotlidec-static.lib"
+            "brotlicommon.lib",
+            "brotlienc.lib",
+            "brotlidec.lib"
         ],
         "headers": [
             "brotli"
@@ -175,6 +175,18 @@
             "libavif.a"
         ]
     },
+    "libcares": {
+        "source": "libcares",
+        "static-libs-unix": [
+            "libcares.a"
+        ],
+        "headers-unix": [
+            "ares.h",
+            "ares_dns.h",
+            "ares_nameser.h",
+            "ares_rules.h"
+        ]
+    },
     "libevent": {
         "source": "libevent",
         "static-libs-unix": [
@@ -315,16 +327,12 @@
             "libxml2"
         ],
         "lib-depends": [
-            "libiconv",
-            "zlib"
+            "libiconv"
         ],
         "lib-suggests": [
             "xz",
-            "icu"
-        ],
-        "lib-suggests-windows": [
             "icu",
-            "xz"
+            "zlib"
         ]
     },
     "libxslt": {
