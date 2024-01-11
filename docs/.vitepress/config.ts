@@ -18,6 +18,10 @@ export default {
           {text: 'FAQ', link: '/en/faq/'},
         ],
         sidebar: sidebarEn,
+        footer: {
+          message: 'Released under the MIT License.',
+          copyright: 'Copyright © 2023-present crazywhalecc'
+        }
       },
     },
     zh: {
@@ -31,6 +35,10 @@ export default {
           {text: 'FAQ', link: '/zh/faq/'},
         ],
         sidebar: sidebarZh,
+        footer: {
+          message: 'Released under the MIT License.',
+          copyright: 'Copyright © 2023-present crazywhalecc'
+        }
       },
     }
   },
