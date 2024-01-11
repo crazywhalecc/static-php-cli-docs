@@ -24,7 +24,7 @@ The following is the architecture support situation, where :gear: represents sup
 |---------|-------------------|-------------------|
 | macOS   | :gear: :computer: | :computer:        |
 | Linux   | :gear: :computer: | :gear: :computer: |
-| Windows |                   |                   |
+| Windows | :gear: :computer: |                   |
 | FreeBSD | :computer:        | :computer:        |
 
 Among them, Linux is currently only tested on Ubuntu, Debian, and Alpine distributions, 
@@ -33,6 +33,8 @@ For untested distributions, local compilation can be done using methods such as 
 
 There are two architectures for macOS: `x86_64` and `Arm`, but binaries compiled on one architecture cannot be directly used on the other architecture.
 Rosetta 2 cannot guarantee that programs compiled with `Arm` architecture can fully run on `x86_64` environment.
+
+Windows currently only supports the x86_64 architecture, and does not support 32-bit x86 or arm64 architecture.
 
 ## Supported PHP Version
 

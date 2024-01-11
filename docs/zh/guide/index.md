@@ -16,7 +16,7 @@ static-php-cli 是一个用于构建静态编译的 PHP 二进制的工具，目
 |---------|-------------------|-------------------|
 | macOS   | :gear: :computer: | :computer:        |
 | Linux   | :gear: :computer: | :gear: :computer: |
-| Windows |                   |                   |
+| Windows | :gear: :computer: |                   |
 | FreeBSD | :computer:        | :computer:        |
 
 其中，Linux 目前仅在 Ubuntu、Debian、Alpine 发行版测试通过，其他发行版未进行测试，不能保证编译成功。
@@ -24,6 +24,8 @@ static-php-cli 是一个用于构建静态编译的 PHP 二进制的工具，目
 
 macOS 下支持 x86_64 和 Arm 两种架构，但在其中一个架构上编译的二进制无法直接在另一个架构上使用。
 Rosetta 2 不能保证 Arm 架构编译的程序可以完全运行在 x86_64 环境下。
+
+Windows 目前只支持 x86_64 架构，不支持 32 位 x86、不支持 arm64 架构。
 
 ## PHP 支持版本
 

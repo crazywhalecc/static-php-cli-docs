@@ -12,9 +12,9 @@ export default {
       ]
     },
     {
-      text: 'Advanced',
       items: [
         {text: 'Troubleshooting', link: '/en/guide/troubleshooting'},
+        {text: 'Build on Windows', link: '/en/guide/build-on-windows'},
       ],
     }
   ],

@@ -12,9 +12,9 @@ export default {
       ]
     },
     {
-      text: '进阶',
       items: [
         {text: '故障排除', link: '/zh/guide/troubleshooting'},
+        {text: '在 Windows 上构建', link: '/zh/guide/build-on-windows'},
       ],
     }
   ],

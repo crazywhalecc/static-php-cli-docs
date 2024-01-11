@@ -3,7 +3,7 @@
     <h2>{{ I18N[lang].selectedSystem }}</h2>
     <div class="option-line">
       <span v-for="(item, index) in osList" :key="index" style="margin-right: 4px">
-        <input type="radio" :id="'os-' + item.os" :value="item.os" v-model="selectedSystem" />
+        <input type="radio" :id="'os-' + item.os" :value="item.os" :disabled="item.disabled === true" v-model="selectedSystem" />
         <label :for="'os-' + item.os">{{ item.label }}</label>
       </span>
     </div>
@@ -135,8 +135,9 @@ defineProps({
 });
 
 const osList = [
-  { os: 'linux', label: 'Linux' },
-  { os: 'macos', label: 'macOS' },
+  { os: 'linux', label: 'Linux', disabled: false },
+  { os: 'macos', label: 'macOS', disabled: false },
+  { os: 'windows', label: 'Windows', disabled: true },
 ];
 
 const availablePhpVersions = [

@@ -1,10 +1,10 @@
 # Extensions
 
-> - yes: supported and tested
-> - untested: supported, but not tested
+> - `yes`: supported and tested
+> - `yes, untested`: supported, but not tested
 > - empty: not supported yet, or WIP
-> - no with issue link: not supported yet due to issue
-> - partial with issue link: supported but not perfect due to issue
+> - `no` with issue link: confirmed to be unavailable due to issue
+> - `partial` with issue link: supported but not perfect due to issue
 
 <!--@include: ../../extensions.md-->
 
