@@ -199,6 +199,7 @@ bin/spc build mysqlnd,pdo_mysql --build-all --debug
 - `--with-micro-fake-cli`: 在编译 micro 时，让 micro 的 SAPI 伪装为 `cli`（用于兼容一些检查 `PHP_SAPI` 的程序）
 - `--disable-opcache-jit`: 禁用 opcache jit（默认启用）
 - `-P xxx.php`: 在 static-php-cli 编译过程中注入外部脚本（详见下方 **注入外部脚本**）
+- `--without-micro-ext-test`: 在构建 micro.sfx 后，禁用测试不同扩展在 micro.sfx 的运行结果
 
 硬编码 INI 选项适用于 cli、micro、embed。有关硬编码 INI 选项，下面是一个简单的例子，我们预设一个更大的 `memory_limit`，并且禁用 `system` 函数：
 

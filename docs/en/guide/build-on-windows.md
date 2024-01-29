@@ -154,7 +154,7 @@ You can try to use the following commands:
 - `-I xxx=yyy`: Hard compile INI options into PHP before compiling (support multiple options, alias is `--with-hardcoded-ini`)
 - `--with-micro-fake-cli`: When compiling micro, let micro's `PHP_SAPI` pretend to be `cli` (for compatibility with some programs that check `PHP_SAPI`)
 - `--disable-opcache-jit`: Disable opcache jit (enabled by default)
-- `--with-micro-ext-test`: After building micro.sfx, test the running results of different extensions in micro.sfx (Windows only)
+- `--without-micro-ext-test`: After building micro.sfx, do not test the running results of different extensions in micro.sfx
 
 Here is a simple example where we preset a larger `memory_limit` and disable the `system` function:
 
