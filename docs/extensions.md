@@ -9,7 +9,7 @@
 | dba                                                        | yes           | yes           | yes           | yes           | 
 | dom                                                        | yes           | yes           |               |               |
 | enchant                                                    |               |               |               |               |
-| event                                                      | yes           | yes           |               |               |
+| [event](./extension-notes#event)                           | yes           | yes           |               |               |
 | exif                                                       | yes           | yes           | yes           | yes           |
 | [ffi](./extension-notes#ffi)                               | no            | yes           |               |               |
 | filter                                                     | yes           | yes           | yes           | yes           |

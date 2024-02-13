@@ -108,3 +108,9 @@ pgsql ssl 连接与 openssl 3.2.0 不兼容。相关链接：
 
 xhprof 扩展包含三部分：`xhprof_extension`、`xhprof_html`、`xhprof_libs`。编译的二进制中只包含 `xhprof_extension`。
 如果需要使用 xhprof，请到 [pecl.php.net/package/xhprof](http://pecl.php.net/package/xhprof) 下载源码，指定 `xhprof_libs` 和 `xhprof_html` 路径来使用。
+
+## event
+
+event 扩展在 macOS 系统下编译后暂无法使用 `openpty` 特性。相关 Issue：
+
+- [static-php-cli#335](https://github.com/crazywhalecc/static-php-cli/issues/335)
