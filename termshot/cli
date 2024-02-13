@@ -1,0 +1,12 @@
+[92m➜[0m [90mphp -v[0m
+/bin/sh: 1: php: not found
+[92m➜[0m [90m./php -v[0m
+PHP 8.2.13 (cli) (built: Jan  7 2024 12:09:11) (NTS)
+Copyright (c) The PHP Group
+Zend Engine v4.2.13, Copyright (c) Zend Technologies
+[92m➜[0m [90mls -lah ./php[0m
+-rwxr-xr-x 1 jerry jerry 11M Jan  9 21:53 ./php
+[92m➜[0m [90mfile ./php[0m
+./php: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), statically linked, stripped
+[92m➜[0m [90mecho '<?php echo "Hello world\n";' > a.php && ./php a.php[0m
+Hello world

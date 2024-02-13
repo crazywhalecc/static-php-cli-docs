@@ -1,0 +1,6 @@
+[92m➜[0m [90mecho '<?php echo "Make php-app more portable!\n";' > app.php[0m
+[92m➜[0m [90mcat ./micro.sfx app.php > my-app && chmod +x my-app[0m
+[92m➜[0m [90m./my-app[0m
+Make php-app more portable!
+[92m➜[0m [90mfile ./my-app[0m
+./my-app: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), statically linked, stripped
