@@ -21,7 +21,6 @@ while also defining the extensions to compile.
 
 If you enable `debug`, all logs will be output at build time, including compiled logs, for troubleshooting.
 
-> Use GitHub Actions to build Linux and macOS that only support x86_64 architecture. 
 > If you need to build in other environments, you can use [manual build](./manual-build).
 
 ## Extensions

@@ -19,7 +19,7 @@ Action 构建指的是直接使用 GitHub Action 进行编译。
 
 如果你选择了 `debug`，则会在构建时输出所有日志，包括编译的日志，以供排查错误。
 
-> 使用 GitHub Actions 构建仅支持 x86_64 架构的 Linux 和 macOS，如果你需要在其他环境构建，可以使用 [手动构建](./manual-build)。
+> 如果你需要在其他环境构建，可以使用 [手动构建](./manual-build)。
 
 ## 扩展选择
 
