@@ -16,7 +16,7 @@
 | fileinfo                                                   | yes           | yes           | yes           | yes           |
 | ftp                                                        | yes           | yes           | yes           | yes           |
 | [gd](./extension-notes#gd)                                 | yes           | yes           |               |               |
-| gettext                                                    |               |               |               |               |
+| gettext                                                    | yes           | yes           |               |               |
 | [glfw](./extension-notes#glfw)                             | no            | yes           | no            |               |
 | gmp                                                        | yes           | yes           |               |               |
 | iconv                                                      | yes           | yes           |               |               |
