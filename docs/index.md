@@ -4,7 +4,7 @@ layout: home
 
 hero:
   name: "static-php-cli"
-  tagline: "Build standalone PHP binary on Linux, macOS, FreeBSD, with PHP project together, with popular extensions included."
+  tagline: "Build standalone PHP binary on Linux, macOS, FreeBSD, Windows, with PHP project together, with popular extensions included."
   actions:
     - theme: brand
       text: Get Started

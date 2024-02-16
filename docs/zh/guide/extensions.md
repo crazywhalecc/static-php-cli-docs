@@ -17,6 +17,9 @@
 你可以在编译时使用 `--with-libs=` 加入这些库，当本次编译的依赖库中包含它们，gd 会自动依赖它们启用这些特性。
 （如：`bin/spc build gd --with-libs=libwebp,freetype --build-cli`）
 
+或者你也可以使用 `--with-suggested-exts` 和 `--with-suggested-libs` 启用这些扩展和库所有可选的依赖。
+（如：`bin/spc build gd --with-suggested-libs --build-cli`）
+
 如果你不知道某个扩展是否有可选特性，可以通过查看 [spc 配置文件](https://github.com/crazywhalecc/static-php-cli/tree/main/config) 
 或使用命令 `bin/spc dev:extensions` 查看（库依赖为 `lib-suggests`，扩展依赖为 `ext-suggests`）。
 :::

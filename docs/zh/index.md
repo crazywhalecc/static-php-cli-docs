@@ -4,7 +4,7 @@ layout: home
 
 hero:
   name: "static-php-cli"
-  tagline: "在 Linux、macOS、FreeBSD 上与 PHP 项目一起构建独立的 PHP 二进制文件，并包含流行的扩展。"
+  tagline: "在 Linux、macOS、FreeBSD、Windows 上与 PHP 项目一起构建独立的 PHP 二进制文件，并包含流行的扩展。"
   actions:
     - theme: brand
       text: 指南

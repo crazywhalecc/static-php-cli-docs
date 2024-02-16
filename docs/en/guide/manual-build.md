@@ -233,6 +233,8 @@ You can try to use the following commands:
 - `--disable-opcache-jit`: Disable opcache jit (enabled by default)
 - `-P xxx.php`: Inject external scripts during static-php-cli compilation (see **Inject external scripts** below for details)
 - `--without-micro-ext-test`: After building micro.sfx, do not test the running results of different extensions in micro.sfx
+- `--with-suggested-exts`: Add `ext-suggests` as dependencies when compiling
+- `--with-suggested-libs`: Add `lib-suggests` as dependencies when compiling
 
 For hardcoding INI options, it works for cli, micro, embed sapi. Here is a simple example where we preset a larger `memory_limit` and disable the `system` function:
 

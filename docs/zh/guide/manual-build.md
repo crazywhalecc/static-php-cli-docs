@@ -200,6 +200,8 @@ bin/spc build mysqlnd,pdo_mysql --build-all --debug
 - `--disable-opcache-jit`: 禁用 opcache jit（默认启用）
 - `-P xxx.php`: 在 static-php-cli 编译过程中注入外部脚本（详见下方 **注入外部脚本**）
 - `--without-micro-ext-test`: 在构建 micro.sfx 后，禁用测试不同扩展在 micro.sfx 的运行结果
+- `--with-suggested-exts`: 编译时将 `ext-suggests` 也作为编译依赖加入
+- `--with-suggested-libs`: 编译时将 `lib-suggests` 也作为编译依赖加入
 
 硬编码 INI 选项适用于 cli、micro、embed。有关硬编码 INI 选项，下面是一个简单的例子，我们预设一个更大的 `memory_limit`，并且禁用 `system` 函数：
 

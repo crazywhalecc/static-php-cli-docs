@@ -19,6 +19,9 @@ You can use `--with-libs=` to add these libraries when compiling.
 When the dependent libraries of this compilation include them, gd will automatically use them to enable these features.
 (For example: `bin/spc build gd --with-libs=libwebp,freetype --build-cli`)
 
+Alternatively you can use `--with-suggested-exts` and `--with-suggested-libs` to enable all optional dependencies of these extensions and libraries.
+(For example: `bin/spc build gd --with-suggested-libs --build-cli`)
+
 If you don't know whether an extension has optional features, 
 you can check the [spc configuration file](https://github.com/crazywhalecc/static-php-cli/tree/main/config) 
 or use the command `bin/spc dev:extensions` (library dependency is `lib-suggests`, extension dependency is `ext-suggests`).
