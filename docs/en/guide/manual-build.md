@@ -92,7 +92,7 @@ export SPC_USE_SUDO=yes
 If you don't want to use Docker and install PHP in the system, 
 you can directly download the php binary cli program compiled by this project itself. The usage process is as follows:
 
-Deploy the environment using the command, the command will download a static php-cli binary from [self-hosted server](https://dl.zhamao.xin/static-php-cli/).
+Deploy the environment using the command, the command will download a static php-cli binary from [self-hosted server](https://dl.static-php.dev/static-php-cli/).
 Next, it will automatically download Composer from [getcomposer](https://getcomposer.org/download/latest-stable/composer.phar) or [Aliyun mirror](https://mirrors.aliyun.com/composer/composer.phar).
 
 ::: tip

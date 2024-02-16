@@ -78,7 +78,7 @@ export SPC_USE_SUDO=yes
 
 如果你不想使用 Docker、在系统内安装 PHP，可以直接下载本项目自身编译好的 php 二进制 cli 程序。使用流程如下：
 
-使用命令部署环境，此脚本会从 [自托管的服务器](https://dl.zhamao.xin/static-php-cli/) 下载一个当前操作系统的 php-cli 包，
+使用命令部署环境，此脚本会从 [自托管的服务器](https://dl.static-php.dev/static-php-cli/) 下载一个当前操作系统的 php-cli 包，
 并从 [getcomposer](https://getcomposer.org/download/latest-stable/composer.phar) 或 [Aliyun（镜像）](https://mirrors.aliyun.com/composer/composer.phar) 下载 Composer。
 
 ::: tip 
