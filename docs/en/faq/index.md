@@ -25,9 +25,9 @@ bin/spc build ffi --build-cli --no-strip
 For the Linux platform, the current compilation result is a purely statically linked binary file, 
 and new extensions cannot be installed using a dynamic link library.
 
-## Can it support Oracle, MSSQL database extension?
+## Can it support Oracle database extension?
 
-Some extensions that rely on closed source libraries, such as `oci8`, `sqlsrv`, `sourceguardian`, etc., 
+Some extensions that rely on closed source libraries, such as `oci8`, `sourceguardian`, etc., 
 they do not provide purely statically compiled dependent library files (`.a`), only dynamic dependent library files (`.so`).
 These extensions cannot be compiled into static-php-cli from source, so this project may never support them. 
 However, in theory, you can access and use such extensions under macOS according to the above questions.
@@ -35,17 +35,12 @@ However, in theory, you can access and use such extensions under macOS according
 If you have a need for such extensions, or most people have needs for these closed-source extensions,
 see the discussion on [standalone-php-cli](https://github.com/crazywhalecc/static-php-cli/discussions/58). Welcome to leave a message.
 
-## Will it support Windows?
+## Does it support Windows?
 
-The project does not currently support Windows, because Windows is a new underlying architecture, not Unix. 
-This project started on Linux, and the refactored version supports macOS.
+The project currently supports Windows, but the number of supported extensions is small. Windows support is not perfect. There are mainly the following problems:
 
-Windows support mainly has the following issues:
-
-1. The compilation process of Windows is different from that of *nix, and the tool chain used is also different. Compiling each dependent library may encounter completely different problems.
-2. PHP officially provides an independent installation package of the Windows version. Although it is not statically linked, you can easily package the entire PHP and dependent libraries in one folder, so Windows support is not a core requirement.
-3. Windows supports WSL(2) environment. For developers, we recommend you to use WSL to develop PHP-related programs.
-4. The demand for the Windows version will also be advanced according to the needs of all people who use this project. If there are many people who need it, I will support it as soon as possible.
+1. The compilation process of Windows is different from that of *nix, and the toolchain used is also different. The compilation tools used to compile the dependent libraries of each extension are almost completely different.
+2. The demand for the Windows version will also be advanced based on the needs of all people who use this project. If many people need it, I will support related extensions as soon as possible.
 
 ## Can I protect my source code with micro?
 

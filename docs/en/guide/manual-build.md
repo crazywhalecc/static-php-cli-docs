@@ -344,6 +344,27 @@ bin/spc dev:php-version
 bin/spc dev:sort-config ext
 ```
 
+## Command - install-pkg
+
+Use the command `bin/spc install-pkg` to download some precompiled or closed source tools and install them into the `pkgroot` directory.
+
+When `bin/spc doctor` automatically repairs the Windows environment, tools such as nasm and perl will be downloaded, and the installation process of `install-pkg` will also be used.
+
+Here is an example of installing the tool:
+
+- Download and install UPX (Linux only): `bin/spc install-pkg upx`
+
+## Command - del-download
+
+In some cases, you need to delete single or multiple specified download source files and re-download them, such as switching PHP versions. 
+The `bin/spc del-download` command is provided after the `2.1.0-beta.4` version. Specified source files can be deleted.
+
+Deletes downloaded source files containing precompiled packages and source code named as keys in `source.json` or `pkg.json`. Here are some examples:
+
+- Delete the old PHP source code and switch to download the 8.3 version: `bin/spc del-download php-src && bin/spc download php-src --with-php=8.3`
+- Delete the download file of redis extension: `bin/spc del-download redis`
+- Delete the downloaded musl-toolchain x86_64: `bin/spc del-download musl-toolchain-x86_64-linux`
+
 ## Inject External Script
 
 Injecting external scripts refers to inserting one or more scripts during the static-php-cli compilation process

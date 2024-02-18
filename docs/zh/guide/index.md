@@ -14,7 +14,7 @@ static-php-cli 是一个用于构建静态编译的 PHP 二进制的工具，目
 
 |         | x86_64            | aarch64           |
 |---------|-------------------|-------------------|
-| macOS   | :gear: :computer: | :computer:        |
+| macOS   | :gear: :computer: | :gear: :computer: |
 | Linux   | :gear: :computer: | :gear: :computer: |
 | Windows | :computer:        |                   |
 | FreeBSD | :computer:        | :computer:        |

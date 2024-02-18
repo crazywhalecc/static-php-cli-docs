@@ -20,7 +20,7 @@ The following is the architecture support situation, where :gear: represents sup
 
 |         | x86_64            | aarch64           |
 |---------|-------------------|-------------------|
-| macOS   | :gear: :computer: | :computer:        |
+| macOS   | :gear: :computer: | :gear: :computer: |
 | Linux   | :gear: :computer: | :gear: :computer: |
 | Windows | :computer:        |                   |
 | FreeBSD | :computer:        | :computer:        |

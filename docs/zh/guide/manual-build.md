@@ -303,6 +303,26 @@ bin/spc dev:php-version
 bin/spc dev:sort-config ext
 ```
 
+## 命令 install-pkg - 下载二进制包
+
+使用命令 `bin/spc install-pkg` 可以下载一些预编译或闭源的工具，并将其安装到 `pkgroot` 目录中。
+
+在 `bin/spc doctor` 自动修复 Windows 环境时会下载 nasm、perl 等工具，使用的也是 `install-pkg` 的安装过程。
+
+下面是安装工具的示例：
+
+- 下载安装 UPX（仅限 Linux）: `bin/spc install-pkg upx`
+
+## 命令 del-download - 删除已下载的资源
+
+一些情况下，你需要删除单个或多个指定的下载源文件，并重新下载他们，例如切换 PHP 版本，`2.1.0-beta.4` 版本后提供了 `bin/spc del-download` 命令，可以删除指定源文件。
+
+删除已下载的源文件包含预编译的包以及源代码，名称是 `source.json` 或 `pkg.json` 中的键名。下面是一些例子：
+
+- 删除 PHP 8.2 源码并切换下载为 8.3 版本: `bin/spc del-download php-src && bin/spc download php-src --with-php=8.3`
+- 删除 redis 扩展的下载文件: `bin/spc del-download redis`
+- 删除下载好的 musl-toolchain x86_64: `bin/spc del-download musl-toolchain-x86_64-linux`
+
 ## 注入外部脚本
 
 注入外部脚本指的是在 static-php-cli 编译过程中插入一个或多个脚本，用于更灵活地支持不同环境下的参数修改、源代码补丁。
