@@ -1,6 +1,6 @@
 # 项目结构简介
 
-static-php-cli 主要包含三种逻辑组件：资源、依赖库、扩展。这三种组件也对应了三个配置文件：`source.json`、`lib.json`、`ext.json`。
+static-php-cli 主要包含三种逻辑组件：资源、依赖库、扩展。这三种组件四个配置文件：`source.json`、`lib.json`、`ext.json`、`pkg.json`。
 
 一个完整的构建静态 PHP 流程是：
 
@@ -14,7 +14,7 @@ static-php-cli 主要包含三种逻辑组件：资源、依赖库、扩展。�
 项目主要分为几个文件夹：
 
 - `bin/`: 用于存放程序入口文件，包含 `bin/spc`、`bin/spc-alpine-docker`、`bin/setup-runtime`。
-- `config/`: 包含了所有项目支持的扩展、依赖库以及这些资源下载的地址、下载方式等，分为三个文件：`lib.json`、`ext.json`、`source.json`。
+- `config/`: 包含了所有项目支持的扩展、依赖库以及这些资源下载的地址、下载方式等，分为四个文件：`lib.json`、`ext.json`、`source.json`、`pkg.json`。
 - `src/SPC/`: 项目的核心代码，包含了整个框架以及编译各种扩展和库的命令。
 - `src/globals/`: 项目的全局方法和常量、运行时需要的测试文件（例如：扩展的可用性检查代码）。
 - `vendor/`: Composer 依赖的目录，你无需对它做出任何修改。

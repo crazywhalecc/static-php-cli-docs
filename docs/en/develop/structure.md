@@ -1,7 +1,7 @@
 # Introduction to project structure
 
 static-php-cli mainly contains three logical components: sources, dependent libraries, and extensions.
-These three components also correspond to three configuration files: `source.json`, `lib.json`, and `ext.json`.
+These components contains 4 configuration files: `source.json`, `pkg.json`, `lib.json`, and `ext.json`.
 
 A complete process for building standalone static PHP is:
 
@@ -19,7 +19,7 @@ The project is mainly divided into several folders:
 
 - `bin/`: used to store program entry files, including `bin/spc`, `bin/spc-alpine-docker`, `bin/setup-runtime`.
 - `config/`: Contains all the extensions and dependent libraries supported by the project, 
-    as well as the download link and download methods of these sources. It is divided into three files: `lib.json`, `ext.json`, `source.json` .
+    as well as the download link and download methods of these sources. It is divided into files: `lib.json`, `ext.json`, `source.json`, `pkg.json` .
 - `src/`: The core code of the project, including the entire framework and commands for compiling various extensions and libraries.
 - `vendor/`: The directory that Composer depends on, you do not need to make any modifications to it.
 
