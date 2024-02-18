@@ -1,0 +1,1 @@
+import{_ as e,c as o,o as i,U as t}from"./chunks/framework.GQ61FypF.js";const y=JSON.parse('{"title":"FAQ","description":"","frontmatter":{},"headers":[],"relativePath":"en/faq/index.md","filePath":"en/faq/index.md"}'),a={name:"en/faq/index.md"},n=t("",19),s=[n];function l(r,c,p,d,h,m){return i(),o("div",null,s)}const f=e(a,[["render",l]]);export{y as __pageData,f as default};
