@@ -235,6 +235,7 @@ You can try to use the following commands:
 - `--without-micro-ext-test`: After building micro.sfx, do not test the running results of different extensions in micro.sfx
 - `--with-suggested-exts`: Add `ext-suggests` as dependencies when compiling
 - `--with-suggested-libs`: Add `lib-suggests` as dependencies when compiling
+- `--with-upx-pack`: Use UPX to reduce the size of the binary file after compilation (you need to use `bin/spc install-pkg upx` to install upx first)
 
 For hardcoding INI options, it works for cli, micro, embed sapi. Here is a simple example where we preset a larger `memory_limit` and disable the `system` function:
 
@@ -352,7 +353,7 @@ When `bin/spc doctor` automatically repairs the Windows environment, tools such 
 
 Here is an example of installing the tool:
 
-- Download and install UPX (Linux only): `bin/spc install-pkg upx`
+- Download and install UPX (Linux and Windows only): `bin/spc install-pkg upx`
 
 ## Command - del-download
 

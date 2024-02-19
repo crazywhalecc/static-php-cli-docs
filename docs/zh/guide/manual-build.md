@@ -202,6 +202,7 @@ bin/spc build mysqlnd,pdo_mysql --build-all --debug
 - `--without-micro-ext-test`: 在构建 micro.sfx 后，禁用测试不同扩展在 micro.sfx 的运行结果
 - `--with-suggested-exts`: 编译时将 `ext-suggests` 也作为编译依赖加入
 - `--with-suggested-libs`: 编译时将 `lib-suggests` 也作为编译依赖加入
+- `--with-upx-pack`: 编译后使用 UPX 减小二进制文件体积（需先使用 `bin/spc install-pkg upx` 安装 upx）
 
 硬编码 INI 选项适用于 cli、micro、embed。有关硬编码 INI 选项，下面是一个简单的例子，我们预设一个更大的 `memory_limit`，并且禁用 `system` 函数：
 
@@ -311,7 +312,7 @@ bin/spc dev:sort-config ext
 
 下面是安装工具的示例：
 
-- 下载安装 UPX（仅限 Linux）: `bin/spc install-pkg upx`
+- 下载安装 UPX（仅限 Linux 和 Windows）: `bin/spc install-pkg upx`
 
 ## 命令 del-download - 删除已下载的资源
 
