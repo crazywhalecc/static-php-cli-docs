@@ -155,6 +155,10 @@ You can try to use the following commands:
 - `--with-micro-fake-cli`: When compiling micro, let micro's `PHP_SAPI` pretend to be `cli` (for compatibility with some programs that check `PHP_SAPI`)
 - `--disable-opcache-jit`: Disable opcache jit (enabled by default)
 - `--without-micro-ext-test`: After building micro.sfx, do not test the running results of different extensions in micro.sfx
+- `--with-suggested-exts`: Add `ext-suggests` as dependencies when compiling
+- `--with-suggested-libs`: Add `lib-suggests` as dependencies when compiling
+- `--with-upx-pack`: Use UPX to reduce the size of the binary file after compilation (you need to use `bin/spc install-pkg upx` to install upx first)
+
 
 Here is a simple example where we preset a larger `memory_limit` and disable the `system` function:
 
