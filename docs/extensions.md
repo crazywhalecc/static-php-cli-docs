@@ -5,7 +5,7 @@
 | bz2                                                        | yes           | yes           | yes           |               |
 | calendar                                                   | yes           | yes           | yes           | yes           |
 | ctype                                                      | yes           | yes           | yes           | yes           |
-| curl                                                       | yes           | yes           | yes           |               |
+| curl                                                       | yes           | yes           | yes           | yes           |
 | dba                                                        | yes           | yes           | yes           | yes           | 
 | dom                                                        | yes           | yes           |               |               |
 | enchant                                                    |               |               |               |               |
@@ -61,7 +61,7 @@
 | sodium                                                     | yes           | yes           |               |               |
 | sqlite3                                                    | yes           | yes           |               |               |
 | sqlsrv                                                     | yes, untested | yes, untested |               |               |
-| ssh2                                                       | yes           | yes           |               |               |
+| ssh2                                                       | yes           | yes           |               | yes           |
 | [swow](./extension-notes#swow)                             | yes           | yes           |               |               |
 | [swoole](./extension-notes#swoole)                         | yes           | yes           |               |               |
 | [swoole-hook-pgsql](./extension-notes#swoole-hook-pgsql)   | yes           | partial       |               |               |
