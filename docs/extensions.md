@@ -27,7 +27,7 @@
 | intl                                                       | yes           | yes           |               |               |
 | ldap                                                       | yes           | yes           |               |               |
 | mbstring                                                   | yes           | yes           | yes           | yes           |
-| mbregex                                                    | yes           | yes           | yes           |               |
+| mbregex                                                    | yes           | yes           | yes           | yes           |
 | [mcrypt](./extension-notes#mcrypt)                         | no            | no            | no            |               |
 | memcache                                                   | yes, untested | yes, untested |               |               |
 | memcached                                                  | no            | yes, untested |               |               |
@@ -41,7 +41,7 @@
 | pcntl                                                      | yes           | yes           | yes           | no            |
 | pdo                                                        | yes           | yes           | yes           | yes           |
 | pdo_mysql                                                  | yes           | yes           | yes           | yes           |
-| pdo_sqlite                                                 | yes           | yes           |               |               |
+| pdo_sqlite                                                 | yes           | yes           |               | yes           |
 | pdo_pgsql                                                  | yes           | yes           |               |               |
 | [pgsql](./extension-notes#pgsql)                           | partial       | partial       |               |               |
 | phar                                                       | yes           | yes           | yes           | yes           |
@@ -59,7 +59,7 @@
 | soap                                                       | yes           | yes           |               | yes           |
 | sockets                                                    | yes           | yes           | yes           | yes           |
 | sodium                                                     | yes           | yes           |               |               |
-| sqlite3                                                    | yes           | yes           |               |               |
+| sqlite3                                                    | yes           | yes           |               | yes           |
 | sqlsrv                                                     | yes, untested | yes, untested |               |               |
 | ssh2                                                       | yes           | yes           |               | yes           |
 | [swow](./extension-notes#swow)                             | yes           | yes           |               |               |
