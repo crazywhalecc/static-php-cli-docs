@@ -24,6 +24,10 @@
         "arg-type": "with",
         "lib-depends": [
             "curl"
+        ],
+        "ext-depends-windows": [
+            "zlib",
+            "openssl"
         ]
     },
     "dba": {
@@ -119,8 +123,12 @@
     "iconv": {
         "type": "builtin",
         "arg-type": "with-prefix",
-        "lib-depends": [
+        "arg-type-windows": "with",
+        "lib-depends-unix": [
             "libiconv"
+        ],
+        "lib-depends-windows": [
+            "libiconv-win"
         ]
     },
     "igbinary": {
@@ -347,9 +355,11 @@
     "simplexml": {
         "type": "builtin",
         "arg-type": "custom",
-        "arg-type-windows": "with",
         "lib-depends": [
             "libxml2"
+        ],
+        "ext-depends-windows": [
+            "xml"
         ]
     },
     "snappy": {
@@ -369,6 +379,9 @@
         "arg-type": "custom",
         "lib-depends": [
             "libxml2"
+        ],
+        "ext-depends-windows": [
+            "xml"
         ]
     },
     "sockets": {
@@ -384,6 +397,7 @@
     "sqlite3": {
         "type": "builtin",
         "arg-type": "with-prefix",
+        "arg-type-windows": "with",
         "lib-depends": [
             "sqlite"
         ]
@@ -403,8 +417,13 @@
         "type": "external",
         "source": "ext-ssh2",
         "arg-type": "with-prefix",
+        "arg-type-windows": "with",
         "lib-depends": [
             "libssh2"
+        ],
+        "ext-depends-windows": [
+            "openssl",
+            "zlib"
         ]
     },
     "swoole": {
@@ -479,8 +498,7 @@
         "unix-only": true
     },
     "sysvshm": {
-        "type": "builtin",
-        "unix-only": true
+        "type": "builtin"
     },
     "tidy": {
         "type": "builtin",
@@ -525,6 +543,9 @@
         "arg-type-windows": "with",
         "lib-depends": [
             "libxml2"
+        ],
+        "ext-depends-windows": [
+            "iconv"
         ]
     },
     "xmlreader": {
@@ -532,6 +553,10 @@
         "arg-type": "custom",
         "lib-depends": [
             "libxml2"
+        ],
+        "ext-depends-windows": [
+            "xml",
+            "dom"
         ]
     },
     "xmlwriter": {
@@ -539,6 +564,9 @@
         "arg-type": "custom",
         "lib-depends": [
             "libxml2"
+        ],
+        "ext-depends-windows": [
+            "xml"
         ]
     },
     "xsl": {
