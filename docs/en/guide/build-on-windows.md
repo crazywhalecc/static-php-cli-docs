@@ -90,10 +90,10 @@ git clone https://github.com/php/php-sdk-binary-tools.git
 > If you don't need to compile the openssl extension, you don't need to install perl.
 
 1. Download the latest version of strawberry-perl from [GitHub](https://github.com/StrawberryPerl/Perl-Dist-Strawberry/releases/).
-2. Install to the `C:\spc-build\static-php-cli\buildroot\perl\` directory.
+2. Install to the `C:\spc-build\static-php-cli\pkgroot\perl\` directory.
 
 > You can download the `-portable` version and extract it directly to the above directory.
-> The last `perl.exe` should be located at `C:\spc-build\static-php-cli\buildroot\perl\perl\bin\perl.exe`.
+> The last `perl.exe` should be located at `C:\spc-build\static-php-cli\pkgroot\perl\perl\bin\perl.exe`.
 
 ### Install nasm (manual)
 
@@ -159,7 +159,6 @@ You can try to use the following commands:
 - `--with-suggested-libs`: Add `lib-suggests` as dependencies when compiling
 - `--with-upx-pack`: Use UPX to reduce the size of the binary file after compilation (you need to use `bin/spc install-pkg upx` to install upx first)
 
-
 Here is a simple example where we preset a larger `memory_limit` and disable the `system` function:
 
 ```shell
@@ -201,5 +200,3 @@ You can use [box-project/box](https://github.com/box-project/box) to package you
 It is then combined with phpmicro to produce a standalone executable binary.
 
 For more details on the `micro:combine` command, refer to [command](./manual-build) on Unix systems.
-
-

@@ -84,10 +84,10 @@ git clone https://github.com/php/php-sdk-binary-tools.git
 > 如果你不需要编译 openssl 扩展，可不安装 perl。
 
 1. 从 [GitHub](https://github.com/StrawberryPerl/Perl-Dist-Strawberry/releases/) 下载 strawberry-perl 最新版。
-2. 安装到 `C:\spc-build\static-php-cli\buildroot\perl\` 目录。
+2. 安装到 `C:\spc-build\static-php-cli\pkgroot\perl\` 目录。
 
 > 你可以下载 `-portable` 版本，并直接解压到上述目录。
-> 最后的 `perl.exe` 应该位于 `C:\spc-build\static-php-cli\buildroot\perl\perl\bin\perl.exe`。
+> 最后的 `perl.exe` 应该位于 `C:\spc-build\static-php-cli\pkgroot\perl\perl\bin\perl.exe`。
 
 ### 手动安装 nasm
 
