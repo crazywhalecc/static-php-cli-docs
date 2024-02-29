@@ -110,8 +110,10 @@ pgsql ssl connection is not compatible with openssl 3.2.0. See:
 
 ## ffi
 
-1. Due to limitations of the Linux system, although the ffi extension can be compiled successfully, it cannot be used to load other `so` extensions.
-2. The prerequisite for supporting loading of so extension is non-static compilation, but dynamic linking conflicts with the purpose of this project.
+1. Linux not supported yet: Due to limitations of the Linux system, although the ffi extension can be compiled successfully, it cannot be used to load other `so` extensions. 
+   The prerequisite for Linux to support loading `so` extensions is dynamic compilation, but dynamic compilation conflicts with the purpose of this project.
+2. macOS supports the ffi extension, but errors will occur when some kernels do not contain debugging symbols.
+3. Windows x64 supports the ffi extension.
 
 ## xhprof
 

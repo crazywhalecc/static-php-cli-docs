@@ -11,7 +11,7 @@
 | enchant                                                    |               |               |               |               |
 | [event](./extension-notes#event)                           | yes           | yes           |               |               |
 | exif                                                       | yes           | yes           | yes           | yes           |
-| [ffi](./extension-notes#ffi)                               | no            | yes           |               |               |
+| [ffi](./extension-notes#ffi)                               | no            | yes           |               | yes           |
 | filter                                                     | yes           | yes           | yes           | yes           |
 | fileinfo                                                   | yes           | yes           | yes           | yes           |
 | ftp                                                        | yes           | yes           | yes           | yes           |

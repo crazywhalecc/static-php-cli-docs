@@ -158,11 +158,21 @@ You can try to use the following commands:
 - `--with-suggested-exts`: Add `ext-suggests` as dependencies when compiling
 - `--with-suggested-libs`: Add `lib-suggests` as dependencies when compiling
 - `--with-upx-pack`: Use UPX to reduce the size of the binary file after compilation (you need to use `bin/spc install-pkg upx` to install upx first)
+- `--with-micro-logo=XXX.ico`: Customize the icon of the `exe` executable file after customizing the micro build (in the format of `.ico`)
 
 Here is a simple example where we preset a larger `memory_limit` and disable the `system` function:
 
 ```shell
 bin/spc build "bcmath,openssl" --build-cli -I "memory_limit=4G" -I "disable_functions=system"
+```
+
+Another example: Customize our hello-world.exe program logo:
+
+```shell
+bin/spc build "ffi,bcmath" --build-micro --with-micro-logo=mylogo.ico --debug
+bin/spc micro:combine hello.php
+# Then we got `my-app.exe` with custom logo!
+my-app.exe
 ```
 
 ## Use php.exe

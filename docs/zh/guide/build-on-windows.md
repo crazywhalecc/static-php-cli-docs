@@ -146,11 +146,21 @@ bin/spc build "openssl" --build-cli --debug
 - `--with-suggested-exts`: 编译时将 `ext-suggests` 也作为编译依赖加入
 - `--with-suggested-libs`: 编译时将 `lib-suggests` 也作为编译依赖加入
 - `--with-upx-pack`: 编译后使用 UPX 减小二进制文件体积（需先使用 `bin/spc install-pkg upx` 安装 upx）
+- `--with-micro-logo=XXX.ico`: 自定义 micro 构建组合后的 `exe` 可执行文件的图标（格式为 `.ico`）
 
 有关硬编码 INI 选项，下面是一个简单的例子，我们预设一个更大的 `memory_limit`，并且禁用 `system` 函数：
 
 ```shell
 bin/spc build "bcmath,openssl" --build-cli -I "memory_limit=4G" -I "disable_functions=system"
+```
+
+另一个例子：自定义 micro 构建后的 `exe` 程序图标：
+
+```shell
+bin/spc build "ffi,bcmath" --build-micro --with-micro-logo=mylogo.ico --debug
+bin/spc micro:combine hello.php
+# Then we got `my-app.exe` with custom logo!
+my-app.exe
 ```
 
 ## 使用 php.exe
