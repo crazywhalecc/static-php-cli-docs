@@ -72,6 +72,7 @@
 | sysvshm                                                    | yes           | yes           |               | yes           |
 | tidy                                                       | yes           | yes           |               |               |
 | tokenizer                                                  | yes           | yes           | yes           | yes           |
+| uuid                                                       | yes, untested | yes, untested |               |               |
 | uv                                                         | yes, untested | yes, untested |               |               |
 | [xdebug](./extension-notes#xdebug)                         | no            | no            | no            |               |
 | [xhprof](./extension-notes#xhprof)                         | yes           | yes           |               |               |
