@@ -122,7 +122,7 @@ Only `xhprof_extension` is included in the compiled binary.
 If you need to use xhprof,
 please download the source code from [pecl.php.net/package/xhprof](http://pecl.php.net/package/xhprof) and specify the `xhprof_libs` and `xhprof_html` paths for use.
 
-# event
+## event
 
 If you enable event extension on macOS, the `openpty` will be disabled due to issue:
 
