@@ -1,4 +1,15 @@
 {
+    "amqp": {
+        "type": "external",
+        "arg-type": "custom",
+        "source": "amqp",
+        "lib-depends": [
+            "librabbitmq"
+        ],
+        "ext-depends-windows": [
+            "openssl"
+        ]
+    },
     "apcu": {
         "type": "external",
         "source": "apcu"
@@ -512,6 +523,14 @@
     },
     "tokenizer": {
         "type": "builtin"
+    },
+    "uuid": {
+        "type": "external",
+        "source": "ext-uuid",
+        "arg-type": "with-prefix",
+        "lib-depends": [
+            "libuuid"
+        ]
     },
     "uv": {
         "type": "external",
