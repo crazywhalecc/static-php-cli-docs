@@ -1,5 +1,6 @@
 |                                                            | Linux         | macOS         | FreeBSD       | Windows       |
 |------------------------------------------------------------|---------------|---------------|---------------|---------------|
+| amqp                                                       | yes, untested | yes, untested |               | yes, untested |
 | apcu                                                       | yes, untested | yes, untested | yes, untested | yes, untested |
 | bcmath                                                     | yes           | yes           | yes           | yes           |
 | bz2                                                        | yes           | yes           | yes           |               |
