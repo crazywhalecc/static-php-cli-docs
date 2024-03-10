@@ -43,6 +43,7 @@
 | pdo                                                        | yes           | yes           | yes           | yes           |
 | pdo_mysql                                                  | yes           | yes           | yes           | yes           |
 | pdo_sqlite                                                 | yes           | yes           |               | yes           |
+| pdo_sqlsrv                                                 | yes, untested | yes, untested |               |               |
 | pdo_pgsql                                                  | yes           | yes           |               |               |
 | [pgsql](./extension-notes#pgsql)                           | partial       | partial       |               |               |
 | phar                                                       | yes           | yes           | yes           | yes           |
