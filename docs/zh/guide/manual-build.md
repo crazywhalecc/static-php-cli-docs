@@ -108,6 +108,15 @@ bin/spc download --for-extensions=openssl,swoole,zip,pcntl,zstd
 # 仅下载要编译的扩展及依赖库（使用扩展名，不包含可选库）
 bin/spc download --for-extensions=openssl,swoole,zip,pcntl --without-suggestions
 
+# 仅下载要编译的库（包括其依赖，使用库名，包含可选库，可以和 --for-extensions 组合使用）
+bin/spc download --for-libs=liblz4,libevent --for-extensions=pcntl,rar,xml
+
+# 仅下载要编译的库（包括其依赖，使用库名，不包含可选库）
+bin/spc download --for-libs=liblz4,libevent --without-suggestions
+
+# 下载资源时，忽略部分资源的缓存，强制下载（如切换 PHP 版本）
+bin/spc download --for-extensions=curl,pcntl,xml --ignore-cache-sources=php-src --with-php=8.3
+
 # 下载所有依赖包
 bin/spc download --all
 
