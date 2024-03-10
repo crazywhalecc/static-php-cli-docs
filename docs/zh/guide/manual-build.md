@@ -131,6 +131,9 @@ bin/spc download --clean
 
 # 仅下载指定的资源（使用资源名）
 bin/spc download php-src,micro,zstd,ext-zstd
+
+# 设置重试次数
+bin/spc download --all --retry=2
 ```
 
 如果你所在地区的网络不好，或者下载依赖包速度过于缓慢，可以从 GitHub Action 下载每周定时打包的 `download.zip`，并使用命令直接使用 zip 压缩包作为依赖。

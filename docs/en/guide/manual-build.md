@@ -148,6 +148,9 @@ bin/spc download --for-libs=liblz4,libevent --without-suggestions
 
 # When downloading sources, ignore some source caches (always force download, e.g. switching PHP version)
 bin/spc download --for-extensions=curl,pcntl,xml --ignore-cache-sources=php-src --with-php=8.3
+
+# Set retry times (default is 0)
+bin/spc download --all --retry=2
 ```
 
 If the network in your area is not good, or the speed of downloading the dependency package is too slow, 
