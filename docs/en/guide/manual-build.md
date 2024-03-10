@@ -219,6 +219,17 @@ bin/spc build bcmath,curl,openssl,ftp,posix,pcntl --build-cli
 bin/spc build phar,curl,posix,pcntl,tokenizer --build-micro
 ```
 
+::: tip
+If you need to repeatedly build and debug, you can delete the `buildroot/` and `source/` directories so that you can re-extract and build all you need from the downloaded source code package:
+
+```shell
+# remove
+rm -rf buildroot source
+# build again
+bin/spc build bcmath,curl,openssl,ftp,posix,pcntl --build-cli
+```
+:::
+
 ### Debug
 
 If you encounter problems during the compilation process, or want to view each executing shell command, 

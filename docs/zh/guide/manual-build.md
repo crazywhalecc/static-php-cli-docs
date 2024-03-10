@@ -189,6 +189,17 @@ bin/spc build bcmath,curl,openssl,ftp,posix,pcntl --build-cli
 bin/spc build phar,curl,posix,pcntl,tokenizer --build-micro
 ```
 
+::: tip
+如果你需要重复构建、调试，你可以删除 `buildroot/` 和 `source/` 两个目录，这样你可以从已下载的源码压缩包重新解压并构建：
+
+```shell
+# remove
+rm -rf buildroot source
+# build again
+bin/spc build bcmath,curl,openssl,ftp,posix,pcntl --build-cli
+```
+:::
+
 ### 调试
 
 如果你在编译过程中遇到了问题，或者想查看每个执行的 shell 命令，可以使用 `--debug` 开启 debug 模式，查看所有终端日志：
