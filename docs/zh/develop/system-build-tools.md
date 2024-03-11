@@ -99,24 +99,29 @@ endif
 COMMON_CONFIG += CFLAGS="${FLAG}" CXXFLAGS="${FLAG}" LDFLAGS="${STAT}"
 
 BINUTILS_CONFIG += --enable-gold=yes --enable-gprofng=no
-GCC_CONFIG += --enable-static-pie --disable-cet
+GCC_CONFIG += --enable-static-pie --disable-cet --enable-default-pie  
 #--enable-default-pie
 
 CONFIG_SUB_REV = 888c8e3d5f7b
-GCC_VER = 11.4.0
+GCC_VER = 13.2.0
 BINUTILS_VER = 2.40
 MUSL_VER = 1.2.4
 GMP_VER = 6.2.1
 MPC_VER = 1.2.1
 MPFR_VER = 4.2.0
-
 LINUX_VER = 6.1.36
+```
+
+同时，你需要新建一个 `gcc-13.2.0.tar.xz.sha1` 文件，文件内容如下：
+
+```
+5f95b6d042fb37d45c6cbebfc91decfbc4fb493c  gcc-13.2.0.tar.xz
 ```
 
 如果你使用的是 Docker 构建，新建一个 `Dockerfile` 文件，写入以下内容：
 
 ```dockerfile
-FROM alpine:3.18.4
+FROM alpine:edge
 
 RUN apk add --no-cache \
 gcc g++ git make curl perl \
@@ -134,9 +139,10 @@ WORKDIR /opt
 RUN git clone https://git.zv.io/toolchains/musl-cross-make.git
 WORKDIR /opt/musl-cross-make
 COPY config.mak /opt/musl-cross-make
+COPY gcc-13.2.0.tar.xz.sha1 /opt/musl-cross-make/hashes
 
 RUN make TARGET=x86_64-linux-musl -j || :
-RUN sed -i 's/poison calloc/poison/g' ./gcc-11.4.0/gcc/system.h
+RUN sed -i 's/poison calloc/poison/g' ./gcc-13.2.0/gcc/system.h
 RUN make TARGET=x86_64-linux-musl -j
 RUN make TARGET=x86_64-linux-musl install -j
 RUN tar cvzf x86_64-musl-toolchain.tgz output/*
@@ -159,9 +165,10 @@ ccache libarchive-tools zip
 git clone https://git.zv.io/toolchains/musl-cross-make.git
 # 将 config.mak 拷贝到 musl-cross-make 的工作目录内，你需要将 /path/to/config.mak 替换为你的 config.mak 文件路径
 cp /path/to/config.mak musl-cross-make/
+cp /path/to/gcc-13.2.0.tar.xz.sha1 musl-cross-make/hashes
 
 make TARGET=x86_64-linux-musl -j || :
-sed -i 's/poison calloc/poison/g' ./gcc-11.4.0/gcc/system.h
+sed -i 's/poison calloc/poison/g' ./gcc-13.2.0/gcc/system.h
 make TARGET=x86_64-linux-musl -j
 make TARGET=x86_64-linux-musl install -j
 tar cvzf x86_64-musl-toolchain.tgz output/*
