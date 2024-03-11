@@ -14,6 +14,7 @@ which will be listed one by one here.
 2. swoole Currently, curl hooks are not supported for PHP 8.0.x (which may be fixed in the future).
 3. When compiling, if only `swoole` extension is included, the supported Swoole database coroutine hook will not be fully enabled. 
    If you need to use it, please add the corresponding `swoole-hook-xxx` extension.
+4. The `zend_mm_heap corrupted` problem may occur in swoole under some extension combinations. The cause has not yet been found.
 
 ## swoole-hook-pgsql
 
@@ -97,11 +98,13 @@ The compiled `./php` binary can be configured and run by specifying the INI, eg 
 
 ## pgsql
 
-pgsql ssl connection is not compatible with openssl 3.2.0. See:
+~~pgsql ssl connection is not compatible with openssl 3.2.0. See:~~
 
-- https://github.com/Homebrew/homebrew-core/issues/155651
-- https://github.com/Homebrew/homebrew-core/pull/155699
-- https://github.com/postgres/postgres/commit/c82207a548db47623a2bfa2447babdaa630302b9
+- ~~https://github.com/Homebrew/homebrew-core/issues/155651~~
+- ~~https://github.com/Homebrew/homebrew-core/pull/155699~~
+- ~~https://github.com/postgres/postgres/commit/c82207a548db47623a2bfa2447babdaa630302b9~~
+
+pgsql 16.2 has fixed this bug, now it's working.
 
 ## password-argon2
 

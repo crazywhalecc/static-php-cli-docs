@@ -11,6 +11,7 @@
 1. swoole >= 5.0 版本仅支持 PHP >= 8.0 版本。
 2. swoole 目前不支持 PHP 8.0 版本 curl 的 hook（后续有可能会修复）。
 3. 编译时只包含 `swoole` 扩展时不会完整开启支持的 Swoole 数据库协程 hook，如需使用请加入对应的 `swoole-hook-xxx` 扩展。
+4. swoole 在部分扩展组合下可能出现 `zend_mm_heap corrupted` 问题，暂未找到是什么原因导致的。
 
 ## swoole-hook-pgsql
 
@@ -88,11 +89,13 @@ bin/spc build gd --with-libs=freetype,libjpeg,libavif,libwebp --build-cli
 
 ## pgsql
 
-pgsql ssl 连接与 openssl 3.2.0 不兼容。相关链接：
+~~pgsql ssl 连接与 openssl 3.2.0 不兼容。相关链接：~~
 
-- https://github.com/Homebrew/homebrew-core/issues/155651
-- https://github.com/Homebrew/homebrew-core/pull/155699
-- https://github.com/postgres/postgres/commit/c82207a548db47623a2bfa2447babdaa630302b9
+- ~~https://github.com/Homebrew/homebrew-core/issues/155651~~
+- ~~https://github.com/Homebrew/homebrew-core/pull/155699~~
+- ~~https://github.com/postgres/postgres/commit/c82207a548db47623a2bfa2447babdaa630302b9~~
+
+pgsql 16.2 修复了这个 Bug，现在正常工作了。
 
 ## password-argon2
 
