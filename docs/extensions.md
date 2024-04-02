@@ -1,6 +1,5 @@
 |                                                            | Linux         | macOS         | FreeBSD       | Windows       |
 |------------------------------------------------------------|---------------|---------------|---------------|---------------|
-| amqp                                                       | yes, untested | yes, untested |               | yes, untested |
 | apcu                                                       | yes, untested | yes, untested | yes, untested | yes, untested |
 | bcmath                                                     | yes           | yes           | yes           | yes           |
 | bz2                                                        | yes           | yes           | yes           |               |
@@ -9,6 +8,7 @@
 | curl                                                       | yes           | yes           | yes           | yes           |
 | dba                                                        | yes           | yes           | yes           | yes           | 
 | dom                                                        | yes           | yes           |               | yes           |
+| ds                                                         | yes, untested | yes, untested | yes, untested | yes, untested |
 | enchant                                                    |               |               |               |               |
 | [event](./extension-notes#event)                           | yes           | yes           |               |               |
 | exif                                                       | yes           | yes           | yes           | yes           |
@@ -43,9 +43,8 @@
 | pdo                                                        | yes           | yes           | yes           | yes           |
 | pdo_mysql                                                  | yes           | yes           | yes           | yes           |
 | pdo_sqlite                                                 | yes           | yes           |               | yes           |
-| pdo_sqlsrv                                                 | yes, untested | yes, untested |               |               |
 | pdo_pgsql                                                  | yes           | yes           |               |               |
-| [pgsql](./extension-notes#pgsql)                           | yes           | yes           |               |               |
+| [pgsql](./extension-notes#pgsql)                           | partial       | partial       |               |               |
 | phar                                                       | yes           | yes           | yes           | yes           |
 | posix                                                      | yes           | yes           | yes           | no            |
 | protobuf                                                   | yes           | yes           |               |               |
@@ -74,7 +73,6 @@
 | sysvshm                                                    | yes           | yes           |               | yes           |
 | tidy                                                       | yes           | yes           |               |               |
 | tokenizer                                                  | yes           | yes           | yes           | yes           |
-| uuid                                                       | yes, untested | yes, untested |               |               |
 | uv                                                         | yes, untested | yes, untested |               |               |
 | [xdebug](./extension-notes#xdebug)                         | no            | no            | no            |               |
 | [xhprof](./extension-notes#xhprof)                         | yes           | yes           |               |               |
