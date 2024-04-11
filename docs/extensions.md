@@ -82,6 +82,7 @@
 | xmlreader                                                  | yes, untested | yes, untested  |               | yes           |
 | xmlwriter                                                  | yes, untested | yes, untested  |               | yes           |
 | xsl                                                        | yes, untested | yes, untested  |               |               |
+| yac                                                        | yes, untested | yes, untested  |               | yes, untested |
 | yaml                                                       | yes           | yes            |               |               |
 | zip                                                        | yes           | yes            |               |               |
 | zlib                                                       | yes           | yes            | yes           | yes           |
