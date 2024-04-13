@@ -9,6 +9,7 @@ export default {
         {text: 'Extension List', link: '/en/guide/extensions'},
         {text: 'Extension Notes', link: '/en/guide/extension-notes'},
         {text: 'Command Generator', link: '/en/guide/cli-generator'},
+        {text: 'Environment Variables', link: '/en/guide/env-vars', collapsed: true,},
       ]
     },
     {
