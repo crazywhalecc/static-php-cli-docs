@@ -122,6 +122,10 @@
       <b>{{ I18N[lang].downloadAllCommand }}</b>
       <div class="command-preview">{{ spcCommand }} download --all --with-php={{ selectedPhpVersion }}{{ debug ? ' --debug' : '' }}</div>
     </div>
+    <div class="command-container" v-if="enableUPX">
+      <b>{{ I18N[lang].downloadUPXCommand }}</b>
+      <div class="command-preview">{{ spcCommand }} install-pkg upx{{ debug ? ' --debug' : '' }}</div>
+    </div>
     <div class="command-container">
       <b>{{ I18N[lang].compileCommand }}</b>
       <div class="command-preview">{{ spcCommand }} build {{ buildCommand }} "{{ extList }}"{{ additionalLibs }}{{ debug ? ' --debug' : '' }}{{ zts ? ' --enable-zts' : '' }}{{ enableUPX ? ' --with-upx-pack' : '' }}{{ displayINI }}</div>
@@ -187,6 +191,7 @@ const I18N = {
     resultShowDownload: '是否展示仅下载对应扩展依赖的命令',
     downloadExtOnlyCommand: '只下载对应扩展的依赖包命令',
     downloadAllCommand: '下载所有依赖包命令',
+    downloadUPXCommand: '下载 UPX 命令',
     compileCommand: '编译命令',
     downloadPhpVersion: '下载 PHP 版本',
     downloadSPCBinaryCommand: '下载 spc 二进制命令',
@@ -219,6 +224,7 @@ const I18N = {
     resultShowDownload: 'Download with corresponding extension dependencies',
     downloadExtOnlyCommand: 'Download sources by extensions command',
     downloadAllCommand: 'Download all sources command',
+    downloadUPXCommand: 'Download UPX command',
     compileCommand: 'Compile command',
     downloadPhpVersion: 'Download PHP version',
     downloadSPCBinaryCommand: 'Download spc binary command',
@@ -447,6 +453,9 @@ const calculateExtLibDepends = (input) => {
 
 // change os, clear ext
 watch(selectedSystem, () => checkedExts.value = []);
+
+// change os, reset upx
+watch(selectedSystem, () => enableUPX.value = 0);
 
 // selected ext change, calculate deps
 watch(
