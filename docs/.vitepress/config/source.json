@@ -385,7 +385,7 @@
     },
     "libuuid": {
         "type": "git",
-        "url": "https://github.com/cloudbase/libuuid.git",
+        "url": "https://github.com/static-php/libuuid.git",
         "rev": "master",
         "license": {
             "type": "file",
@@ -549,6 +549,15 @@
         "license": {
             "type": "file",
             "path": "LICENSE"
+        }
+    },
+    "qdbm": {
+        "type": "git",
+        "url": "https://github.com/static-php/qdbm.git",
+        "rev": "main",
+        "license": {
+            "type": "file",
+            "path": "COPYING"
         }
     },
     "rar": {

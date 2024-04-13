@@ -1,9 +1,12 @@
 export function getMetaList(meta, type, name, list_name) {
   if (meta.os === 'linux') {
-    return meta[type][name][list_name + '-linux'] ?? meta[type][name][list_name + '-unix'] ??meta[type][name][list_name] ?? [];
+    return meta[type][name][list_name + '-linux'] ?? meta[type][name][list_name + '-unix'] ?? meta[type][name][list_name] ?? [];
   }
   if (meta.os === 'macos') {
-    return meta[type][name][list_name + '-macos'] ?? meta[type][name][list_name + '-unix'] ??meta[type][name][list_name] ?? [];
+    return meta[type][name][list_name + '-macos'] ?? meta[type][name][list_name + '-unix'] ?? meta[type][name][list_name] ?? [];
+  }
+  if (meta.os === 'windows') {
+    return meta[type][name][list_name + '-windows'] ?? meta[type][name][list_name] ?? [];
   }
   return [];
 }

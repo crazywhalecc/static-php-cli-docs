@@ -353,6 +353,9 @@
         "source": "libuuid",
         "static-libs-unix": [
             "libuuid.a"
+        ],
+        "headers": [
+            "uuid/uuid.h"
         ]
     },
     "libuv": {
@@ -523,6 +526,18 @@
             "libxslt",
             "ldap",
             "zstd"
+        ]
+    },
+    "qdbm": {
+        "source": "qdbm",
+        "static-libs-unix": [
+            "libqdbm.a"
+        ],
+        "static-libs-windows": [
+            "qdbm_a.lib"
+        ],
+        "headers-windows": [
+            "depot.h"
         ]
     },
     "readline": {

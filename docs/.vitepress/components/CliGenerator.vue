@@ -14,7 +14,7 @@
         <label :for="index">{{ index }}</label>
       </div>
     </div>
-    <div class="my-btn" @click="selectCommon">{{ I18N[lang].selectCommon }}</div>
+    <div class="my-btn" v-if="selectedSystem !== 'windows'" @click="selectCommon">{{ I18N[lang].selectCommon }}</div>
     <div class="my-btn" @click="checkedExts = []">{{ I18N[lang].selectNone }}</div>
 
     <details class="details custom-block">
@@ -41,20 +41,24 @@
       <p class="custom-block-title">WARNING</p>
       <p>{{ I18N[lang].microUnavailable }}</p>
     </div>
+    <div v-if="selectedSystem === 'windows' && (checkedTargets.indexOf('fpm') !== -1 || checkedTargets.indexOf('embed') !== -1)" class="warning custom-block">
+      <p class="custom-block-title">WARNING</p>
+      <p>{{ I18N[lang].windowsSAPIUnavailable }}</p>
+    </div>
     <h2>{{ I18N[lang].buildOptions }}</h2>
     <div class="option-line">
       <span class="option-title">{{ I18N[lang].buildEnvironment }}</span>
       <select v-model="selectedEnv">
         <option value="native">{{ I18N[lang].buildEnvNative }}</option>
         <option value="spc">{{ I18N[lang].buildEnvSpc }}</option>
-        <option value="docker">{{ I18N[lang].buildEnvDocker }}</option>
+        <option value="docker" v-if="selectedSystem !== 'windows'">{{ I18N[lang].buildEnvDocker }}</option>
       </select>
     </div>
     <div v-if="selectedEnv === 'spc'" class="option-line">
       <span class="option-title">{{ I18N[lang].selectedArch }}</span>
       <select v-model="selectedArch">
         <option value="x86_64">x86_64 (amd64)</option>
-        <option value="aarch64">aarch64 (arm64)</option>
+        <option value="aarch64" v-if="selectedSystem !== 'windows'">aarch64 (arm64)</option>
       </select>
     </div>
     <div class="option-line">
@@ -87,13 +91,27 @@
       <input type="radio" id="show-download-no" :value="0" v-model="downloadByExt" />
       <label for="show-download-no">{{ I18N[lang].no }}</label>
     </div>
+    <div class="option-line" v-if="selectedSystem !== 'macos'">
+      <span class="option-title">{{ I18N[lang].useUPX }}</span>
+      <input type="radio" id="upx-yes" :value="1" v-model="enableUPX" />
+      <label for="upx-yes">{{ I18N[lang].yes }}</label>
+
+      <input type="radio" id="upx-no" :value="0" v-model="enableUPX" />
+      <label for="upx-no">{{ I18N[lang].no }}</label>
+    </div>
     <h2>{{ I18N[lang].hardcodedINI }}</h2>
     <textarea class="textarea" :placeholder="I18N[lang].hardcodedINIPlacehoder" v-model="hardcodedINIData" rows="5" />
     <h2>{{ I18N[lang].resultShow }}</h2>
     <div v-if="selectedEnv === 'spc'" class="command-container">
       <b>{{ I18N[lang].downloadSPCBinaryCommand }}</b>
-      <div class="command-preview">
+      <div class="command-preview" v-if="selectedSystem !== 'windows'">
         curl -o spc.tgz https://dl.static-php.dev/static-php-cli/spc-bin/nightly/spc-{{ selectedSystem }}-{{ selectedArch }}.tar.gz && tar -zxvf spc.tgz && rm spc.tgz<br>
+      </div>
+      <div v-else>
+        <div class="warning custom-block">
+          <p class="custom-block-title">WARNING</p>
+          <p>{{ I18N[lang].windowsDownSPCWarning }}</p>
+        </div>
       </div>
     </div>
     <div v-if="downloadByExt" class="command-container">
@@ -104,9 +122,13 @@
       <b>{{ I18N[lang].downloadAllCommand }}</b>
       <div class="command-preview">{{ spcCommand }} download --all --with-php={{ selectedPhpVersion }}{{ debug ? ' --debug' : '' }}</div>
     </div>
+    <div class="command-container" v-if="enableUPX">
+      <b>{{ I18N[lang].downloadUPXCommand }}</b>
+      <div class="command-preview">{{ spcCommand }} install-pkg upx{{ debug ? ' --debug' : '' }}</div>
+    </div>
     <div class="command-container">
       <b>{{ I18N[lang].compileCommand }}</b>
-      <div class="command-preview">{{ spcCommand }} build {{ buildCommand }} "{{ extList }}"{{ additionalLibs }}{{ debug ? ' --debug' : '' }}{{ zts ? ' --enable-zts' : '' }}{{ displayINI }}</div>
+      <div class="command-preview">{{ spcCommand }} build {{ buildCommand }} "{{ extList }}"{{ additionalLibs }}{{ debug ? ' --debug' : '' }}{{ zts ? ' --enable-zts' : '' }}{{ enableUPX ? ' --with-upx-pack' : '' }}{{ displayINI }}</div>
     </div>
   </div>
 </template>
@@ -137,7 +159,7 @@ defineProps({
 const osList = [
   { os: 'linux', label: 'Linux', disabled: false },
   { os: 'macos', label: 'macOS', disabled: false },
-  { os: 'windows', label: 'Windows', disabled: true },
+  { os: 'windows', label: 'Windows', disabled: false },
 ];
 
 const availablePhpVersions = [
@@ -169,6 +191,7 @@ const I18N = {
     resultShowDownload: '是否展示仅下载对应扩展依赖的命令',
     downloadExtOnlyCommand: '只下载对应扩展的依赖包命令',
     downloadAllCommand: '下载所有依赖包命令',
+    downloadUPXCommand: '下载 UPX 命令',
     compileCommand: '编译命令',
     downloadPhpVersion: '下载 PHP 版本',
     downloadSPCBinaryCommand: '下载 spc 二进制命令',
@@ -177,6 +200,9 @@ const I18N = {
     buildLibs: '要构建的库',
     depTips: '选择扩展后，不可选中的项目为必需的依赖，编译的依赖库列表中可选的为现有扩展和依赖库的可选依赖。选择可选依赖后，将生成 --with-libs 参数。',
     microUnavailable: 'micro 不支持 PHP 7.4 及更早版本！',
+    windowsSAPIUnavailable: 'Windows 目前不支持 fpm、embed 构建！',
+    useUPX: '是否开启 UPX 压缩（减小二进制体积）',
+    windowsDownSPCWarning: 'Windows 下请手动下载 spc.exe 二进制文件并解压到当前目录！',
   },
   en: {
     selectExt: 'Select Extensions',
@@ -198,6 +224,7 @@ const I18N = {
     resultShowDownload: 'Download with corresponding extension dependencies',
     downloadExtOnlyCommand: 'Download sources by extensions command',
     downloadAllCommand: 'Download all sources command',
+    downloadUPXCommand: 'Download UPX command',
     compileCommand: 'Compile command',
     downloadPhpVersion: 'Download PHP version',
     downloadSPCBinaryCommand: 'Download spc binary command',
@@ -205,7 +232,10 @@ const I18N = {
     selectedSystem: 'Select Build OS',
     buildLibs: 'Select Dependencies',
     depTips: 'After selecting the extensions, the unselectable items are essential dependencies. In the compiled dependencies list, optional dependencies consist of existing extensions and optional dependencies of libraries. Optional dependencies will be added in --with-libs parameter.',
-    microUnavailable: 'Micro does not support PHP 7.4 and earlier versions!'
+    microUnavailable: 'Micro does not support PHP 7.4 and earlier versions!',
+    windowsSAPIUnavailable: 'Windows does not support fpm and embed build!',
+    useUPX: 'Enable UPX compression (reduce binary size)',
+    windowsDownSPCWarning: 'Please download the spc.exe binary file manually and extract it to the current directory on Windows!',
   }
 };
 
@@ -275,6 +305,9 @@ const zts = ref(0);
 // chosen download by extensions
 const downloadByExt = ref(1);
 
+// chosen upx
+const enableUPX = ref(0);
+
 const hardcodedINIData = ref('');
 
 const selectedSystem = ref('linux');
@@ -286,6 +319,9 @@ const spcCommand = computed(() => {
     case 'native':
       return 'bin/spc';
     case 'spc':
+      if (selectedSystem.value === 'windows') {
+        return '.\\spc.exe';
+      }
       return './spc';
     case 'docker':
       return 'bin/spc-alpine-docker';
@@ -334,6 +370,11 @@ const calculateExtDepends = (input) => {
       if (depends.length === 0) {
         return;
       }
+    } else if (selectedSystem.value === 'windows') {
+      depends = ext.value[node]['ext-depends-windows'] ?? ext.value[node]['ext-depends'] ?? [];
+      if (depends.length === 0) {
+        return;
+      }
     }
 
     depends.forEach((dep) => {
@@ -364,6 +405,11 @@ const calculateExtLibDepends = (input) => {
       if (depends.length === 0) {
         return;
       }
+    } else if (selectedSystem.value === 'windows') {
+      depends = lib.value[node]['lib-depends-windows'] ?? lib.value[node]['lib-depends'] ?? [];
+      if (depends.length === 0) {
+        return;
+      }
     }
 
     depends.forEach((dep) => {
@@ -385,6 +431,11 @@ const calculateExtLibDepends = (input) => {
       if (depends.length === 0) {
         return;
       }
+    } else if (selectedSystem.value === 'windows') {
+      depends = ext.value[node]['lib-depends-windows'] ?? ext.value[node]['lib-depends'] ?? [];
+      if (depends.length === 0) {
+        return;
+      }
     }
 
     depends.forEach((dep) => {
@@ -402,6 +453,9 @@ const calculateExtLibDepends = (input) => {
 
 // change os, clear ext
 watch(selectedSystem, () => checkedExts.value = []);
+
+// change os, reset upx
+watch(selectedSystem, () => enableUPX.value = 0);
 
 // selected ext change, calculate deps
 watch(

@@ -5,7 +5,7 @@ import CliGenerator from "../../.vitepress/components/CliGenerator.vue";
 # CLI 编译命令生成器
 
 ::: tip
-目前未提供 Windows 系统的 `spc` 二进制，所以暂未提供 Windows 的选项。要在 Windows 编译，请从源码使用 static-php-cli。
+下面选择扩展可能包含所选操作系统不支持的扩展，这可能导致编译失败。请先查阅 [支持的扩展](./extensions)。
 :::
 
 <cli-generator lang="zh" />
