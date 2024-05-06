@@ -5,7 +5,7 @@
 ## GitHub Actions 构建
 
 现在已支持从 Actions 构建 Windows 版本的 static-php 了。
-和 Linux、macOS 一样，你可以进入 [扩展列表](./extensions) 选择要编译的扩展，然后 [CI on Windows](https://github.com/crazywhalecc/static-php-cli/actions/workflows/build-windows-x86_64.yml) 选择 PHP 版本、填入扩展列表（逗号分割），点击 Run 即可。
+和 Linux、macOS 一样，你需要先 Fork static-php-cli 仓库到你的 GitHub 账户中，然后你可以进入 [扩展列表](./extensions) 选择要编译的扩展，然后进入自己仓库的 `CI on Windows` 选择 PHP 版本、填入扩展列表（逗号分割），点击 Run 即可。
 
 如果你要在本地开发或构建，请继续向下阅读。
 

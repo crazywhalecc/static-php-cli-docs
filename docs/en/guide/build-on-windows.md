@@ -7,8 +7,9 @@ so the build process on Windows will be slightly different from that of Unix sys
 ## GitHub Actions Build
 
 Building the Windows version of static-php from Actions is now supported.
-Like Linux and macOS, you can enter the [Extension List](./extensions) to select the extension to be compiled, and then visit [CI on Windows](https://github.com/crazywhalecc/static-php-cli/actions/workflows/build-windows-x86_64.yml) and select the PHP version, 
-fill in the extension list (comma separated), and click Run.
+Like Linux and macOS, you need to Fork the static-php-cli repository to your GitHub account first, 
+then you can enter [Extension List](./extensions) to select the extension to be compiled, 
+and then go to your own `CI on Windows` select the PHP version, fill in the extension list (comma separated), and click Run.
 
 If you're going to develop or build locally, please read on.
 
