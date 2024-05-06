@@ -5,7 +5,7 @@
 | bz2                                                        | yes           | yes            | yes           |               |
 | calendar                                                   | yes           | yes            | yes           | yes           |
 | ctype                                                      | yes           | yes            | yes           | yes           |
-| curl                                                       | yes           | yes            | yes           | yes           |
+| [curl](./extension-notes#curl)                             | yes           | yes            | yes           | yes           |
 | dba                                                        | yes           | yes            | yes           | yes           | 
 | dom                                                        | yes           | yes            |               | yes           |
 | ds                                                         | yes, untested | yes, untested  | yes, untested | yes, untested |
@@ -37,7 +37,7 @@
 | mysqlnd                                                    | yes           | yes            | yes           | yes           |
 | [oci8](./extension-notes#oci8)                             | no            | no             | no            |               |
 | opcache                                                    | yes           | yes            | yes           | yes           |
-| openssl                                                    | yes           | yes            | yes           | yes           |
+| [openssl](./extension-notes#openssl)                       | yes           | yes            | yes           | yes           |
 | [password-argon2](./extension-notes#password-argon2)       | yes           | yes            |               |               |
 | pcntl                                                      | yes           | yes            | yes           | no            |
 | pdo                                                        | yes           | yes            | yes           | yes           |

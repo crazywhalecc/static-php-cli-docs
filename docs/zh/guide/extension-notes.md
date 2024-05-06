@@ -2,6 +2,11 @@
 
 因为是静态编译，扩展不会 100% 完美编译，而且不同扩展对 PHP、环境都有不同的要求，这里将一一列举。
 
+## curl
+
+使用 curl 请求 HTTPS 时，可能存在 `error:80000002:system library::No such file or directory` 错误，
+解决办法详见 [FAQ - 无法使用 ssl](../faq/#无法使用-ssl)。
+
 ## phpmicro
 
 1. phpmicro SAPI 仅支持 PHP >= 8.0 版本。
@@ -91,11 +96,19 @@ bin/spc build gd --with-libs=freetype,libjpeg,libavif,libwebp --build-cli
 
 ~~pgsql ssl 连接与 openssl 3.2.0 不兼容。相关链接：~~
 
-- ~~https://github.com/Homebrew/homebrew-core/issues/155651~~
-- ~~https://github.com/Homebrew/homebrew-core/pull/155699~~
-- ~~https://github.com/postgres/postgres/commit/c82207a548db47623a2bfa2447babdaa630302b9~~
+- ~~<https://github.com/Homebrew/homebrew-core/issues/155651>~~
+- ~~<https://github.com/Homebrew/homebrew-core/pull/155699>~~
+- ~~<https://github.com/postgres/postgres/commit/c82207a548db47623a2bfa2447babdaa630302b9>~~
 
 pgsql 16.2 修复了这个 Bug，现在正常工作了。
+
+在 pgsql 使用 SSL 连接时，可能存在 `error:80000002:system library::No such file or directory` 错误，
+解决办法详见 [FAQ - 无法使用 ssl](../faq/#无法使用-ssl)。
+
+## openssl
+
+使用基于 openssl 的扩展（如 curl、pgsql 等网络库）时，可能存在 `error:80000002:system library::No such file or directory` 错误，
+解决办法详见 [FAQ - 无法使用 ssl](../faq/#无法使用-ssl)。
 
 ## password-argon2
 

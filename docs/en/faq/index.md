@@ -60,3 +60,15 @@ The phpmicro referenced by this project and related projects is only a package o
 The compiler for PHP code is a completely different project, so the extra cases are not taken into account. 
 If you are interested in encryption, you can consider using existing encryption technologies, 
 such as Swoole Compiler, Source Guardian, etc.
+
+## Unable to use ssl
+
+When using curl, pgsql, etc. to request an HTTPS website or establish an SSL connection, there may be an `error:80000002:system library::No such file or directory` error.
+This error is caused by statically compiled PHP without specifying `openssl.cafile` via `php.ini`.
+
+You can solve this problem by specifying `php.ini` before using PHP and adding `openssl.cafile=/path/to/your-cert.pem` in the INI.
+
+For Linux systems, you can download the [cacert.pem](https://curl.se/docs/caextract.html) file from the curl official website, or you can use the certificate file that comes with the system.
+For the certificate locations of different distros, please refer to [Golang docs](https://go.dev/src/crypto/x509/root_linux.go).
+
+> INI configuration `openssl.cafile` cannot be set dynamically using the `ini_set()` function, because `openssl.cafile` is a `PHP_INI_SYSTEM` type configuration and can only be set in the `php.ini` file.

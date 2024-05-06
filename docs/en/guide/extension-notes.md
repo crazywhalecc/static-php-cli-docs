@@ -4,6 +4,11 @@ Because it is a static compilation, extensions will not compile 100% perfectly,
 and different extensions have different requirements for PHP and the environment, 
 which will be listed one by one here.
 
+## curl
+
+When using curl to request HTTPS, there may be an `error:80000002:system library::No such file or directory` error.
+For details on the solution, see [FAQ - Unable to use ssl](../faq/#unable-to-use-ssl).
+
 ## phpmicro
 
 1. Only PHP >= 8.0 is supported.
@@ -100,11 +105,20 @@ The compiled `./php` binary can be configured and run by specifying the INI, eg 
 
 ~~pgsql ssl connection is not compatible with openssl 3.2.0. See:~~
 
-- ~~https://github.com/Homebrew/homebrew-core/issues/155651~~
-- ~~https://github.com/Homebrew/homebrew-core/pull/155699~~
-- ~~https://github.com/postgres/postgres/commit/c82207a548db47623a2bfa2447babdaa630302b9~~
+- ~~<https://github.com/Homebrew/homebrew-core/issues/155651>~~
+- ~~<https://github.com/Homebrew/homebrew-core/pull/155699>~~
+- ~~<https://github.com/postgres/postgres/commit/c82207a548db47623a2bfa2447babdaa630302b9>~~
 
 pgsql 16.2 has fixed this bug, now it's working.
+
+When pgsql uses SSL connection, there may be `error:80000002:system library::No such file or directory` error,
+For details on the solution, see [FAQ - Unable to use ssl](../faq/#unable-to-use-ssl).
+
+## openssl
+
+When using openssl-based extensions (such as curl, pgsql and other network libraries),
+there may be an `error:80000002:system library::No such file or directory` error.
+For details on the solution, see [FAQ - Unable to use ssl](../faq/#unable-to-use-ssl).
 
 ## password-argon2
 

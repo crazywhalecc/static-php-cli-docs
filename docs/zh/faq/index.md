@@ -47,3 +47,15 @@ bin/spc build ffi --build-cli --no-strip
 所以本项目（static-php-cli）、相关项目（lwmbs、swoole-cli）都是提供一个对 php-src 源码的便捷编译工具，
 本项目和相关项目引用的 phpmicro 也仅仅是 PHP 的 sapi 接口封装，而不是 PHP 代码的编译工具。
 PHP 代码的编译器是完全不同的项目，因此不会考虑额外的情况。如果你对加密感兴趣，可以考虑使用现有的加密技术，如 Swoole Compiler、Source Guardian 等。
+
+## 无法使用 ssl
+
+使用 curl、pgsql 等 请求 HTTPS 网站或建立 SSL 连接时，可能存在 `error:80000002:system library::No such file or directory` 错误，
+这个错误是由于静态编译的 PHP 未通过 `php.ini` 指定 `openssl.cafile` 导致的。
+
+你可以在使用 PHP 前指定 `php.ini`，并在 INI 内添加 `openssl.cafile=/path/to/your-cert.pem` 来解决这个问题。
+
+对于 Linux 系统，你可以从 curl 官方网站下载 [cacert.pem](https://curl.se/docs/caextract.html) 文件，也可以使用系统自带的证书文件。
+有关不同发行版的证书位置，可参考 [Go 标准库](https://go.dev/src/crypto/x509/root_linux.go)。
+
+> INI 配置 `openssl.cafile` 不可以使用 `ini_set()` 函数动态设置，因为 `openssl.cafile` 是一个 `PHP_INI_SYSTEM` 类型的配置，只能在 `php.ini` 文件中设置。
