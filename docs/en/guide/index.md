@@ -22,7 +22,7 @@ The following is the architecture support situation, where :gear: represents sup
 |---------|-------------------|-------------------|
 | macOS   | :gear: :computer: | :gear: :computer: |
 | Linux   | :gear: :computer: | :gear: :computer: |
-| Windows | :computer:        |                   |
+| Windows | :gear: :computer: |                   |
 | FreeBSD | :computer:        | :computer:        |
 
 Among them, Linux is currently only tested on Ubuntu, Debian, and Alpine distributions, 

@@ -16,7 +16,7 @@ static-php-cli 是一个用于构建静态编译的 PHP 二进制的工具，目
 |---------|-------------------|-------------------|
 | macOS   | :gear: :computer: | :gear: :computer: |
 | Linux   | :gear: :computer: | :gear: :computer: |
-| Windows | :computer:        |                   |
+| Windows | :gear: :computer: |                   |
 | FreeBSD | :computer:        | :computer:        |
 
 其中，Linux 目前仅在 Ubuntu、Debian、Alpine 发行版测试通过，其他发行版未进行测试，不能保证编译成功。
