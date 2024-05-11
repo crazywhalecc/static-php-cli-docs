@@ -144,3 +144,7 @@ please download the source code from [pecl.php.net/package/xhprof](http://pecl.p
 If you enable event extension on macOS, the `openpty` will be disabled due to issue:
 
 - [static-php-cli#335](https://github.com/crazywhalecc/static-php-cli/issues/335)
+
+## parallel
+
+Parallel is only supported on PHP 8.0 ZTS and above.

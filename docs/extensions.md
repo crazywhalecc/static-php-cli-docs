@@ -38,6 +38,7 @@
 | [oci8](./extension-notes#oci8)                             | no            | no             | no            |               |
 | opcache                                                    | yes           | yes            | yes           | yes           |
 | [openssl](./extension-notes#openssl)                       | yes           | yes            | yes           | yes           |
+| [parallel](./extension-notes#parallel)                     | yes           | yes            |               | yes           |
 | [password-argon2](./extension-notes#password-argon2)       | yes           | yes            |               |               |
 | pcntl                                                      | yes           | yes            | yes           | no            |
 | pdo                                                        | yes           | yes            | yes           | yes           |

@@ -131,3 +131,7 @@ xhprof 扩展包含三部分：`xhprof_extension`、`xhprof_html`、`xhprof_libs
 event 扩展在 macOS 系统下编译后暂无法使用 `openpty` 特性。相关 Issue：
 
 - [static-php-cli#335](https://github.com/crazywhalecc/static-php-cli/issues/335)
+
+## parallel
+
+parallel 扩展只支持 PHP 8.0 及以上版本，并只支持 ZTS 构建（`--enable-zts`）。
