@@ -1,8 +1,7 @@
 # 扩展列表
 
 > - `yes`: 已支持
-> - `yes, untested`: 已支持，但未经充分测试
-> - empty: 目前还不支持，或正在支持中
+> - 空白: 目前还不支持，或正在支持中
 > - `no` with issue link: 确定不支持或无法支持
 > - `partial` with issue link: 已支持，但是无法完美工作
 
