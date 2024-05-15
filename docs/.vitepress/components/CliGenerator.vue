@@ -201,7 +201,7 @@ const I18N = {
     depTips: '选择扩展后，不可选中的项目为必需的依赖，编译的依赖库列表中可选的为现有扩展和依赖库的可选依赖。选择可选依赖后，将生成 --with-libs 参数。',
     microUnavailable: 'micro 不支持 PHP 7.4 及更早版本！',
     windowsSAPIUnavailable: 'Windows 目前不支持 fpm、embed 构建！',
-    useUPX: '是否开启 UPX 压缩（减小二进制体积）',
+    useUPX: '是否开启 UPX 压缩（减小二进制体积，但很少见的情况下 micro SAPI 无法使用）',
     windowsDownSPCWarning: 'Windows 下请手动下载 spc.exe 二进制文件并解压到当前目录！',
   },
   en: {
@@ -234,7 +234,7 @@ const I18N = {
     depTips: 'After selecting the extensions, the unselectable items are essential dependencies. In the compiled dependencies list, optional dependencies consist of existing extensions and optional dependencies of libraries. Optional dependencies will be added in --with-libs parameter.',
     microUnavailable: 'Micro does not support PHP 7.4 and earlier versions!',
     windowsSAPIUnavailable: 'Windows does not support fpm and embed build!',
-    useUPX: 'Enable UPX compression (reduce binary size)',
+    useUPX: 'Enable UPX compression (reduce binary size, but in rare cases micro SAPI doesn\'t work with UPX)',
     windowsDownSPCWarning: 'Please download the spc.exe binary file manually and extract it to the current directory on Windows!',
   }
 };
