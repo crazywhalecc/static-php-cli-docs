@@ -230,6 +230,22 @@ bin/spc build bcmath,curl,openssl,ftp,posix,pcntl --build-cli
 ```
 :::
 
+::: tip
+If you want to build multiple versions of PHP and don't want to build other dependent libraries repeatedly each time, 
+you can use `switch-php-version` to quickly switch to another version and compile after compiling one version:
+
+```shell
+# switch to 8.3
+bin/spc switch-php-version 8.3
+# build
+bin/spc build bcmath,curl,openssl,ftp,posix,pcntl --build-cli
+# switch to 8.0
+bin/spc switch-php-version 8.0
+# build
+bin/spc build bcmath,curl,openssl,ftp,posix,pcntl --build-cli
+```
+:::
+
 ### Debug
 
 If you encounter problems during the compilation process, or want to view each executing shell command, 

@@ -200,6 +200,21 @@ bin/spc build bcmath,curl,openssl,ftp,posix,pcntl --build-cli
 ```
 :::
 
+::: tip
+如果你想构建多个版本的 PHP，且不想每次都重复构建其他依赖库，可以使用 `switch-php-version` 在编译好一个版本后快速切换至另一个版本并编译：
+
+```shell
+# switch to 8.3
+bin/spc switch-php-version 8.3
+# build
+bin/spc build bcmath,curl,openssl,ftp,posix,pcntl --build-cli
+# switch to 8.0
+bin/spc switch-php-version 8.0
+# build
+bin/spc build bcmath,curl,openssl,ftp,posix,pcntl --build-cli
+```
+:::
+
 ### 调试
 
 如果你在编译过程中遇到了问题，或者想查看每个执行的 shell 命令，可以使用 `--debug` 开启 debug 模式，查看所有终端日志：
