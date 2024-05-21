@@ -26,16 +26,17 @@ SPC_CONCURRENCY=4 bin/spc build mbstring,pcntl --build-cli
 
 General environment variables can be used by all build targets.
 
-| var name             | default value             | comment                                         |
-|----------------------|---------------------------|-------------------------------------------------|
-| `BUILD_ROOT_PATH`    | `{pwd}/buildroot`         | The root directory of the build target          |
-| `BUILD_LIB_PATH`     | `{pwd}/buildroot/lib`     | The root directory of compilation libraries     |
-| `BUILD_INCLUDE_PATH` | `{pwd}/buildroot/include` | Header file directory for compiling libraries   |
-| `BUILD_BIN_PATH`     | `{pwd}/buildroot/bin`     | Compiled binary file directory                  |
-| `PKG_ROOT_PATH`      | `{pwd}/pkgroot`           | Directory where precompiled tools are installed |
-| `SOURCE_PATH`        | `{pwd}/source`            | The source code extract directory               |
-| `DOWNLOAD_PATH`      | `{pwd}/downloads`         | Downloaded file directory                       |
-| `SPC_CONCURRENCY`    | Depends on CPU cores      | Number of parallel compilations                 |
+| var name                     | default value             | comment                                         |
+|------------------------------|---------------------------|-------------------------------------------------|
+| `BUILD_ROOT_PATH`            | `{pwd}/buildroot`         | The root directory of the build target          |
+| `BUILD_LIB_PATH`             | `{pwd}/buildroot/lib`     | The root directory of compilation libraries     |
+| `BUILD_INCLUDE_PATH`         | `{pwd}/buildroot/include` | Header file directory for compiling libraries   |
+| `BUILD_BIN_PATH`             | `{pwd}/buildroot/bin`     | Compiled binary file directory                  |
+| `PKG_ROOT_PATH`              | `{pwd}/pkgroot`           | Directory where precompiled tools are installed |
+| `SOURCE_PATH`                | `{pwd}/source`            | The source code extract directory               |
+| `DOWNLOAD_PATH`              | `{pwd}/downloads`         | Downloaded file directory                       |
+| `SPC_CONCURRENCY`            | Depends on CPU cores      | Number of parallel compilations                 |
+| `SPC_SKIP_PHP_VERSION_CHECK` | empty                     | Skip PHP version check when set to `yes`        |
 
 ## OS specific variables
 

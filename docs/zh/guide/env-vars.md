@@ -24,16 +24,17 @@ SPC_CONCURRENCY=4 bin/spc build mbstring,pcntl --build-cli
 
 通用环境变量是所有构建目标都可以使用的环境变量。
 
-| var name             | default value             | comment          |
-|----------------------|---------------------------|------------------|
-| `BUILD_ROOT_PATH`    | `{pwd}/buildroot`         | 编译目标的根目录         |
-| `BUILD_LIB_PATH`     | `{pwd}/buildroot/lib`     | 编译依赖库的根目录        |
-| `BUILD_INCLUDE_PATH` | `{pwd}/buildroot/include` | 编译依赖库的头文件目录      |
-| `BUILD_BIN_PATH`     | `{pwd}/buildroot/bin`     | 编译依赖库的二进制文件目录    |
-| `PKG_ROOT_PATH`      | `{pwd}/pkgroot`           | 闭源或预编译工具下载后安装的目录 |
-| `SOURCE_PATH`        | `{pwd}/source`            | 编译项目的源码解压缩目录     |
-| `DOWNLOAD_PATH`      | `{pwd}/downloads`         | 下载的文件存放目录        |
-| `SPC_CONCURRENCY`    | 取决于当前 CPU 核心数量            | 并行编译的数量          |
+| var name                     | default value             | comment                     |
+|------------------------------|---------------------------|-----------------------------|
+| `BUILD_ROOT_PATH`            | `{pwd}/buildroot`         | 编译目标的根目录                    |
+| `BUILD_LIB_PATH`             | `{pwd}/buildroot/lib`     | 编译依赖库的根目录                   |
+| `BUILD_INCLUDE_PATH`         | `{pwd}/buildroot/include` | 编译依赖库的头文件目录                 |
+| `BUILD_BIN_PATH`             | `{pwd}/buildroot/bin`     | 编译依赖库的二进制文件目录               |
+| `PKG_ROOT_PATH`              | `{pwd}/pkgroot`           | 闭源或预编译工具下载后安装的目录            |
+| `SOURCE_PATH`                | `{pwd}/source`            | 编译项目的源码解压缩目录                |
+| `DOWNLOAD_PATH`              | `{pwd}/downloads`         | 下载的文件存放目录                   |
+| `SPC_CONCURRENCY`            | 取决于当前 CPU 核心数量            | 并行编译的数量                     |
+| `SPC_SKIP_PHP_VERSION_CHECK` | 空                         | 设置为 `yes` 时，跳过扩展对 PHP 版本的检查 |
 
 ## 系统特定变量
 
