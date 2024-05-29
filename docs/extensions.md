@@ -28,6 +28,7 @@
 | inotify                                                    | yes   | no      |         | no      |
 | intl                                                       | yes   | yes     |         | no      |
 | ldap                                                       | yes   | yes     |         |         |
+| libxml                                                     | yes   | yes     |         | yes     |
 | mbregex                                                    | yes   | yes     | yes     | yes     |
 | mbstring                                                   | yes   | yes     | yes     | yes     |
 | [mcrypt](./extension-notes#mcrypt)                         | no    | no      | no      | no      |
