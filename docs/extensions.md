@@ -1,5 +1,5 @@
-|                                                            | Linux | macOS   | FreeBSD | Windows |
-|------------------------------------------------------------|-------|---------|---------|---------|
+| Extension Name                                             | Linux | macOS   | FreeBSD | Windows |
+| ---------------------------------------------------------- | ----- | ------- | ------- | ------- |
 | amqp                                                       | yes   | yes     |         | yes     |
 | apcu                                                       | yes   | yes     | yes     | yes     |
 | bcmath                                                     | yes   | yes     | yes     | yes     |
@@ -7,15 +7,15 @@
 | calendar                                                   | yes   | yes     | yes     | yes     |
 | ctype                                                      | yes   | yes     | yes     | yes     |
 | [curl](./extension-notes#curl)                             | yes   | yes     | yes     | yes     |
-| dba                                                        | yes   | yes     | yes     | yes     | 
+| dba                                                        | yes   | yes     | yes     | yes     |
 | dom                                                        | yes   | yes     |         | yes     |
 | ds                                                         | yes   | yes     | yes     | yes     |
 | enchant                                                    |       |         |         |         |
 | [event](./extension-notes#event)                           | yes   | yes     |         |         |
 | exif                                                       | yes   | yes     | yes     | yes     |
 | [ffi](./extension-notes#ffi)                               | no    | yes     |         | yes     |
-| filter                                                     | yes   | yes     | yes     | yes     |
 | fileinfo                                                   | yes   | yes     | yes     | yes     |
+| filter                                                     | yes   | yes     | yes     | yes     |
 | ftp                                                        | yes   | yes     | yes     | yes     |
 | [gd](./extension-notes#gd)                                 | yes   | yes     |         |         |
 | gettext                                                    | yes   | yes     |         |         |
@@ -25,12 +25,12 @@
 | igbinary                                                   | yes   | yes     |         |         |
 | imagick                                                    | yes   | yes     |         |         |
 | [imap](./extension-notes#imap)                             | yes   | yes     |         |         |
-| inotify                                                    | yes   | no      |         |         |
-| intl                                                       | yes   | yes     |         |         |
+| inotify                                                    | yes   | no      |         | no      |
+| intl                                                       | yes   | yes     |         | no      |
 | ldap                                                       | yes   | yes     |         |         |
-| mbstring                                                   | yes   | yes     | yes     | yes     |
 | mbregex                                                    | yes   | yes     | yes     | yes     |
-| [mcrypt](./extension-notes#mcrypt)                         | no    | no      | no      |         |
+| mbstring                                                   | yes   | yes     | yes     | yes     |
+| [mcrypt](./extension-notes#mcrypt)                         | no    | no      | no      | no      |
 | memcache                                                   | yes   | yes     |         |         |
 | memcached                                                  | no    | yes     |         |         |
 | [mongodb](./extension-notes#mongodb)                       | yes   | no      |         |         |
@@ -44,16 +44,14 @@
 | pcntl                                                      | yes   | yes     | yes     | no      |
 | pdo                                                        | yes   | yes     | yes     | yes     |
 | pdo_mysql                                                  | yes   | yes     | yes     | yes     |
+| pdo_pgsql                                                  | yes   | yes     |         |         |
 | pdo_sqlite                                                 | yes   | yes     |         | yes     |
 | pdo_sqlsrv                                                 | yes   | yes     |         |         |
-| pdo_pgsql                                                  | yes   | yes     |         |         |
 | [pgsql](./extension-notes#pgsql)                           | yes   | yes     |         |         |
 | phar                                                       | yes   | yes     | yes     | yes     |
 | posix                                                      | yes   | yes     | yes     | no      |
 | protobuf                                                   | yes   | yes     |         |         |
-| pspell                                                     |       |         |         |         |
 | [rar](./extension-notes#rar)                               | yes   | partial |         |         |
-| rdkafka                                                    |       |         |         |         |
 | readline                                                   | yes   | yes     |         |         |
 | redis                                                      | yes   | yes     |         |         |
 | session                                                    | yes   | yes     | yes     | yes     |
@@ -67,11 +65,11 @@
 | sqlite3                                                    | yes   | yes     |         | yes     |
 | sqlsrv                                                     | yes   | yes     |         |         |
 | ssh2                                                       | yes   | yes     |         | yes     |
-| [swow](./extension-notes#swow)                             | yes   | yes     |         |         |
 | [swoole](./extension-notes#swoole)                         | yes   | yes     |         | no      |
-| [swoole-hook-pgsql](./extension-notes#swoole-hook-pgsql)   | yes   | partial |         | no      |
 | [swoole-hook-mysql](./extension-notes#swoole-hook-mysql)   | yes   | yes     |         | no      |
+| [swoole-hook-pgsql](./extension-notes#swoole-hook-pgsql)   | yes   | partial |         | no      |
 | [swoole-hook-sqlite](./extension-notes#swoole-hook-sqlite) | yes   | yes     |         | no      |
+| [swow](./extension-notes#swow)                             | yes   | yes     |         |         |
 | sysvmsg                                                    | yes   | yes     |         | no      |
 | sysvsem                                                    | yes   | yes     |         | no      |
 | sysvshm                                                    | yes   | yes     |         | yes     |
@@ -91,3 +89,4 @@
 | zip                                                        | yes   | yes     |         |         |
 | zlib                                                       | yes   | yes     | yes     | yes     |
 | zstd                                                       | yes   | yes     |         |         |
+
