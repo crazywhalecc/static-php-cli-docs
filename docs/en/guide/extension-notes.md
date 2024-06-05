@@ -97,10 +97,6 @@ The compiled `./php` binary can be configured and run by specifying the INI, eg 
 
 1. The rar extension currently has a problem when compiling phpmicro with the `common` extension collection in the macOS x86_64 environment.
 
-## mongodb
-
-1. mongodb does not support macOS for the time being because there are some issues with the driver. Track issue [here](https://github.com/crazywhalecc/static-php-cli/issues/281).
-
 ## pgsql
 
 ~~pgsql ssl connection is not compatible with openssl 3.2.0. See:~~
