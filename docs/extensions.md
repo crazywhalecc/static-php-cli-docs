@@ -34,7 +34,7 @@
 | [mcrypt](./extension-notes#mcrypt)                         | no    | no      | no      | no      |
 | memcache                                                   | yes   | yes     |         |         |
 | memcached                                                  | no    | yes     |         |         |
-| [mongodb](./extension-notes#mongodb)                       | yes   | yes     |         |         |
+| mongodb                                                    | yes   | yes     |         |         |
 | mysqli                                                     | yes   | yes     | yes     | yes     |
 | mysqlnd                                                    | yes   | yes     | yes     | yes     |
 | [oci8](./extension-notes#oci8)                             | no    | no      | no      |         |
