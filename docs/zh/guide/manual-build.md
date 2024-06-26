@@ -306,6 +306,8 @@ memory_limit=1G
 该命令的注入 ini 是通过在 micro.sfx 后追加一段特殊的结构来实现的，和编译时插入硬编码 INI 的功能不同。
 :::
 
+如果要打包 phar，只需要将 `a.php` 替换为打包好的 phar 文件即可。但要注意，phar 下的 micro.sfx 需要额外注意路径问题，见 [Developing - Phar 路径问题](../develop/structure#phar-应用目录问题)
+
 ## 命令 extract - 手动解压某个库
 
 使用命令 `bin/spc extract` 可以解包和拷贝编译需要的源代码，包括 php-src 以及依赖的各种库的源码（需要自己指定要解包的库名）。

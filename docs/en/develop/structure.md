@@ -57,3 +57,124 @@ supports automatic loading of the PSR-4 standard, and contains the following sub
 If you have read the source code, you may find that there is also a `src/globals/` directory, 
 which is used to store some global variables, global methods, 
 and non-PSR-4 standard PHP source code that is relied upon during the build process, such as extension sanity check code etc.
+
+## Phar application directory issue
+
+Like other php-cli projects, spc itself has additional considerations for paths.
+Because spc can run in multiple modes such as `php-cli directly`, `micro SAPI`, `php-cli with Phar`, `vendor with Phar`, etc., 
+there are ambiguities in various root directories. A complete explanation is given here.
+This problem is generally common in the base class path selection problem of accessing files in PHP projects, especially when used with `micro.sfx`.
+
+Note that this may only be useful for you when developing Phar projects or PHP frameworks.
+
+> Next, we will treat `static-php-cli` (that is, spc) as a normal `php` command line program. You can understand spc as any of your own php-cli applications for reference.
+
+There are three basic constant theoretical values below. We recommend that you introduce these three constants when writing PHP projects:
+
+- `WORKING_DIR`: the working directory when executing PHP scripts
+
+- `SOURCE_ROOT_DIR` or `ROOT_DIR`: the root directory of the project folder, generally the directory where `composer.json` is located
+
+- `FRAMEWORK_ROOT_DIR`: the root directory of the framework used, which may be used by self-developed frameworks. Generally, the framework directory is read-only
+
+You can define these constants in your framework entry or cli applications to facilitate the use of paths in your project.
+
+The following are PHP built-in constant values, which have been defined inside the PHP interpreter:
+
+- `__DIR__`: the directory where the file of the currently executed script is located
+
+- `__FILE__`: the file path of the currently executed script
+
+### Git project mode (source)
+
+Git project mode refers to a framework or program itself stored in plain text in the current folder, and running through `php path/to/entry.php`.
+
+Assume that your project is stored in the `/home/example/static-php-cli/` directory, or your project is the framework itself, 
+which contains project files such as `composer.json`:
+
+```
+composer.json
+src/App/MyCommand.app
+vendor/*
+bin/entry.php
+```
+
+We assume that the above constants are obtained from `src/App/MyCommand.php`:
+
+| Constant             | Value                                                |
+|----------------------|------------------------------------------------------|
+| `WORKING_DIR`        | `/home/example/static-php-cli`                       |
+| `SOURCE_ROOT_DIR`    | `/home/example/static-php-cli`                       |
+| `FRAMEWORK_ROOT_DIR` | `/home/example/static-php-cli`                       |
+| `__DIR__`            | `/home/example/static-php-cli/src/App`               |
+| `__FILE__`           | `/home/example/static-php-cli/src/App/MyCommand.php` |
+
+In this case, the values of `WORKING_DIR`, `SOURCE_ROOT_DIR`, and `FRAMEWORK_ROOT_DIR` are exactly the same: `/home/example/static-php-cli`.
+
+The source code of the framework and the source code of the application are both in the current path.
+
+### Vendor library mode (vendor)
+
+The vendor library mode generally means that your project is a framework or is installed into the project as a composer dependency by other applications, 
+and the storage location is in the `vendor/author/XXX` directory.
+
+Suppose your project is `crazywhalecc/static-php-cli`, and you or others install this project in another project using `composer require`.
+
+We assume that static-php-cli contains all files except the `vendor` directory with the same `Git mode`, and get the constant value from `src/App/MyCommand`,
+Directory constant should be:
+
+| Constant             | Value                                                                                |
+|----------------------|--------------------------------------------------------------------------------------|
+| `WORKING_DIR`        | `/home/example/another-app`                                                          |
+| `SOURCE_ROOT_DIR`    | `/home/example/another-app`                                                          |
+| `FRAMEWORK_ROOT_DIR` | `/home/example/another-app/vendor/crazywhalecc/static-php-cli`                       |
+| `__DIR__`            | `/home/example/another-app/vendor/crazywhalecc/static-php-cli/src/App`               |
+| `__FILE__`           | `/home/example/another-app/vendor/crazywhalecc/static-php-cli/src/App/MyCommand.php` |
+
+Here `SOURCE_ROOT_DIR` refers to the root directory of the project using `static-php-cli`.
+
+### Git project Phar mode (source-phar)
+
+Git project Phar mode refers to the mode of packaging the project directory of the Git project mode into a `phar` file. We assume that `/home/example/static-php-cli` will be packaged into a Phar file, and the directory has the following files:
+
+```
+composer.json
+src/App/MyCommand.app
+vendor/*
+bin/entry.php
+```
+
+When packaged into `app.phar` and stored in the `/home/example/static-php-cli` directory, `app.phar` is executed at this time. Assuming that the `src/App/MyCommand` code is executed, the constant is obtained in the file:
+
+| Constant             | Value                                                                |
+|----------------------|----------------------------------------------------------------------|
+| `WORKING_DIR`        | `/home/example/static-php-cli`                                       |
+| `SOURCE_ROOT_DIR`    | `phar:///home/example/static-php-cli/app.phar/`                      |
+| `FRAMEWORK_ROOT_DIR` | `phar:///home/example/static-php-cli/app.phar/`                      |
+| `__DIR__`            | `phar:///home/example/static-php-cli/app.phar/src/App`               |
+| `__FILE__`           | `phar:///home/example/static-php-cli/app.phar/src/App/MyCommand.php` |
+
+Because the `phar://` protocol is required to read files in the phar itself, the project root directory and the framework directory will be different from `WORKING_DIR`.
+
+### Vendor Library Phar Mode (vendor-phar)
+
+Vendor Library Phar Mode means that your project is installed as a framework in other projects and stored in the `vendor` directory.
+
+We assume that your project directory structure is as follows:
+
+```
+composer.json                           # Composer configuration file of the current project
+box.json                                # Configuration file for packaging Phar
+another-app.php                         # Entry file of another project
+vendor/crazywhalecc/static-php-cli/*    # Your project is used as a dependent library
+```
+
+When packaging these files under the directory `/home/example/another-app/` into `app.phar`, the value of the following constant for your project should be:
+
+| Constant             | Value                                                                                                |
+|----------------------|------------------------------------------------------------------------------------------------------|
+| `WORKING_DIR`        | `/home/example/another-app`                                                                          |
+| `SOURCE_ROOT_DIR`    | `phar:///home/example/another-app/app.phar/`                                                         |
+| `FRAMEWORK_ROOT_DIR` | `phar:///home/example/another-app/app.phar/vendor/crazywhalecc/static-php-cli`                       |
+| `__DIR__`            | `phar:///home/example/another-app/app.phar/vendor/crazywhalecc/static-php-cli/src/App`               |
+| `__FILE__`           | `phar:///home/example/another-app/app.phar/vendor/crazywhalecc/static-php-cli/src/App/MyCommand.php` |

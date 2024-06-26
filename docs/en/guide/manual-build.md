@@ -342,6 +342,9 @@ The ini injection of this command is achieved by appending a special structure a
 which is different from the function of inserting hard-coded INI during compilation.
 :::
 
+If you want to package phar, just replace `a.php` with the packaged phar file. 
+But please note that micro.sfx under phar needs extra attention to the path problem, see [Developing - Phar directory issue](../develop/structure#phar-application-directory-issue).
+
 ## Command - extract
 
 Use the command `bin/spc extract` to unpack and copy the source code required for compilation, 

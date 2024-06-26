@@ -46,3 +46,118 @@ static-php-cli 主要包含三种逻辑组件：资源、依赖库、扩展。�
 - `src/SPC/ConsoleApplication.php`: 命令行程序入口文件。
 
 如果你阅读过源码，你可能会发现还有一个 `src/globals/` 目录，它是用于存放一些全局变量、全局方法、构建过程中依赖的非 PSR-4 标准的 PHP 源码，例如测试扩展代码等。
+
+## Phar 应用目录问题
+
+和其他 php-cli 项目一样，spc 自身对路径有额外的考虑。
+因为 spc 可以在 `php-cli directly`、`micro SAPI`、`php-cli with Phar`、`vendor with Phar` 等多种模式下运行，各类根目录存在歧义。这里会进行一个完整的说明。
+此问题一般常见于 PHP 项目中存取文件的基类路径选择问题，尤其是在配合 `micro.sfx` 使用时容易出现路径问题。
+
+注意，此处仅对你在开发 Phar 项目或 PHP 框架时可能有用。
+
+> 接下来我们都将 `static-php-cli`（也就是 spc）当作一个普通的 `php` 命令行程序来看，你可以将 spc 理解为你自己的任何 php-cli 应用以参考。
+
+下面主要有三个基本的常量理论值，我们建议你在编写 php 项目时引入这三种常量：
+
+- `WORKING_DIR`：执行 PHP 脚本时的工作目录
+- `SOURCE_ROOT_DIR` 或 `ROOT_DIR`：项目文件夹的根目录，一般为 `composer.json` 所在目录
+- `FRAMEWORK_ROOT_DIR`：使用框架的根目录，自行开发的框架可能会用到，一般框架目录为只读
+
+你可以在你的框架或者 cli 应用程序入口中定义这些常量，以方便在你的项目中使用路径。
+
+下面是 PHP 内置的常量值，在 PHP 解释器内部已被定义：
+
+- `__DIR__`：当前执行脚本的文件所在目录
+- `__FILE__`：当前执行脚本的文件路径
+
+### Git 项目模式（source）
+
+Git 项目模式指的是一个框架或程序本身在当前文件夹以纯文本形式存放，运行通过 `php path/to/entry.php` 方式。
+
+假设你的项目存放在 `/home/example/static-php-cli/` 目录下，或你的项目就是框架本身，里面包含 `composer.json` 等项目文件：
+
+```
+composer.json
+src/App/MyCommand.app
+vendor/*
+bin/entry.php
+```
+
+我们假设从 `src/App/MyCommand.php` 中获取以上常量：
+
+| Constant             | Value                                                |
+|----------------------|------------------------------------------------------|
+| `WORKING_DIR`        | `/home/example/static-php-cli`                       |
+| `SOURCE_ROOT_DIR`    | `/home/example/static-php-cli`                       |
+| `FRAMEWORK_ROOT_DIR` | `/home/example/static-php-cli`                       |
+| `__DIR__`            | `/home/example/static-php-cli/src/App`               |
+| `__FILE__`           | `/home/example/static-php-cli/src/App/MyCommand.php` |
+
+这种情况下，`WORKING_DIR`、`SOURCE_ROOT_DIR`、`FRAMEWORK_ROOT_DIR` 的值是完全一致的：`/home/example/static-php-cli`。
+框架的源码和应用的源码都在当前路径下。
+
+### Vendor 库模式（vendor）
+
+Vendor 库模式一般是指你的项目为框架类或者被其他应用作为 composer 依赖项安装到项目中，存放位置在 `vendor/author/XXX` 目录。
+
+假设你的项目是 `crazywhalecc/static-php-cli`，你或其他人在另一个项目使用 `composer require` 安装了这个项目。
+
+我们假设 static-php-cli 中包含同 `Git 模式` 的除 `vendor` 目录外的所有文件，并从 `src/App/MyCommand` 中获取常量值，
+目录常量应该是：
+
+| Constant             | Value                                                                                |
+|----------------------|--------------------------------------------------------------------------------------|
+| `WORKING_DIR`        | `/home/example/another-app`                                                          |
+| `SOURCE_ROOT_DIR`    | `/home/example/another-app`                                                          |
+| `FRAMEWORK_ROOT_DIR` | `/home/example/another-app/vendor/crazywhalecc/static-php-cli`                       |
+| `__DIR__`            | `/home/example/another-app/vendor/crazywhalecc/static-php-cli/src/App`               |
+| `__FILE__`           | `/home/example/another-app/vendor/crazywhalecc/static-php-cli/src/App/MyCommand.php` |
+
+
+这里的 `SOURCE_ROOT_DIR` 就指的是使用 `static-php-cli` 的项目的根目录。
+
+### Git 项目 Phar 模式（source-phar）
+
+Git 项目 Phar 模式指的是将 Git 项目模式的项目目录打包为一个 `phar` 文件的模式。我们假设 `/home/example/static-php-cli` 将打包为一个 Phar 文件，目录有以下文件：
+
+```
+composer.json
+src/App/MyCommand.app
+vendor/*
+bin/entry.php
+```
+
+打包为 `app.phar` 并存放到 `/home/example/static-php-cli` 目录下时，此时执行 `app.phar`，假设执行了 `src/App/MyCommand` 代码，常量在该文件内获取：
+
+| Constant             | Value                                                                |
+|----------------------|----------------------------------------------------------------------|
+| `WORKING_DIR`        | `/home/example/static-php-cli`                                       |
+| `SOURCE_ROOT_DIR`    | `phar:///home/example/static-php-cli/app.phar/`                      |
+| `FRAMEWORK_ROOT_DIR` | `phar:///home/example/static-php-cli/app.phar/`                      |
+| `__DIR__`            | `phar:///home/example/static-php-cli/app.phar/src/App`               |
+| `__FILE__`           | `phar:///home/example/static-php-cli/app.phar/src/App/MyCommand.php` |
+
+因为在 phar 内读取自身 phar 的文件需要 `phar://` 协议进行，所以项目根目录和框架目录将会和 `WORKING_DIR` 不同。
+
+### Vendor 库 Phar 模式（vendor-phar）
+
+Vendor 库 Phar 模式指的是你的项目作为框架安装在其他项目内，存储于 `vendor` 目录下。
+
+我们假设你的项目目录结构如下：
+
+```
+composer.json # 当前项目的 Composer 配置文件
+box.json # 打包 Phar 的配置文件
+another-app.php # 另一个项目的入口文件
+vendor/crazywhalecc/static-php-cli/* # 你的项目被作为依赖库
+```
+
+将该目录 `/home/example/another-app/` 下的这些文件打包为 `app.phar` 时，对于你的项目而言，下面常量的值应为：
+
+| Constant             | Value                                                                                                |
+|----------------------|------------------------------------------------------------------------------------------------------|
+| `WORKING_DIR`        | `/home/example/another-app`                                                                          |
+| `SOURCE_ROOT_DIR`    | `phar:///home/example/another-app/app.phar/`                                                         |
+| `FRAMEWORK_ROOT_DIR` | `phar:///home/example/another-app/app.phar/vendor/crazywhalecc/static-php-cli`                       |
+| `__DIR__`            | `phar:///home/example/another-app/app.phar/vendor/crazywhalecc/static-php-cli/src/App`               |
+| `__FILE__`           | `phar:///home/example/another-app/app.phar/vendor/crazywhalecc/static-php-cli/src/App/MyCommand.php` |
