@@ -3,7 +3,7 @@
 | amqp                                                       | yes   | yes     |         | yes     |
 | apcu                                                       | yes   | yes     | yes     | yes     |
 | bcmath                                                     | yes   | yes     | yes     | yes     |
-| bz2                                                        | yes   | yes     | yes     |         |
+| bz2                                                        | yes   | yes     | yes     | yes     |
 | calendar                                                   | yes   | yes     | yes     | yes     |
 | ctype                                                      | yes   | yes     | yes     | yes     |
 | [curl](./extension-notes#curl)                             | yes   | yes     | yes     | yes     |
@@ -47,12 +47,12 @@
 | pdo_mysql                                                  | yes   | yes     | yes     | yes     |
 | pdo_pgsql                                                  | yes   | yes     |         |         |
 | pdo_sqlite                                                 | yes   | yes     |         | yes     |
-| pdo_sqlsrv                                                 | yes   | yes     |         |         |
+| pdo_sqlsrv                                                 | yes   | yes     |         | yes     |
 | [pgsql](./extension-notes#pgsql)                           | yes   | yes     |         |         |
 | phar                                                       | yes   | yes     | yes     | yes     |
 | posix                                                      | yes   | yes     | yes     | no      |
 | protobuf                                                   | yes   | yes     |         |         |
-| [rar](./extension-notes#rar)                               | yes   | partial |         |         |
+| [rar](./extension-notes#rar)                               | yes   | partial |         | yes     |
 | readline                                                   | yes   | yes     |         |         |
 | redis                                                      | yes   | yes     |         |         |
 | session                                                    | yes   | yes     | yes     | yes     |
@@ -64,7 +64,7 @@
 | sockets                                                    | yes   | yes     | yes     | yes     |
 | sodium                                                     | yes   | yes     |         |         |
 | sqlite3                                                    | yes   | yes     |         | yes     |
-| sqlsrv                                                     | yes   | yes     |         |         |
+| sqlsrv                                                     | yes   | yes     |         | yes     |
 | ssh2                                                       | yes   | yes     |         | yes     |
 | [swoole](./extension-notes#swoole)                         | yes   | yes     |         | no      |
 | [swoole-hook-mysql](./extension-notes#swoole-hook-mysql)   | yes   | yes     |         | no      |
@@ -86,7 +86,7 @@
 | xmlwriter                                                  | yes   | yes     |         | yes     |
 | xsl                                                        | yes   | yes     |         |         |
 | yac                                                        | yes   | yes     |         | yes     |
-| yaml                                                       | yes   | yes     |         |         |
+| yaml                                                       | yes   | yes     |         | yes     |
 | zip                                                        | yes   | yes     |         |         |
 | zlib                                                       | yes   | yes     | yes     | yes     |
 | zstd                                                       | yes   | yes     |         |         |
