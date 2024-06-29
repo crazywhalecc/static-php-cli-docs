@@ -1,1 +1,0 @@
-import{_ as t,c as d,o as e,a2 as s}from"./chunks/framework._YPf4yo5.js";const f=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"extensions.md","filePath":"extensions.md"}'),r={name:"extensions.md"},y=s("",1),o=[y];function n(a,l,i,h,m,p){return e(),d("div",null,o)}const c=t(r,[["render",n]]);export{f as __pageData,c as default};
