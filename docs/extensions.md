@@ -70,7 +70,7 @@
 | [swoole-hook-mysql](./extension-notes#swoole-hook-mysql)   | yes   | yes     |         | no      |
 | [swoole-hook-pgsql](./extension-notes#swoole-hook-pgsql)   | yes   | partial |         | no      |
 | [swoole-hook-sqlite](./extension-notes#swoole-hook-sqlite) | yes   | yes     |         | no      |
-| [swow](./extension-notes#swow)                             | yes   | yes     |         |         |
+| [swow](./extension-notes#swow)                             | yes   | yes     |         | yes     |
 | sysvmsg                                                    | yes   | yes     |         | no      |
 | sysvsem                                                    | yes   | yes     |         | no      |
 | sysvshm                                                    | yes   | yes     |         | yes     |
@@ -87,7 +87,7 @@
 | xsl                                                        | yes   | yes     |         |         |
 | yac                                                        | yes   | yes     |         | yes     |
 | yaml                                                       | yes   | yes     |         | yes     |
-| zip                                                        | yes   | yes     |         |         |
+| zip                                                        | yes   | yes     |         | yes     |
 | zlib                                                       | yes   | yes     | yes     | yes     |
 | zstd                                                       | yes   | yes     |         |         |
 
