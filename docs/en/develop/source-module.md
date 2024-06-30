@@ -95,6 +95,7 @@ The parameters included are:
 
 - `repo`: GitHub repository name
 - `match`: regular expression matching Assets files
+- `prefer-stable`: Whether to download stable versions first (default is `false`)
 
 Example (download the libsodium library, matching the libsodium-x.y.tar.gz file in Release):
 
@@ -120,6 +121,7 @@ Unlike `ghrel`, `ghtar` will download the `source code (tar.gz)` from the latest
 The parameters included are:
 
 - `repo`: GitHub repository name
+- `prefer-stable`: Whether to download stable versions first (default is `false`)
 
 Example (brotli library):
 
@@ -145,6 +147,7 @@ Compared with `ghtar`, `ghtagtar` can find the latest one from the `tags` list a
 The parameters included are:
 
 - `repo`: GitHub repository name
+- `prefer-stable`: Whether to download stable versions first (default is `false`)
 
 Example (gmp library):
 

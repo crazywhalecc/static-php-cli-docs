@@ -1,23 +1,43 @@
 # Build (Linux, macOS, FreeBSD)
 
 This section covers the build process for Linux, macOS, and FreeBSD. If you want to build on Windows, 
-please go to [Build on Windows](./build-on-windows).
+also need to read [Build on Windows](./build-on-windows).
 
-### Build locally (using SPC binary)
+### Build locally (using SPC binary) (recommended)
 
 This project provides a binary file of static-php-cli.
 You can directly download the binary file of the corresponding platform and then use it to build static PHP.
 Currently, the platforms supported by `spc` binary are Linux and macOS.
 
-Here's how to download from GitHub Actions:
+Here's how to download from self-hosted server:
 
-1. Enter [GitHub Actions](https://github.com/crazywhalecc/static-php-cli/actions/workflows/release-build.yml).
-2. Select the latest build task, select `Artifacts`, and download the binary file of the corresponding platform.
-3. Unzip the `.zip` file. After decompressing, add execution permissions to it: `chmod +x ./spc`.
+```bash
+# Download from self-hosted nightly builds (sync with main branch)
+# For Linux x86_64
+curl -o spc https://dl.static-php.dev/static-php-cli/spc-bin/nightly/spc-linux-x86_64
+# For Linux aarch64
+curl -o spc https://dl.static-php.dev/static-php-cli/spc-bin/nightly/spc-linux-aarch64
+# macOS x86_64 (Intel)
+curl -o spc https://dl.static-php.dev/static-php-cli/spc-bin/nightly/spc-macos-x86_64
+# macOS aarch64 (Apple)
+curl -o spc https://dl.static-php.dev/static-php-cli/spc-bin/nightly/spc-macos-aarch64
+# Windows (x86_64, win10 build 17063 or later)
+curl.exe -o spc.exe https://dl.static-php.dev/static-php-cli/spc-bin/nightly/spc-windows-x64.exe
 
-You can also download binaries from a self-hosted server: [enter](https://dl.static-php.dev/static-php-cli/spc-bin/nightly/).
+# Add execute perm (Linux and macOS only)
+chmod +x ./spc
+
+# Run (Linux and macOS)
+./spc --version
+# Run (Windows powershell)
+.\spc.exe --version
+```
+
+> If you are using the packaged `spc` binary, you will need to replace the leading `bin/spc` with `./spc` in all the commands below.
 
 ### Build locally (using source code)
+
+If you have problems using the spc binary, or if you need to modify the static-php-cli source code, download static-php-cli from the source code.
 
 Currently, it supports building on macOS and Linux. 
 macOS supports the latest version of the operating system and two architectures, 
@@ -366,6 +386,8 @@ when you use static-php-cli to build PHP or modify and enhance the static-php-cl
 - `dev:extensions`: output all currently supported extension names, or output the specified extension information
 - `dev:php-version`: output the currently compiled PHP version (by reading `php_version.h`)
 - `dev:sort-config`: Sort the list of configuration files in the `config/` directory in alphabetical order
+- `dev:lib-ver <lib-name>`: Read the version from the source code of the dependency library (only available for specific dependency libraries)
+- `dev:ext-ver <ext-name>`: Read the corresponding version from the source code of the extension (only available for specific extensions)
 
 ```bash
 # output all extensions information

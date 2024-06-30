@@ -2,23 +2,41 @@
 
 本章节为 Linux、macOS、FreeBSD 的构建过程，如果你要在 Windows 上构建，请到 [在 Windows 上构建](./build-on-windows)。
 
-## 手动构建（使用 SPC 二进制）
+## 手动构建（使用 SPC 二进制）（推荐）
 
 本项目提供了一个 static-php-cli 的二进制文件，你可以直接下载对应平台的二进制文件，然后使用它来构建静态的 PHP。目前 `spc` 二进制支持的平台有 Linux 和 macOS。
 
-下面是从 GitHub Action 下载的方法：
+使用以下命令从自托管服务器下载：
 
-1. 进入 [GitHub Action](https://github.com/crazywhalecc/static-php-cli/actions/workflows/release-build.yml)。
-2. 选择一个最新的构建任务，进入后选择 `Artifacts`，下载对应平台的二进制文件。
-3. 解压 `.zip` 文件。解压后，为其添加执行权限：`chmod +x ./spc`。
+```bash
+# Download from self-hosted nightly builds (sync with main branch)
+# For Linux x86_64
+curl -o spc https://dl.static-php.dev/static-php-cli/spc-bin/nightly/spc-linux-x86_64
+# For Linux aarch64
+curl -o spc https://dl.static-php.dev/static-php-cli/spc-bin/nightly/spc-linux-aarch64
+# macOS x86_64 (Intel)
+curl -o spc https://dl.static-php.dev/static-php-cli/spc-bin/nightly/spc-macos-x86_64
+# macOS aarch64 (Apple)
+curl -o spc https://dl.static-php.dev/static-php-cli/spc-bin/nightly/spc-macos-aarch64
+# Windows (x86_64, win10 build 17063 or later)
+curl.exe -o spc.exe https://dl.static-php.dev/static-php-cli/spc-bin/nightly/spc-windows-x64.exe
 
-你也可以从自托管的服务器下载二进制文件：[进入](https://dl.static-php.dev/static-php-cli/spc-bin/nightly/)。
+# Add execute perm (Linux and macOS only)
+chmod +x ./spc
+
+# Run (Linux and macOS)
+./spc --version
+# Run (Windows powershell)
+.\spc.exe --version
+```
 
 > 如果你使用的是打包好的 `spc` 二进制，你需要将下面所有命令中 `bin/spc` 开头替换为 `./spc`。
 
 ## 手动构建（使用源码）
 
-目前支持在 macOS、Linux 上构建，macOS 支持最新版操作系统和两种架构，Linux 支持 Debian、RHEL 及衍生发行版、Alpine Linux。
+如果使用 spc 二进制出现问题，或你有修改 static-php-cli 源码需求，请从源码下载 static-php-cli。
+
+目前支持在 macOS、Linux 上构建，macOS 支持最新版操作系统和两种架构，Linux 支持 Debian、RHEL 及衍生发行版、Alpine Linux 等。
 
 因为本项目本身采用 PHP 开发，所以在编译时也需要系统安装 PHP。本项目本身也提供了适用于本项目的静态二进制 php，可以根据实际情况自行选择使用。
 
@@ -326,6 +344,8 @@ bin/spc extract php-src,libxml2
 - `dev:extensions`: 输出目前所有支持的扩展信息，或者输出指定的扩展信息
 - `dev:php-version`: 输出当前编译的 PHP 版本（通过读取 `php_version.h` 实现）
 - `dev:sort-config`: 对 `config/` 目录下的配置文件的列表按照字母表排序
+- `dev:lib-ver <lib-name>`: 从依赖库的源码中读取版本（仅特定依赖库可用）
+- `dev:ext-ver <ext-name>`: 从扩展的源码中读取对应版本（仅特定扩展可用）
 
 ```bash
 # 输出所有扩展

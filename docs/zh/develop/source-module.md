@@ -83,6 +83,7 @@ ghrel 会从 GitHub Release 中上传的 Assets 下载文件。首先使用 GitH
 
 - `repo`: GitHub 仓库名称
 - `match`: 匹配 Assets 文件的正则表达式
+- `prefer-stable`: 是否优先下载稳定版本（默认为 `false`）
 
 例子（下载 libsodium 库，匹配 Release 中的 libsodium-x.y.tar.gz 文件）：
 
@@ -107,6 +108,7 @@ ghtar 会从 GitHub Release Tag 下载文件，与 `ghrel` 不同的是，`ghtar
 包含的参数有：
 
 - `repo`: GitHub 仓库名称
+- `prefer-stable`: 是否优先下载稳定版本（默认为 `false`）
 
 例子（brotli 库）：
 
@@ -130,6 +132,7 @@ ghtar 会从 GitHub Release Tag 下载文件，与 `ghrel` 不同的是，`ghtar
 包含的参数有：
 
 - `repo`: GitHub 仓库名称
+- `prefer-stable`: 是否优先下载稳定版本（默认为 `false`）
 
 例子（gmp 库）：
 
