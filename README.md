@@ -1,3 +1,5 @@
+# :warning: **This repo content has moved to [static-php-cli](https://github.com/crazywhalecc/static-php-cli) docs dir!!!**
+
 # static-php-cli-docs
 [static-php-cli](https://github.com/crazywhalecc/static-php-cli) Documentation, use VitePress.
 
